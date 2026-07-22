@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EPPMS.Domain\EPPMS.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\Contracts\Security\" />
+    <Folder Include="Common\Contracts\Services\" />
+    <Folder Include="Common\Contracts\Repositories\" />
+    <Folder Include="Common\Behaviors\" />
+    <Folder Include="Common\Exceptions\" />
+    <Folder Include="Common\Mapping\" />
+    <Folder Include="Common\Pagination\" />
+    <Folder Include="Common\Responses\" />
+    <Folder Include="Common\Validation\" />
+    <Folder Include="Configuration\FutureFlag\" />
+    <Folder Include="Configuration\NotificationSetting\" />
+    <Folder Include="Configuration\SystemSetting\" />
+    <Folder Include="Identity\Authentication\" />
+    <Folder Include="Identity\Authorization\" />
+    <Folder Include="Identity\Permission\" />
+    <Folder Include="Identity\Role\" />
+    <Folder Include="Identity\User\" />
+    <Folder Include="Dashboard\" />
+    <Folder Include="ProductManagement\Application\Delete\" />
+    <Folder Include="ProductManagement\Application\Archive\" />
+    <Folder Include="ProductManagement\Application\Get\" />
+    <Folder Include="ProductManagement\Application\Search\" />
+    <Folder Include="ProductManagement\Application\Restore\" />
+    <Folder Include="ProductManagement\Feature\" />
+    <Folder Include="ProductManagement\TechnicalModule\" />
+    <Folder Include="Reporting\Analytics\" />
+    <Folder Include="Reporting\Report\" />
+    <Folder Include="WorkManagement\Bug\" />
+    <Folder Include="WorkManagement\OngoingTask\" />
+    <Folder Include="WorkManagement\Task\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="EPPMS.API/EPPMS.API.csproj" />
+  <Project Path="EPPMS.Application/EPPMS.Application.csproj" />
+  <Project Path="EPPMS.Domain/EPPMS.Domain.csproj" />
+  <Project Path="EPPMS.Infrastructure/EPPMS.Infrastructure.csproj" />
+  <Project Path="EPPMS.Portal/EPPMS.Portal.csproj" />
+</Solution>
