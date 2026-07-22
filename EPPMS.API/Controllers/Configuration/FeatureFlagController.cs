@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EPPMS.API.Controllers.Configuration
 {
-    //staging
+    //development
     [Route("api/[controller]")]
     [ApiController]
     public class FeatureFlagController : ControllerBase
