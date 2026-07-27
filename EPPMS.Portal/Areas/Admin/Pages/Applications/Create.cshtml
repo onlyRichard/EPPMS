@@ -1,0 +1,207 @@
+﻿@page
+@model EPPMS.Portal.Areas.Admin.Pages.Applications.CreateModel
+
+@{
+    ViewData["Title"] = "Add Application";
+}
+
+@section Styles
+{
+    <link href="~/css/admin/application/application-create.css" rel="stylesheet" asp-append-version="true" />
+}
+
+<div class="container-fluid">   
+
+    <form method="post" id="applicationForm">
+        <!-- ===========================
+         Page Header
+    ============================ -->
+        <div class="application-create-header">
+            <div class="application-create-title">
+                <h1>Add New Application</h1>
+                <p>
+                    Register a new application and its basic information.
+                </p>
+            </div>
+
+            <div class="application-create-actions">
+                <a asp-page="./Index"
+                       class="btn btn-application-cancel">
+                    <i class="bi bi-x-lg"></i>
+                    Cancel
+                </a>
+                <button type="button"
+                        id="btnSaveApplication"
+                        class="btn btn-application-save">
+                    <i class="bi bi-floppy"></i>
+                    Save Application
+                </button>
+            </div>
+        </div>
+
+        <!-- ===========================
+         Card
+    ============================ -->
+        <div class="application-card">
+            <div class="application-card-header">
+                Application Information
+            </div>
+
+            <div class="application-card-body">
+                <!-- Application Module -->
+                <div class="mb-2">
+                    <label asp-for="Application.ApplicationModule"
+                           class="form-label required-field">
+                        Application / Module
+                    </label>
+                    <input asp-for="Application.ApplicationModule"
+                           class="form-control" />
+                    <span asp-validation-for="Application.ApplicationModule"
+                          class="text-danger"></span>
+                    <div class="field-description">
+                        Name of the application or module.
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <!-- Purpose -->
+                    <div class="col-lg-6 mb-2">
+                        <label asp-for="Application.Purpose"
+                               class="form-label required-field">
+                            Purpose
+                        </label>
+
+                        <textarea asp-for="Application.Purpose"
+                                  rows="4"
+                                  maxlength="500"
+                                  class="form-control"></textarea>
+
+                        <div class="field-footer">
+                            <span class="field-description">
+                                Explain the main purpose and role of this application.
+                            </span>
+
+                            <span id="purposeCounter">
+                                0 / 500
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Technical Details -->
+                    <div class="col-lg-6 mb-2">
+                        <label asp-for="Application.TechDetails"
+                               class="form-label required-field">
+                            Technical Details
+                        </label>
+
+                        <textarea asp-for="Application.TechDetails"
+                                  rows="4"
+                                  maxlength="1000"
+                                  class="form-control"></textarea>
+
+                        <div class="field-footer">
+                            <span class="field-description">
+                                Include architecture, technologies and relevant technical information.
+                            </span>
+                            <span id="technicalCounter">
+                                0 / 1000
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Row -->
+
+                <div class="row">
+                    <!-- Production URL -->
+                    <div class="col-lg-6 mb-2">
+                        <label asp-for="Application.ProductionUrl"
+                               class="form-label">
+                            Production URL
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="bi bi-globe"></i>
+                            </span>
+                            <input asp-for="Application.ProductionUrl"
+                                   class="form-control"
+                                   placeholder="https://example.com" />
+                        </div>
+                        <div class="field-description">
+                            URL where the application is accessible.
+                        </div>
+                    </div>
+
+                    <!-- Current Health -->
+                    <div class="col-lg-6 mb-4">
+                        <label asp-for="Application.CurrentHealthId"
+                               class="form-label required-field">
+                            Current Health
+                        </label>
+                            <div class="current-health-container">                              
+
+                                <select asp-for="Application.CurrentHealthId"
+                                        class="form-select"
+                                        id="CurrentHealthId">
+
+                                    <option value="">Select Current Health</option>
+
+                                    @foreach (var item in Model.CurrentHealths)
+                                    {
+                                        @* var cssClass = item.Name.ToLowerInvariant().Replace(" ", "-"); *@                                        
+                                        @switch (item.Name)
+                                        {
+                                            case "Excellent":
+                                                <option value="@item.Id">🟢 Excellent</option>
+                                                break;
+                                            case "Good":
+                                                <option value="@item.Id">🟢 Good</option>
+                                                break;
+                                            case "Warning":
+                                                <option value="@item.Id">🟡 Warning</option>
+                                                break;
+                                            case "Critical":
+                                                <option value="@item.Id">🔴 Critical</option>
+                                                break;
+                                            case "Retired":
+                                                <option value="@item.Id">⚫ Retired</option>
+                                                break;
+                                        }
+                                    }
+
+                                </select>
+
+                            </div>
+                            <span asp-validation-for="Application.CurrentHealthId" class="text-danger"></span>                                           
+                    </div>
+                </div>
+                <!-- Notes -->
+                <div class="mb-2">
+                    <label asp-for="Application.Notes"
+                           class="form-label">
+                        Notes
+                    </label>
+                    <input asp-for="Application.Notes"
+                           class="form-control" />
+                    <div class="field-description">
+                        Additional information or remarks.
+                    </div>
+                </div>               
+
+                <!-- Footer -->
+                <div class="required-information">
+                    <i class="bi bi-info-circle-fill"></i>
+                    <span>
+                        Fields marked with <strong>*</strong> are required.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+    <script src="~/js/admin/application/application-create.js" asp-append-version="true"></script>
+}   

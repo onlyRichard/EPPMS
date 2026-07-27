@@ -17,11 +17,11 @@ namespace EPPMS.Infrastructure.DependencyInjection
             services.AddScoped<ILookupRepository, LookupRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IApplicationRepository, ApplicationRepository>();
-            /*services.AddScoped<IFeatureRepository, FeatureRepository>();
+            services.AddScoped<IFeatureRepository, FeatureRepository>();
             services.AddScoped<ITechnicalModuleRepository, TechnicalModuleRepository>();
             services.AddScoped<ITaskRepository, TaskRepository>();
             services.AddScoped<IBugRepository, BugRepository>();
-            services.AddScoped<IOngoingTaskRepository, OngoingTaskRepository>();*/
+            services.AddScoped<IOngoingTaskRepository, OngoingTaskRepository>();
 
             return services;
         }

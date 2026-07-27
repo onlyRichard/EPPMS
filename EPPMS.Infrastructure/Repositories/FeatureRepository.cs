@@ -56,8 +56,8 @@ namespace EPPMS.Infrastructure.Repositories
             return null;
         }
         #endregion
-        #region Commands
 
+        #region Commands
         public async Task<bool> CreateAsync(FeatureCreateDTO feature)
         {
             await using SqlConnection connection = await CreateConnectionAsync();
@@ -133,8 +133,8 @@ namespace EPPMS.Infrastructure.Repositories
             command.Parameters.Add(DbParameterExtensions.Create("@UpdatedBy", feature.UpdatedBy, SqlDbType.NVarChar));
         }
         #endregion
-        #region Mapping
 
+        #region Mapping
         private static FeatureDetailsDTO MapFeature(SqlDataReader reader)
         {
             int linksNotesOrdinal = reader.GetOrdinal("LinksNotes");
@@ -196,7 +196,6 @@ namespace EPPMS.Infrastructure.Repositories
                 IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive"))
             };
         }
-
         #endregion
     }
 }

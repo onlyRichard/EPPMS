@@ -1,6 +1,6 @@
 @EPPMS.API_HostAddress = http://localhost:5067
 
-GET {{EPPMS.API_HostAddress}}/weatherforecast/
+GET {{EPPMS.API_HostAddress}}/api/applications/
 Accept: application/json
 
 ###

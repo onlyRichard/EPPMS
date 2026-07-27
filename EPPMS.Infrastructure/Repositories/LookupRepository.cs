@@ -17,29 +17,63 @@ namespace EPPMS.Infrastructure.Repositories
 
         }
         #region Queries
-        public Task<List<LookupDTO>> GetActionTypesAsync()
-            => ExecuteLookupAsync(StoredProcedureNames.Lookup.ActionType);
-        public Task<List<LookupDTO>> GetComplexitiesAsync()
-            => ExecuteLookupAsync(StoredProcedureNames.Lookup.Complexity);
-        public Task<List<LookupDTO>> GetCurrentHealthAsync()
-            => ExecuteLookupAsync(StoredProcedureNames.Lookup.CurrentHealth);
-        public Task<List<LookupDTO>> GetPrioritiesAsync()
-            => ExecuteLookupAsync(StoredProcedureNames.Lookup.Priority);
-        public Task<List<LookupDTO>> GetReleaseStatusesAsync()
-            => ExecuteLookupAsync(StoredProcedureNames.Lookup.ReleaseStatus);
-        public Task<List<LookupDTO>> GetRequestTypesAsync()
-            => ExecuteLookupAsync(StoredProcedureNames.Lookup.RequestType);
-        public Task<List<LookupDTO>> GetSeveritiesAsync()
-            => ExecuteLookupAsync(StoredProcedureNames.Lookup.Severity);
-        public Task<List<LookupDTO>> GetStatusesAsync()
-            => ExecuteLookupAsync(StoredProcedureNames.Lookup.Status);
-        public Task<List<LookupDTO>> GetTechnologyAreasAsync()
-            => ExecuteLookupAsync(StoredProcedureNames.Lookup.TechnologyArea);
-        public Task<List<LookupDTO>> GetTestingStatusesAsync()
-            => ExecuteLookupAsync(StoredProcedureNames.Lookup.TestingStatus);
 
-        public Task<List<LookupDTO>> GetTypesAsync()
-            => ExecuteLookupAsync(StoredProcedureNames.Lookup.Type);
+        public Task<IReadOnlyList<LookupResponseDTO>> GetActionTypesAsync(
+            CancellationToken cancellationToken)
+            => ExecuteLookupAsync(
+                StoredProcedureNames.Lookup.ActionType,
+                cancellationToken);
+
+        public Task<IReadOnlyList<LookupResponseDTO>> GetComplexitiesAsync(
+            CancellationToken cancellationToken)
+            => ExecuteLookupAsync(
+                StoredProcedureNames.Lookup.Complexity,
+                cancellationToken);
+        public Task<IReadOnlyList<LookupResponseDTO>> GetCurrentHealthsAsync(
+            CancellationToken cancellationToken)
+            => ExecuteLookupAsync(
+                StoredProcedureNames.Lookup.CurrentHealth,
+                cancellationToken);
+        public Task<IReadOnlyList<LookupResponseDTO>> GetPrioritiesAsync(
+            CancellationToken cancellationToken)
+            => ExecuteLookupAsync(
+                StoredProcedureNames.Lookup.Priority,
+                cancellationToken);
+        public Task<IReadOnlyList<LookupResponseDTO>> GetReleaseStatusesAsync(
+            CancellationToken cancellationToken)
+            => ExecuteLookupAsync(
+                StoredProcedureNames.Lookup.ReleaseStatus,
+                cancellationToken);
+        public Task<IReadOnlyList<LookupResponseDTO>> GetRequestTypesAsync(
+            CancellationToken cancellationToken)
+            => ExecuteLookupAsync(
+                StoredProcedureNames.Lookup.RequestType,
+                cancellationToken);
+        public Task<IReadOnlyList<LookupResponseDTO>> GetSeveritiesAsync(
+            CancellationToken cancellationToken)
+            => ExecuteLookupAsync(
+                StoredProcedureNames.Lookup.Severity,
+                cancellationToken);
+        public Task<IReadOnlyList<LookupResponseDTO>> GetStatusesAsync(
+            CancellationToken cancellationToken)
+            => ExecuteLookupAsync(
+                StoredProcedureNames.Lookup.Status,
+                cancellationToken);
+        public Task<IReadOnlyList<LookupResponseDTO>> GetTechnologyAreasAsync(
+            CancellationToken cancellationToken)
+            => ExecuteLookupAsync(
+                StoredProcedureNames.Lookup.TechnologyArea,
+                cancellationToken);
+        public Task<IReadOnlyList<LookupResponseDTO>> GetTestingStatusesAsync(
+            CancellationToken cancellationToken)
+            => ExecuteLookupAsync(
+                StoredProcedureNames.Lookup.TestingStatus,
+                cancellationToken);
+        public Task<IReadOnlyList<LookupResponseDTO>> GetTypesAsync(
+            CancellationToken cancellationToken)
+            => ExecuteLookupAsync(
+                StoredProcedureNames.Lookup.Type,
+                cancellationToken);
         #endregion
 
 
@@ -48,26 +82,28 @@ namespace EPPMS.Infrastructure.Repositories
         #endregion
 
         #region Private Methods
-        private async Task<List<LookupDTO>> ExecuteLookupAsync(string storedProcedure)
+        private async Task<IReadOnlyList<LookupResponseDTO>> ExecuteLookupAsync(string storedProcedure,CancellationToken cancellationToken)
         {
             await using SqlConnection connection = await CreateConnectionAsync();
-            await using SqlCommand command = new(storedProcedure,connection);
+            await using SqlCommand command = new(storedProcedure, connection);
+
             command.CommandType = CommandType.StoredProcedure;
-            await using SqlDataReader reader = await command.ExecuteReaderAsync();
-            List<LookupDTO> lookups = [];
-            while (await reader.ReadAsync())
+            await using SqlDataReader reader =  await command.ExecuteReaderAsync(cancellationToken);
+
+            List<LookupResponseDTO> lookups = [];
+            while (await reader.ReadAsync(cancellationToken))
             {
                 lookups.Add(MapLookup(reader));
             }
+
             return lookups;
         }
-
         #endregion
 
         #region Mapping
-        private static LookupDTO MapLookup(SqlDataReader reader)
+        private static LookupResponseDTO MapLookup(SqlDataReader reader)
         {
-            return new LookupDTO
+            return new LookupResponseDTO
             {
                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                 Name = reader.GetString(reader.GetOrdinal("Name")),

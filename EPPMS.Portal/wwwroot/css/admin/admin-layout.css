@@ -1,0 +1,227 @@
+﻿html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: #F5F7FB;
+    font-family: "Segoe UI", sans-serif;
+}
+
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 205px;
+    background: #071A38;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+    transition: .25s ease;
+}
+
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-header {
+    height: 72px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 28px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.05);
+}
+
+.page-content {
+    flex: 1;
+}
+
+.sidebar-logo {
+    margin-bottom: 40px;
+}
+
+.logo-title {
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.logo-subtitle {
+    font-size: 13px;
+    opacity: .8;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: 48px;
+    border-radius: 12px;
+    padding: 0 16px;
+    color: white;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,.08);
+    color: white;
+}
+
+.nav-item.active,
+.nav-item.active:link,
+.nav-item.active:visited {
+    background: #FFFFFF;
+    color: #FF6A13;
+    font-weight: 600;
+}
+
+.nav-item.active i,
+.nav-item.active span {
+    color: #FF6A13;
+}
+
+.nav-item i {
+    font-size: 20px;
+    width: 24px;
+}
+
+.sidebar hr {
+    border-color: rgba(255,255,255,.15);
+    margin: 18px 0;
+}
+
+.sidebar-user {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 20px;
+}
+
+.menu-button {
+    border: none;
+    background: none;
+    font-size: 34px;
+    color: #071A38;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.page-content {
+    flex: 1;
+    background: #F5F7FB;
+    padding: 32px;
+}
+
+.admin-layout.collapsed .sidebar {
+    width: 72px;
+}
+
+.admin-layout.collapsed .sidebar span {
+    display: none;
+}
+
+.admin-layout.collapsed .nav-item {
+    justify-content: center;
+    padding: 0;
+}
+
+.admin-layout.collapsed .logo-subtitle {
+    display: none;
+}
+
+.admin-layout.collapsed .logo-title {
+    font-size: 22px;
+}
+
+.admin-layout.collapsed .user-details {
+    display: none;
+}
+
+.admin-layout.collapsed .sidebar-user i {
+    display: none;
+}
+
+.admin-layout.collapsed .sidebar-user {
+    justify-content: center;
+}
+
+.admin-layout.collapsed .logo-title {
+    display: none
+}
+
+.top-header {
+    height: 60px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    border-bottom: 1px solid #E9ECEF;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/*Notification*/
+.header-icon {
+    position: relative;
+    border: none;
+    background: none;
+    font-size: 24px;
+    color: #071A38;
+}
+.notification-badge {
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    background: #FF5A00;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+}
+/*End*/
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}

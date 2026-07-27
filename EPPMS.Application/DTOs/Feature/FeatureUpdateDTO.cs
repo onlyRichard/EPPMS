@@ -21,7 +21,7 @@ namespace EPPMS.Application.DTOs.Feature
         public int ComplexityId { get; set; }
         public decimal ApproxEffort { get; set; }
         public int StatusId { get; set; }
-        public string TargetRelease { get; set; } = string.Empty;
+        public DateTime? TargetRelease { get; set; } 
         public string? LinksNotes { get; set; }
         public string UpdatedBy { get; set; } = string.Empty;
     }
