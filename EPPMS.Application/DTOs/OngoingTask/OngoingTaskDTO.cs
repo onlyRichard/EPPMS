@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EPPMS.Infrastructure
+namespace EPPMS.Application.DTOs.OngoingTask
 {
-    public class DependencyInjection
+    public class OngoingTaskDTO
     {
     }
 }
