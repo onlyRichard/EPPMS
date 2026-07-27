@@ -1,14 +1,27 @@
+using EPPMS.API.Extensions;
+using EPPMS.Application.DependencyInjection;
+using EPPMS.Infrastructure.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+#region Services
+
+builder.Services
+    .AddApplication()
+    .AddInfrastructure(builder.Configuration);
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
 builder.Services.AddOpenApi();
+
+#endregion
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+#region Middleware
+
+app.UseGlobalExceptionMiddleware();
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -19,5 +32,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+#endregion
 
 app.Run();

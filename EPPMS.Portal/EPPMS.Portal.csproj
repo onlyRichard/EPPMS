@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Pages\Dashboard\" />
     <Folder Include="Areas\Identity\" />
     <Folder Include="Areas\Configuration\" />
     <Folder Include="Areas\Dashboard\" />
@@ -14,16 +15,10 @@
     <Folder Include="Areas\ProductManagement\Pages\TechnicalModule\" />
     <Folder Include="Areas\Reporting\" />
     <Folder Include="Areas\WorkManagement\" />
-    <Folder Include="Components\" />
     <Folder Include="Common\" />
-    <Folder Include="Extensions\" />
     <Folder Include="Middleware\" />
     <Folder Include="Resources\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\EPPMS.Infrastructure\EPPMS.Infrastructure.csproj" />
+    <Folder Include="wwwroot\js\admin\application\" />
   </ItemGroup>
 
 </Project>

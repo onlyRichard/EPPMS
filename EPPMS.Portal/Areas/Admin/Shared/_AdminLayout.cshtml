@@ -1,0 +1,116 @@
+﻿@using EPPMS.Portal.Configuration;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    var currentArea = ViewContext.RouteData.Values["area"]?.ToString();
+    var currentPage = ViewContext.RouteData.Values["page"]?.ToString();
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - EPPMS</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />   
+    <link href="~/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="~/css/admin/admin-layout.css" rel="stylesheet" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+
+<body>
+    <div class="admin-layout" id="adminLayout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-title">
+                    EPPMS
+                </div>
+                <div class="logo-subtitle">
+                    Enterprise Portfolio Management
+                </div>
+            </div>         
+            <nav class="sidebar-nav">
+                @foreach (var item in AdminNavigation.Items)
+                {
+                    if (item.DividerBefore)
+                    {
+                        <hr class="sidebar-divider" />
+                    }
+                    bool isActive =
+                        string.Equals(currentArea, item.Area, StringComparison.OrdinalIgnoreCase) &&
+                        string.Equals(currentPage, item.Route, StringComparison.OrdinalIgnoreCase);
+                    <a asp-area="@item.Area"
+                           asp-page="@item.Route"
+                           class="nav-item @(isActive ? "active" : null)"
+                           aria-current="@(isActive ? "page" : null)">
+                        <i class="bi @item.Icon"></i>
+                        <span>@item.Title</span>
+                    </a>
+                }
+            </nav>
+
+            @* <div class="sidebar-user">
+                <img src="https://i.pravatar.cc/48"
+                     class="rounded-circle"
+                     alt="User" />
+                <div class="user-details">
+                    <div class="user-name">
+                        Richard Pogi
+                    </div>
+                    <div class="user-role">
+                        Administrator
+                    </div>
+                </div>
+                <i class="bi bi-chevron-down"></i>
+            </div> *@
+        </aside>
+
+        <!-- Main -->
+        <div class="main-wrapper">
+            <!-- Header -->
+            <header class="top-header">
+                <button id="sidebarToggle" class="menu-button">
+                    <i class="bi bi-list"></i>
+                </button>
+                <div class="header-actions">
+                    <button class="header-icon position-relative">
+                        <i class="bi bi-bell"></i>
+                        <span class="notification-badge">
+                            12
+                        </span>
+                    </button>
+
+                    <div class="user-menu">
+                        <img src="https://i.pravatar.cc/48"
+                             class="user-avatar"
+                             alt="User" />
+                        <div class="user-info">
+                            <div class="user-name">
+                                Richard Pogi
+                            </div>
+                            <div class="user-role">
+                                Administrator
+                            </div>
+                        </div>
+                        <i class="bi bi-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+            <main class="page-content">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/admin/admin-layout.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>
