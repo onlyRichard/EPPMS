@@ -1,0 +1,305 @@
+﻿/* ===========================================================
+   Add Application Page
+=========================================================== */
+
+.application-create-page {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* ===========================================================
+   Header
+=========================================================== */
+
+.application-create-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 4px;
+}
+
+.application-create-title h1 {
+    margin: 0;
+    color: #071A38;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.application-create-title p {
+    margin: 10px 0 0;
+    color: #667085;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.application-create-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ===========================================================
+   Buttons
+=========================================================== */
+
+.btn-application-cancel {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 22px;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: .2s ease;
+}
+
+    .btn-application-cancel:hover {
+        background: #F9FAFB;
+        border-color: #98A2B3;
+        color: #344054;
+    }
+
+.btn-application-save {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 26px;
+    border: none;
+    border-radius: 10px;
+    background: #FF6A13;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .2s ease;
+}
+
+    .btn-application-save:hover {
+        background: #E85D0C;
+        color: #FFFFFF;
+    }
+
+    .btn-application-save:focus,
+    .btn-application-cancel:focus {
+        box-shadow: none;
+    }
+
+/* ===========================================================
+   Card
+=========================================================== */
+
+.application-card {
+    background: #FFFFFF;
+    border: 1px solid #E4E7EC;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(15,23,42,.04);
+}
+
+.application-card-header {
+    padding: 20px 28px;
+    border-bottom: 1px solid #EAECF0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #071A38;
+}
+
+.application-card-body {
+    padding: 30px;
+}
+
+/* ===========================================================
+   Labels
+=========================================================== */
+
+.form-label {
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.required-field::after {
+    content: " *";
+    color: #DC2626;
+}
+
+/* ===========================================================
+   Inputs
+=========================================================== */
+
+.application-card .form-control,
+.application-card .form-select {
+    min-height: 46px;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #101828;
+    box-shadow: none;
+    padding: 12px 14px;
+}
+
+.application-card textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.application-card .form-control:focus,
+.application-card .form-select:focus {
+    border-color: #0B5FFF;
+    box-shadow: 0 0 0 .15rem rgba(11,95,255,.15);
+}
+
+/* ===========================================================
+   Input Group
+=========================================================== */
+
+.input-group-text {
+    background: #F9FAFB;
+    border: 1px solid #D0D5DD;
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+    color: #667085;
+}
+
+.input-group .form-control {
+    border-left: none;
+    border-radius: 0 10px 10px 0;
+}
+
+/* ===========================================================
+   Helper Text
+=========================================================== */
+
+.field-description {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #667085;
+    line-height: 1.5;
+}
+
+.field-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    gap: 12px;
+}
+
+    .field-footer span:last-child {
+        font-size: 12px;
+        color: #98A2B3;
+        font-weight: 600;
+    }
+
+/* ===========================================================
+   Validation
+=========================================================== */
+
+.text-danger {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+}
+
+/* ===========================================================
+   Required Information
+=========================================================== */
+
+.required-information {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    padding: 16px 18px;
+    background: #EEF4FF;
+    border: 1px solid #D6E4FF;
+    border-radius: 10px;
+    color: #1D4ED8;
+    font-size: 14px;
+}
+
+    .required-information i {
+        font-size: 18px;
+    }
+
+/* ===========================================================
+   Responsive
+=========================================================== */
+
+@media (max-width: 991.98px) {
+
+    .application-create-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .application-create-actions {
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    .application-card-body {
+        padding: 20px;
+    }
+
+    .application-create-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-application-cancel,
+    .btn-application-save {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .field-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.current-health-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.health-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: #D0D5DD;
+}
+
+    .health-dot.excellent {
+        background: #16A34A;
+    }
+
+    .health-dot.good {
+        background: #22C55E;
+    }
+
+    .health-dot.warning {
+        background: #F59E0B;
+    }
+
+    .health-dot.critical {
+        background: #DC2626;
+    }
+
+    .health-dot.retired {
+        background: #6B7280;
+    }

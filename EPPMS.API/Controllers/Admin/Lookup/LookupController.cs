@@ -5,8 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EPPMS.API.Controllers.Admin
-{
-    [Route("api/lookups")]
+{ 
     public sealed class LookupController : AdminBaseApiController
     {
         private readonly ILookupRepository _lookupRepository;

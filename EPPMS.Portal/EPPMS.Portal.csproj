@@ -11,14 +11,10 @@
     <Folder Include="Areas\Identity\" />
     <Folder Include="Areas\Configuration\" />
     <Folder Include="Areas\Dashboard\" />
-    <Folder Include="Areas\ProductManagement\Pages\Feature\" />
-    <Folder Include="Areas\ProductManagement\Pages\TechnicalModule\" />
     <Folder Include="Areas\Reporting\" />
-    <Folder Include="Areas\WorkManagement\" />
     <Folder Include="Common\" />
     <Folder Include="Middleware\" />
     <Folder Include="Resources\" />
-    <Folder Include="wwwroot\js\admin\application\" />
   </ItemGroup>
 
 </Project>

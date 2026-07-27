@@ -18,106 +18,57 @@
          Application Header
     =========================================== -->
     <section class="application-header">
-
         <div class="row align-items-center">
-
             <!-- Left -->
             <div class="col-xl-5 col-lg-12">
-
-                <h1 class="page-title">
-                    Applications
-                </h1>
-
-                <p class="page-subtitle">
-                    Manage registered applications and product modules.
-                </p>
-
+                <h1 class="page-title">Applications</h1>
+                <p class="page-subtitle">Manage registered applications and product modules. </p>
             </div>
 
             <!-- Right -->
             <div class="col-xl-7 col-lg-12">
-
                 <div class="application-toolbar-container">
-
                     <div class="application-toolbar">
-
                         <!-- Search -->
                         <div class="application-search">
-
-                            <input type="text"
-                                   class="form-control application-search-input"
-                                   placeholder="Search applications..." />
-
-                            <button type="button"
-                                    class="application-search-button">
-
-                                <i class="bi bi-search"></i>
-
-                            </button>
-
+                            <input type="text" class="form-control application-search-input" placeholder="Search applications..." />
+                            <button type="button" class="application-search-button"> <i class="bi bi-search"></i> </button>
                         </div>
-
                         <!-- Health Filter -->
                         <div class="dropdown">
-
-                            <button class="btn application-filter-button dropdown-toggle"
-                                    type="button"
-                                    data-bs-toggle="dropdown">
-
+                            <button class="btn application-filter-button dropdown-toggle" type="button" data-bs-toggle="dropdown">
                                 <i class="bi bi-funnel"></i>
-
                                 Health Filter
-
                             </button>
-
                             <ul class="dropdown-menu dropdown-menu-end">
-
                                 <li><a class="dropdown-item" href="#">All Applications</a></li>
                                 <li><a class="dropdown-item" href="#">Healthy</a></li>
                                 <li><a class="dropdown-item" href="#">Warning</a></li>
                                 <li><a class="dropdown-item" href="#">Critical</a></li>
-
                             </ul>
-
                         </div>
-
                         <!-- More Actions -->
                         <div class="dropdown">
-
-                            <button class="btn application-filter-button dropdown-toggle"
-                                    type="button"
-                                    data-bs-toggle="dropdown">
-
+                            <button class="btn application-filter-button dropdown-toggle" type="button" data-bs-toggle="dropdown">
                                 More Actions
-
                             </button>
-
                             <ul class="dropdown-menu dropdown-menu-end">
-
                                 <li><a class="dropdown-item" href="#">Export</a></li>
                                 <li><a class="dropdown-item" href="#">Import</a></li>
-
                             </ul>
-
                         </div>
 
                         <!-- New Application -->
-                        <button class="btn application-create-button">
-
+                        <a asp-page="./Create"
+                               class="btn application-create-button"
+                               style="position:relative; z-index:9999;">
                             <i class="bi bi-plus-lg"></i>
-
                             New Application
-
-                        </button>
-
+                        </a>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
     <!-- ==========================================
@@ -300,7 +251,7 @@
                         </colgroup>
                         <thead>
                             <tr>
-                                <th class="text-center">Application / Module</th>
+                                <th class="text-center">Application / Module</th> 
                                 <th class="text-center">Purpose</th>
                                 <th class="text-center">Current Health</th>
                                 <th class="text-center">Technical Details</th>
@@ -331,11 +282,16 @@
                                     </td>
                                     <!-- Technical Details -->
                                     <td class="text-center">
-                                        @foreach (string technology in application.TechDetails.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                                        @if (!string.IsNullOrWhiteSpace(application.TechDetails))
                                         {
-                                            <div>
-                                                @technology.Trim()
-                                            </div>
+                                            foreach (var technology in application.TechDetails.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                                            {
+                                                <div>@technology.Trim()</div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">—</span>
                                         }
                                     </td>
                                     <!-- Updated By -->

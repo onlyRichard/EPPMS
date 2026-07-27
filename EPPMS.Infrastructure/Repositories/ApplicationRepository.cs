@@ -55,6 +55,8 @@ namespace EPPMS.Infrastructure.Repositories
         #region Commands
         public async Task<bool> CreateAsync(ApplicationCreateDTO application)
         {
+            application.AppId = Guid.NewGuid();
+            application.CreatedBy = "MS/rperal15";
             await using SqlConnection connection = await CreateConnectionAsync();
             await using SqlCommand command = new(StoredProcedureNames.Application.Create,connection);
             command.CommandType = CommandType.StoredProcedure;

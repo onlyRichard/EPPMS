@@ -8,8 +8,8 @@ namespace EPPMS.Portal.Extensions;
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddApiClients(
-        this IServiceCollection services,
-        IConfiguration configuration)
+    this IServiceCollection services,
+    IConfiguration configuration)
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configuration);
@@ -26,6 +26,16 @@ public static class ServiceCollectionExtensions
 
                 client.BaseAddress = new Uri(apiSettings.AdminBaseUrl);
             });
+
+        services.AddHttpClient<ILookupApiClient, LookupApiClient>(
+        (serviceProvider, client) =>
+        {
+            var apiSettings = serviceProvider
+                .GetRequiredService<IOptions<ApiSettings>>()
+                .Value;
+
+            client.BaseAddress = new Uri(apiSettings.AdminBaseUrl);
+        });
 
         return services;
     }
