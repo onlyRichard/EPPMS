@@ -1,0 +1,175 @@
+﻿/* ===========================================================
+   Add Feature Page
+=========================================================== */
+
+.feature-create-page {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* ===========================================================
+   Header
+=========================================================== */
+
+.feature-create-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.feature-create-title {
+    flex: 1;
+}
+
+.feature-create-actions {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.page-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    color: #0B5FFF;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: .2s ease;
+}
+
+    .page-back-link:hover {
+        color: #084ECC;
+        text-decoration: none;
+    }
+
+.page-title {
+    margin: 0;
+    color: #071A38;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    margin: 10px 0 0;
+    color: #667085;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.page-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ===========================================================
+   Buttons
+=========================================================== */
+
+.btn-light {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 22px;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .2s ease;
+}
+
+    .btn-light:hover {
+        background: #F9FAFB;
+        border-color: #98A2B3;
+        color: #344054;
+    }
+
+.btn-save-feature {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 26px;
+    border: none;
+    border-radius: 10px;
+    background: #FF6A13;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .2s ease;
+}
+
+    .btn-save-feature:hover {
+        background: #E85D0C;
+        color: #FFFFFF;
+    }
+
+    .btn-save-feature:focus,
+    .btn-light:focus {
+        box-shadow: none;
+    }
+
+/* ===========================================================
+   Form Card
+=========================================================== */
+
+.content-card {
+    background: #FFFFFF;
+    border: 1px solid #E4E7EC;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, .04);
+    padding: 30px;
+}
+
+/* ===========================================================
+   Labels
+=========================================================== */
+
+.form-label {
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.required {
+    color: #DC2626;
+}
+
+/* ===========================================================
+   Inputs
+=========================================================== */
+
+.content-card .form-control,
+.content-card .form-select {
+    min-height: 46px;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: #101828;
+    font-size: 14px;
+    box-shadow: none;
+}
+
+.content-card textarea.form-control {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.content-card .form-control:focus,
+.content-card .form-select:focus {
+    border-color: #0B5FFF;
+    box-shadow: 0 0 0 .15rem rgba(11,95,255,.15);
+}

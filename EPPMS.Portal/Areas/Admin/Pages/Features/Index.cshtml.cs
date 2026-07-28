@@ -1,3 +1,5 @@
+using EPPMS.Application.DTOs.Feature;
+using EPPMS.Application.Interfaces.Services;
 using EPPMS.Portal.Exceptions;
 using EPPMS.Portal.Services.Interfaces;
 using EPPMS.Portal.ViewModels.Feature;
@@ -7,24 +9,24 @@ namespace EPPMS.Portal.Areas.Admin.Pages.Features;
 
 public class IndexModel : PageModel
 {
-    private readonly IFeatureApiClient _featureApiClient;
+    private readonly IFeatureService _featureService;
     private readonly ILogger<IndexModel> _logger;
 
-    public IndexModel(IFeatureApiClient featureApiClient, ILogger<IndexModel> logger)
+    public IndexModel(IFeatureService featureService, ILogger<IndexModel> logger)
     {
-        ArgumentNullException.ThrowIfNull(featureApiClient);
+        ArgumentNullException.ThrowIfNull(featureService);
         ArgumentNullException.ThrowIfNull(logger);
-        _featureApiClient = featureApiClient;
+        _featureService = featureService;
         _logger = logger;
     }
 
-    public List<FeatureListViewModel> Features { get; private set; } = [];
+    public List<FeatureDetailsDTO> Features { get; private set; } = [];
 
     public async Task OnGetAsync(CancellationToken cancellationToken)
     {
         try
         {
-            Features = await _featureApiClient.GetFeaturesAsync(cancellationToken: cancellationToken);
+            Features = await _featureService.GetFeaturesAsync();
         }
         catch (ApiException ex)
         {

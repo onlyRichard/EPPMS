@@ -1,4 +1,4 @@
-﻿@* @page
+﻿@page
 @model EPPMS.Portal.Areas.Admin.Pages.Features.CreateModel
 
 @{
@@ -7,59 +7,47 @@
 
 @section Styles
 {
-    <link href="~/css/admin/feature/featurecreate.css"
-          rel="stylesheet"
-          asp-append-version="true" />
+    <link href="~/css/admin/feature/feature-create.css" rel="stylesheet" asp-append-version="true" />
 }
 
 <div class="feature-create-page">
     <!-- ==========================================
          Header
     =========================================== -->
-    <section class="feature-header">
-        <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+    <section class="feature-create-header">
 
-            <div>
+        <div class="feature-create-title">
 
-                <a asp-page="./Index"
+            @* <a asp-page="./Index"
                    class="page-back-link">
+                <i class="bi bi-arrow-left"></i>
+                Back to Features
+            </a> *@
 
-                    <i class="bi bi-arrow-left"></i>
+            <h1>Add New Feature</h1>
 
-                    Back to Features
+            <p>
+                Create a new feature request for an application.
+            </p>
 
-                </a>
+        </div>
 
-                <h1 class="page-title">
-                    Add New Feature
-                </h1>
+        <div class="feature-create-actions">
 
-                <p class="page-subtitle">
-                    Create a new feature request for an application.
-                </p>
+            <a asp-page="./Index"
+                   class="btn-feature-cancel">
+                Cancel
+            </a>
 
-            </div>
+            <button type="submit"
+                    form="featureForm"
+                    class="btn-feature-save">
 
-            <div class="page-actions">
+                <i class="bi bi-floppy"></i>
 
-                <a asp-page="./Index"
-                   class="btn btn-light">
+                Save Feature
 
-                    Cancel
-
-                </a>
-
-                <button type="submit"
-                        form="featureForm"
-                        class="btn btn-save-feature">
-
-                    <i class="bi bi-floppy"></i>
-
-                    Save Feature
-
-                </button>
-
-            </div>
+            </button>
 
         </div>
 
@@ -220,4 +208,305 @@
 
                 </div>
 
-            </div> *@
+            </div>
+            <!-- ==========================================
+                 Row 3
+            =========================================== -->
+
+            <div class="row g-4 mt-1">
+
+                <div class="col-lg-4">
+
+                    <label asp-for="Feature.RequestedBy"
+                           class="form-label">
+
+                        Requested By
+
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <input asp-for="Feature.RequestedBy"
+                           class="form-control"
+                           placeholder="Enter requester" />
+
+                    <span asp-validation-for="Feature.RequestedBy"
+                          class="text-danger"></span>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <label asp-for="Feature.DateRaised"
+                           class="form-label">
+
+                        Date Raised
+
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <input asp-for="Feature.DateRaised"
+                           type="date"
+                           class="form-control" />
+
+                    <span asp-validation-for="Feature.DateRaised"
+                          class="text-danger"></span>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <label asp-for="Feature.PriorityId"
+                           class="form-label">
+
+                        Priority
+
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <select asp-for="Feature.PriorityId"
+                            class="form-select">
+
+                        <option value="">
+                            Select priority
+                        </option>
+
+                    </select>
+
+                    <span asp-validation-for="Feature.PriorityId"
+                          class="text-danger"></span>
+
+                </div>
+
+            </div>
+
+            <!-- ==========================================
+                 Row 4
+            =========================================== -->
+
+            <div class="row g-4 mt-1">
+
+                <div class="col-lg-4">
+
+                    <label asp-for="Feature.UsersImpacted"
+                           class="form-label">
+
+                        Users Impacted
+
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <input asp-for="Feature.UsersImpacted"
+                           type="number"
+                           min="1"
+                           class="form-control"
+                           placeholder="Enter estimated users" />
+
+                    <span asp-validation-for="Feature.UsersImpacted"
+                          class="text-danger"></span>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <label asp-for="Feature.ComplexityId"
+                           class="form-label">
+
+                        Complexity
+
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <select asp-for="Feature.ComplexityId"
+                            class="form-select">
+
+                        <option value="">
+                            Select complexity
+                        </option>
+
+                    </select>
+
+                    <span asp-validation-for="Feature.ComplexityId"
+                          class="text-danger"></span>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <label asp-for="Feature.ApproxEffort"
+                           class="form-label">
+
+                        Approx. Effort (Hours)
+
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <input asp-for="Feature.ApproxEffort"
+                           type="number"
+                           min="0"
+                           step="0.25"
+                           class="form-control"
+                           placeholder="0.00" />
+
+                    <span asp-validation-for="Feature.ApproxEffort"
+                          class="text-danger"></span>
+
+                </div>
+
+            </div>
+            <!-- ==========================================
+                 Row 5
+            =========================================== -->
+
+            <div class="row g-4 mt-1">
+
+                <div class="col-lg-6">
+
+                    <label asp-for="Feature.ExpectedValue"
+                           class="form-label">
+
+                        Expected Value
+
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <textarea asp-for="Feature.ExpectedValue"
+                              rows="5"
+                              class="form-control"
+                              placeholder="Describe the expected business value..."></textarea>
+
+                    <span asp-validation-for="Feature.ExpectedValue"
+                          class="text-danger"></span>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <label asp-for="Feature.LinksNotes"
+                           class="form-label">
+
+                        Links / Notes
+
+                    </label>
+
+                    <textarea asp-for="Feature.LinksNotes"
+                              rows="5"
+                              class="form-control"
+                              placeholder="Supporting links, references or additional notes..."></textarea>
+
+                    <span asp-validation-for="Feature.LinksNotes"
+                          class="text-danger"></span>
+
+                </div>
+
+            </div>
+
+            <!-- ==========================================
+                 Row 6
+            =========================================== -->
+
+            <div class="row g-4 mt-1">
+
+                <div class="col-lg-6">
+
+                    <label asp-for="Feature.StatusId"
+                           class="form-label">
+
+                        Status
+
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <select asp-for="Feature.StatusId"
+                            class="form-select">
+
+                        <option value="">
+                            Select status
+                        </option>
+
+                    </select>
+
+                    <span asp-validation-for="Feature.StatusId"
+                          class="text-danger"></span>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <label asp-for="Feature.TargetRelease"
+                           class="form-label">
+
+                        Target Release
+
+                    </label>
+
+                    <input asp-for="Feature.TargetRelease"
+                           type="date"
+                           class="form-control" />
+
+                    <span asp-validation-for="Feature.TargetRelease"
+                          class="text-danger"></span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+             Footer
+        =========================================== -->
+
+        <div class="content-card mt-4">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+
+                <div class="text-muted">
+
+                    <i class="bi bi-info-circle me-2"></i>
+
+                    Fields marked with
+                    <span class="text-danger">*</span>
+                    are required.
+
+                </div>
+
+                <div class="d-flex gap-2">
+
+                    <a asp-page="./Index"
+                           class="btn btn-light">
+
+                        Cancel
+
+                    </a>
+
+                    <button type="submit"
+                            class="btn btn-save-feature">
+
+                        <i class="bi bi-floppy"></i>
+
+                        Save Feature
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+@section Scripts
+{
+    @* <script src="~/js/admin/feature/featurecreate.js"  asp-append-version="true"></script> *@
+}
