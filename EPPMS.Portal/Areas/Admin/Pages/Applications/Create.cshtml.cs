@@ -13,9 +13,9 @@ namespace EPPMS.Portal.Areas.Admin.Pages.Applications;
 
 public sealed class CreateModel : PageModel
 {
-    private readonly ILookupRepository _lookupService;
+    private readonly ILookupService _lookupService;
     private readonly IApplicationService _applicationService;
-    public CreateModel(ILookupRepository lookupService, IApplicationService applicationService)
+    public CreateModel(ILookupService lookupService, IApplicationService applicationService)
     {
         ArgumentNullException.ThrowIfNull(lookupService);
         _lookupService = lookupService;
