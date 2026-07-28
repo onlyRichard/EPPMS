@@ -1,34 +1,30 @@
+using EPPMS.Application.DTOs.Application.Response;
+using EPPMS.Application.Interfaces.Services;
 using EPPMS.Portal.Exceptions;
-using EPPMS.Portal.Services.Interfaces;
-using EPPMS.Portal.ViewModels.Application;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EPPMS.Portal.Areas.Admin.Pages.Applications;
 
 public class IndexModel : PageModel
 {
-    private readonly IApplicationApiClient _applicationApiClient;
+    private readonly IApplicationService _applicationService;
     private readonly ILogger<IndexModel> _logger;
 
-    public IndexModel(
-        IApplicationApiClient applicationApiClient,
-        ILogger<IndexModel> logger)
+    public IndexModel(IApplicationService applicationService, ILogger<IndexModel> logger)
     {
-        ArgumentNullException.ThrowIfNull(applicationApiClient);
+        ArgumentNullException.ThrowIfNull(applicationService);
         ArgumentNullException.ThrowIfNull(logger);
-
-        _applicationApiClient = applicationApiClient;
+        _applicationService = applicationService;
         _logger = logger;
     }
 
-    public List<ApplicationListViewModel> Applications { get; private set; } = [];
+    public List<ApplicationListResponseDTO> Applications { get; private set; } = [];
 
     public async Task OnGetAsync(CancellationToken cancellationToken)
     {
         try
         {
-            Applications = await _applicationApiClient.GetApplicationsAsync(
-                cancellationToken: cancellationToken);
+            Applications = await _applicationService.GetApplicationsAsync();
         }
         catch (ApiException ex)
         {

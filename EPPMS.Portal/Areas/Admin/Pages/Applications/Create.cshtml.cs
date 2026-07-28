@@ -1,4 +1,8 @@
-using EPPMS.Portal.Services.ApiClients;
+using EPPMS.Application.DTOs.Application.Requests;
+using EPPMS.Application.DTOs.Common;
+using EPPMS.Application.DTOs.Lookup;
+using EPPMS.Application.Interfaces.Repositories;
+using EPPMS.Application.Interfaces.Services;
 using EPPMS.Portal.Services.Interfaces;
 using EPPMS.Portal.ViewModels.Application;
 using EPPMS.Portal.ViewModels.Common;
@@ -9,19 +13,20 @@ namespace EPPMS.Portal.Areas.Admin.Pages.Applications;
 
 public sealed class CreateModel : PageModel
 {
-    private readonly ILookupApiClient _lookupApiClient;
-    private readonly IApplicationApiClient _applicationApiClient;
-    public CreateModel(ILookupApiClient lookupApiClient, IApplicationApiClient applicationApiClient)
+    private readonly ILookupService _lookupService;
+    private readonly IApplicationService _applicationService;
+    public CreateModel(ILookupService lookupService, IApplicationService applicationService)
     {
-        ArgumentNullException.ThrowIfNull(lookupApiClient);
-        _lookupApiClient = lookupApiClient;
-        _applicationApiClient = applicationApiClient;
+        ArgumentNullException.ThrowIfNull(lookupService);
+        _lookupService = lookupService;
+        _applicationService = applicationService;
     }
 
     [BindProperty]
-    public ApplicationCreateViewModel Application { get; set; } = new();
+    public ApplicationCreateDTO Application { get; set; } = new();
+    public string? ErrorMessage { get; private set; }
 
-    public List<LookupViewModel> CurrentHealths { get; private set; } = [];
+    public IReadOnlyList<LookupResponseDTO> CurrentHealths { get; private set; } = [];
 
     public async Task OnGetAsync(CancellationToken cancellationToken)
     {
@@ -33,15 +38,29 @@ public sealed class CreateModel : PageModel
         if (!ModelState.IsValid)
         {
             await LoadLookupsAsync(cancellationToken);
+            return Page();
+        }
+
+        try
+        {
+            await _applicationService.CreateApplicationAsync(Application);
+
+            TempData["Success"] = "Application created successfully.";
+
+            return RedirectToPage("./Index");
+        }
+        catch (InvalidOperationException ex)
+        {
+            TempData["Error"] = ex.InnerException.Message;
+
+            await LoadLookupsAsync(cancellationToken);
 
             return Page();
         }
-        await _applicationApiClient.CreateApplicationAsync(Application,  cancellationToken);
-        return RedirectToPage("./Index");
     }
 
     private async Task LoadLookupsAsync(CancellationToken cancellationToken)
     {
-        CurrentHealths = await _lookupApiClient.GetCurrentHealthsAsync(cancellationToken);
+        CurrentHealths = await _lookupService.GetCurrentHealthsAsync(cancellationToken);
     }
 }

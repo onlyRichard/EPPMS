@@ -1,4 +1,5 @@
 ﻿using EPPMS.Portal.Constants;
+using EPPMS.Portal.Services.ApiClients.Base;
 using EPPMS.Portal.Services.Interfaces;
 using EPPMS.Portal.ViewModels.Common;
 

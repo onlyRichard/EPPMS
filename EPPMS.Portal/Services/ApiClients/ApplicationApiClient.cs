@@ -1,21 +1,18 @@
 ﻿using EPPMS.Portal.Constants;
 using EPPMS.Portal.Helpers;
-using EPPMS.Portal.Services.Interfaces;
+using EPPMS.Portal.Services.ApiClients.Base;
+using EPPMS.Portal.Services.Application;
 using EPPMS.Portal.ViewModels.Application;
 
 namespace EPPMS.Portal.Services.ApiClients;
 
-public sealed class ApplicationApiClient : BaseApiClient, IApplicationApiClient
+public sealed class ApplicationApiClient : BaseApiClient, IApplicationPortalServices
 {
     private readonly ILogger<ApplicationApiClient> _logger;
 
-    public ApplicationApiClient(
-        HttpClient httpClient,
-        ILogger<ApplicationApiClient> logger)
-        : base(httpClient)
+    public ApplicationApiClient(HttpClient httpClient, ILogger<ApplicationApiClient> logger)  : base(httpClient)
     {
         ArgumentNullException.ThrowIfNull(logger);
-
         _logger = logger;
     }
 

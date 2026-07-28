@@ -1,26 +1,54 @@
 ﻿document.addEventListener("DOMContentLoaded", () => {
+
     const layout = document.getElementById("adminLayout");
     const toggle = document.getElementById("sidebarToggle");
 
-    if (!layout || !toggle) {
-        return;
+    if (layout && toggle) {
+
+        // Default = Expanded
+        const isCollapsed = localStorage.getItem("sidebar-collapsed") === "true";
+
+        if (isCollapsed) {
+            layout.classList.add("collapsed");
+        }
+        else {
+            layout.classList.remove("collapsed");
+        }
+
+        toggle.addEventListener("click", () => {
+
+            layout.classList.toggle("collapsed");
+
+            localStorage.setItem(
+                "sidebar-collapsed",
+                layout.classList.contains("collapsed")
+            );
+        });
     }
 
-    // Default = expanded
-    const isCollapsed = localStorage.getItem("sidebar-collapsed") === "true";
+    // ============================================
+    // Global Notifications
+    // ============================================
 
-    if (isCollapsed) {
-        layout.classList.add("collapsed");
-    } else {
-        layout.classList.remove("collapsed");
+    const success = document.getElementById("SuccessMessage")?.value;
+    const error = document.getElementById("ErrorMessage")?.value;
+    const warning = document.getElementById("WarningMessage")?.value;
+    const info = document.getElementById("InfoMessage")?.value;
+
+    if (success) {
+        toastr.success(success);
     }
 
-    toggle.addEventListener("click", () => {
-        layout.classList.toggle("collapsed");
+    if (error) {
+        toastr.error(error);
+    }
 
-        localStorage.setItem(
-            "sidebar-collapsed",
-            layout.classList.contains("collapsed")
-        );
-    });
+    if (warning) {
+        toastr.warning(warning);
+    }
+
+    if (info) {
+        toastr.info(info);
+    }
+
 });

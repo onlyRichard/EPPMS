@@ -1,4 +1,6 @@
-﻿using EPPMS.Application.Interfaces.Services;
+﻿using EPPMS.Application.Interfaces.Repositories;
+using EPPMS.Application.Interfaces.Services;
+
 using EPPMS.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -20,6 +22,7 @@ namespace EPPMS.Application.DependencyInjection
             services.AddScoped<IBugService, BugService>();
             services.AddScoped<IOngoingTaskService, OngoingTaskService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ILookupService, LookupService>();
 
             return services;
         }

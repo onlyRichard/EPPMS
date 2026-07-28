@@ -23,6 +23,22 @@
 
 <body>
     <div class="admin-layout" id="adminLayout">
+        <!-- Global Toast Messages -->
+        <input type="hidden"
+               id="SuccessMessage"
+               value="@TempData["Success"]" />
+
+        <input type="hidden"
+               id="ErrorMessage"
+               value="@TempData["Error"]" />
+
+        <input type="hidden"
+               id="WarningMessage"
+               value="@TempData["Warning"]" />
+
+        <input type="hidden"
+               id="InfoMessage"
+               value="@TempData["Info"]" />
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-logo">
@@ -112,8 +128,8 @@
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/admin/admin-layout.js"></script>
     <script src="~/toastr.js/toastr.min.js"></script>
+    <script src="~/js/admin/admin-layout.js"></script>   
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>
