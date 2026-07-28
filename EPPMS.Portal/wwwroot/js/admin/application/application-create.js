@@ -13,7 +13,7 @@
         this.initializeValidation();
         this.initializeCharacterCounters();
         this.registerEvents();
-        this.showNotifications();
+        //this.showNotifications();
     },
 
     initializeValidation: function () {
@@ -92,17 +92,21 @@
             `${length} / ${maxLength}`);
     },
 
-    showNotifications: function () {
-        const success = $("#SuccessMessage").val();
-        const error = $("#ErrorMessage").val();
-        if (success) {
-            toastr.success(success);
-        }
+    //showNotifications: function () {
+    //    const success = $("#SuccessMessage").val();
+    //    if (success) {
+    //        toastr.success(success);
+    //    }
 
-        if (error) {
-            toastr.error(error);
-        }
-    },
+    //    $(".server-error").each(function () {
+    //        const message = $(this).val();
+
+    //        if (message) {
+    //            toastr.error(message);
+    //        }
+    //    });
+
+    //},
 
     onTechnicalDetailsKeyDown: function (e) {
 

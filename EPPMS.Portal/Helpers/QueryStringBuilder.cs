@@ -23,8 +23,7 @@ public sealed class QueryStringBuilder
     {
         if (!string.IsNullOrWhiteSpace(value))
         {
-            _parameters.Add(
-                $"{Uri.EscapeDataString(key)}={Uri.EscapeDataString(value)}");
+            _parameters.Add($"{Uri.EscapeDataString(key)}={Uri.EscapeDataString(value)}");
         }
 
         return this;
@@ -34,8 +33,7 @@ public sealed class QueryStringBuilder
     {
         if (value.HasValue)
         {
-            _parameters.Add(
-                $"{Uri.EscapeDataString(key)}={value.Value}");
+            _parameters.Add($"{Uri.EscapeDataString(key)}={value.Value}");
         }
 
         return this;
@@ -45,10 +43,8 @@ public sealed class QueryStringBuilder
     {
         if (value.HasValue)
         {
-            _parameters.Add(
-                $"{Uri.EscapeDataString(key)}={value.Value}");
+            _parameters.Add($"{Uri.EscapeDataString(key)}={value.Value}");
         }
-
         return this;
     }
 
@@ -56,10 +52,8 @@ public sealed class QueryStringBuilder
     {
         if (value.HasValue)
         {
-            _parameters.Add(
-                $"{Uri.EscapeDataString(key)}={value.Value}");
+            _parameters.Add($"{Uri.EscapeDataString(key)}={value.Value}");
         }
-
         return this;
     }
 
@@ -67,10 +61,8 @@ public sealed class QueryStringBuilder
     {
         if (value.HasValue)
         {
-            _parameters.Add(
-                $"{Uri.EscapeDataString(key)}={value.Value.ToString().ToLowerInvariant()}");
+            _parameters.Add($"{Uri.EscapeDataString(key)}={value.Value.ToString().ToLowerInvariant()}");
         }
-
         return this;
     }
 
@@ -78,10 +70,8 @@ public sealed class QueryStringBuilder
     {
         if (value.HasValue)
         {
-            _parameters.Add(
-                $"{Uri.EscapeDataString(key)}={Uri.EscapeDataString(value.Value.ToString("O"))}");
+            _parameters.Add($"{Uri.EscapeDataString(key)}={Uri.EscapeDataString(value.Value.ToString("O"))}");
         }
-
         return this;
     }
 
@@ -89,10 +79,8 @@ public sealed class QueryStringBuilder
     {
         if (value.HasValue)
         {
-            _parameters.Add(
-                $"{Uri.EscapeDataString(key)}={value.Value.ToString(CultureInfo.InvariantCulture)}");
+            _parameters.Add($"{Uri.EscapeDataString(key)}={value.Value.ToString(CultureInfo.InvariantCulture)}");
         }
-
         return this;
     }
 

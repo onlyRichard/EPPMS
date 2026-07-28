@@ -1,15 +1,17 @@
-using EPPMS.Portal.Extensions;
+using EPPMS.Application.DependencyInjection;
+using EPPMS.Infrastructure.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddApiClients(builder.Configuration);
+builder.Services
+    .AddApplication()
+    .AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");

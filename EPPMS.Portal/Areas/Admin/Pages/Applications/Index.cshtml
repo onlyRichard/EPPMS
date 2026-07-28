@@ -7,13 +7,10 @@
 
 @section Styles
 {
-    <link href="~/css/admin/application/applicationindex.css"
-          rel="stylesheet"
-          asp-append-version="true" />
+    <link href="~/css/admin/application/applicationindex.css"  rel="stylesheet"  asp-append-version="true" />
 }
 
 <div class="applications-page">
-
     <!-- ==========================================
          Application Header
     =========================================== -->
@@ -84,16 +81,16 @@
                     </div>
                     <div class="stat-content">
                         <h3 class="stat-title">
-                            Total Applications
+                            Total<br/>Applications
                         </h3>
                         <div class="stat-value">
-                            24
+                           @Model.Applications.Count()
                         </div>
-                        <div class="stat-change positive">
+                       @*  <div class="stat-change positive">
                             <i class="bi bi-arrow-up"></i>
                             <span>12%</span>
                             <small>vs last month</small>
-                        </div>
+                        </div> *@
                     </div>
                 </article>
             </div>
@@ -109,13 +106,14 @@
                             Healthy Applications
                         </h3>
                         <div class="stat-value">
-                            12
+                            @(Model.Applications.Where(x => x.CurrentHealth == "Excellent").Count() +
+                              Model.Applications.Where(x => x.CurrentHealth == "Good").Count())
                         </div>
-                        <div class="stat-change positive">
+                       @*  <div class="stat-change positive">
                             <i class="bi bi-arrow-up"></i>
                             <span>9%</span>
                             <small>vs last month</small>
-                        </div>
+                        </div> *@
                     </div>
                 </article>
             </div>
@@ -130,13 +128,8 @@
                             Warning Applications
                         </h3>
                         <div class="stat-value">
-                            7
-                        </div>
-                        <div class="stat-change positive">
-                            <i class="bi bi-arrow-up"></i>
-                            <span>9%</span>
-                            <small>vs last month</small>
-                        </div>
+                            @Model.Applications.Where(x => x.CurrentHealth == "Warning").Count()
+                        </div>                        
                     </div>
                 </article>
             </div>
@@ -152,13 +145,13 @@
                             Critical Applications
                         </h3>
                         <div class="stat-value">
-                            3
+                            @Model.Applications.Where(x => x.CurrentHealth == "Critical").Count()
                         </div>
-                        <div class="stat-change negative">
+                        @* <div class="stat-change negative">
                             <i class="bi bi-arrow-down"></i>
                             <span>8%</span>
                             <small>vs last month</small>
-                        </div>
+                        </div> *@
                     </div>
                 </article>
             </div>
@@ -171,16 +164,16 @@
                     </div>
                     <div class="stat-content">
                         <h3 class="stat-title">
-                            Recently Updated
+                            Recently<br />Updated
                         </h3>
                         <div class="stat-value">
                             18
                         </div>
-                        <div class="stat-change positive">
+                     @*    <div class="stat-change positive">
                             <i class="bi bi-arrow-up"></i>
                             <span>15%</span>
                             <small>vs last month</small>
-                        </div>
+                        </div> *@
                     </div>
                 </article>
             </div>
@@ -193,16 +186,16 @@
                     </div>
                     <div class="stat-content">
                         <h3 class="stat-title">
-                            Without Features
+                            Without <br />Features
                         </h3>
                         <div class="stat-value">
                             5
                         </div>
-                        <div class="stat-change negative">
+                      @*   <div class="stat-change negative">
                             <i class="bi bi-arrow-down"></i>
                             <span>5%</span>
                             <small>vs last month</small>
-                        </div>
+                        </div> *@
                     </div>
                 </article>
             </div>
@@ -301,7 +294,7 @@
                                     <!-- Updated Date -->
                                     <td class="text-center">
                                         <div>
-                                            @application.UpdatedDate.ToString("MMM dd, yyyy")
+                                            @(application.UpdatedDateTime?.ToString("MMM dd, yyyy") ?? "—")
                                         </div>                                       
                                     </td>
 
@@ -384,9 +377,6 @@
                     </nav>
                 </div>
             }
-
         </div>
-
     </section>
-
 </div>

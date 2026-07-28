@@ -1,0 +1,223 @@
+﻿@* @page
+@model EPPMS.Portal.Areas.Admin.Pages.Features.CreateModel
+
+@{
+    ViewData["Title"] = "Add Feature";
+}
+
+@section Styles
+{
+    <link href="~/css/admin/feature/featurecreate.css"
+          rel="stylesheet"
+          asp-append-version="true" />
+}
+
+<div class="feature-create-page">
+    <!-- ==========================================
+         Header
+    =========================================== -->
+    <section class="feature-header">
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+
+            <div>
+
+                <a asp-page="./Index"
+                   class="page-back-link">
+
+                    <i class="bi bi-arrow-left"></i>
+
+                    Back to Features
+
+                </a>
+
+                <h1 class="page-title">
+                    Add New Feature
+                </h1>
+
+                <p class="page-subtitle">
+                    Create a new feature request for an application.
+                </p>
+
+            </div>
+
+            <div class="page-actions">
+
+                <a asp-page="./Index"
+                   class="btn btn-light">
+
+                    Cancel
+
+                </a>
+
+                <button type="submit"
+                        form="featureForm"
+                        class="btn btn-save-feature">
+
+                    <i class="bi bi-floppy"></i>
+
+                    Save Feature
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+         Form
+    =========================================== -->
+
+    <form id="featureForm"
+          method="post"
+          novalidate>
+
+        <div class="content-card">
+
+            <!-- ==========================================
+                 Row 1
+            =========================================== -->
+
+            <div class="row g-4">
+
+                <div class="col-lg-4">
+
+                    <label asp-for="Feature.AppId"
+                           class="form-label">
+
+                        Application
+
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <select asp-for="Feature.AppId"
+                            class="form-select">
+
+                        <option value="">
+                            Select application
+                        </option>
+
+                    </select>
+
+                    <span asp-validation-for="Feature.AppId"
+                          class="text-danger"></span>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <label asp-for="Feature.Title"
+                           class="form-label">
+
+                        Title
+
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <input asp-for="Feature.Title"
+                           class="form-control"
+                           placeholder="Enter feature title" />
+
+                    <span asp-validation-for="Feature.Title"
+                          class="text-danger"></span>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <label asp-for="Feature.RequestTypeId"
+                           class="form-label">
+
+                        Request Type
+
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <select asp-for="Feature.RequestTypeId"
+                            class="form-select">
+
+                        <option value="">
+                            Select request type
+                        </option>
+
+                    </select>
+
+                    <span asp-validation-for="Feature.RequestTypeId"
+                          class="text-danger"></span>
+
+                </div>
+
+            </div>
+
+            <!-- ==========================================
+                 Row 2
+            =========================================== -->
+
+            <div class="row g-4 mt-1">
+
+                <div class="col-lg-4">
+
+                    <label asp-for="Feature.Description"
+                           class="form-label">
+
+                        Description
+
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <textarea asp-for="Feature.Description"
+                              rows="6"
+                              class="form-control"
+                              placeholder="Describe the requested feature..."></textarea>
+
+                    <span asp-validation-for="Feature.Description"
+                          class="text-danger"></span>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <label asp-for="Feature.BusinessNeed"
+                           class="form-label">
+
+                        Business Need
+
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <textarea asp-for="Feature.BusinessNeed"
+                              rows="6"
+                              class="form-control"
+                              placeholder="Describe the business need..."></textarea>
+
+                    <span asp-validation-for="Feature.BusinessNeed"
+                          class="text-danger"></span>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <label asp-for="Feature.InitialTechAssessment"
+                           class="form-label">
+
+                        Initial Technical Assessment
+
+                    </label>
+
+                    <textarea asp-for="Feature.InitialTechAssessment"
+                              rows="6"
+                              class="form-control"
+                              placeholder="Provide an initial technical assessment..."></textarea>
+
+                    <span asp-validation-for="Feature.InitialTechAssessment"
+                          class="text-danger"></span>
+
+                </div>
+
+            </div> *@

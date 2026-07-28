@@ -1,22 +1,22 @@
 ﻿/* ===========================================================
-   Applications Page
+   Features Page
 =========================================================== */
 
-.applications-page {
+.features-page {
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
 
 /* ===========================================================
-   Application Header
+   Feature Header
 =========================================================== */
 
-.application-header {
+.feature-header {
     margin-bottom: 8px;
 }
 
-    .application-header .row {
+    .feature-header .row {
         min-height: 72px;
     }
 
@@ -40,20 +40,20 @@
 }
 
 /* ===========================================================
-   Toolbar Container
+   Toolbar
 =========================================================== */
 
-.application-toolbar-container {
+.feature-toolbar-container {
     display: flex;
     justify-content: flex-end;
     width: 100%;
 }
 
-.application-toolbar {
+.feature-toolbar {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 5px;
+    gap: 10px;
     width: 100%;
     flex-wrap: wrap;
 }
@@ -62,45 +62,45 @@
    Search
 =========================================================== */
 
-.application-search {
+.feature-search {
     position: relative;
     width: 320px;
     flex-shrink: 0;
 }
 
-.application-search-input {
+.feature-search-input {
     height: 40px;
     border: 1px solid #D0D5DD;
     border-radius: 10px;
-    padding-right: 42px;
     padding-left: 14px;
+    padding-right: 42px;
     font-size: 14px;
     box-shadow: none;
 }
 
-    .application-search-input:focus {
+    .feature-search-input:focus {
         border-color: #0B5FFF;
         box-shadow: 0 0 0 .15rem rgba(11,95,255,.15);
     }
 
-.application-search-button {
+.feature-search-button {
     position: absolute;
     top: 50%;
     right: 12px;
     transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
     border: none;
     background: transparent;
     color: #344054;
-    width: 24px;
-    height: 24px;
     padding: 0;
 }
 
 /* ===========================================================
-   Filter Buttons
+   Toolbar Buttons
 =========================================================== */
 
-.application-filter-button {
+.feature-filter-button {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -112,27 +112,18 @@
     color: #101828;
     font-size: 14px;
     font-weight: 600;
-    box-shadow: none;
 }
 
-    .application-filter-button:hover {
+    .feature-filter-button:hover {
         background: #F9FAFB;
         border-color: #98A2B3;
     }
 
-    .application-filter-button:focus {
+    .feature-filter-button:focus {
         box-shadow: none;
     }
 
-    .application-filter-button i {
-        color: #344054;
-    }
-
-/* ===========================================================
-   New Application Button
-=========================================================== */
-
-.application-create-button {
+.feature-create-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -140,25 +131,26 @@
     height: 40px;
     min-width: 165px;
     padding: 0 22px;
-    background: #FF6A13;
-    color: #FFFFFF;
     border: none;
     border-radius: 10px;
+    background: #FF6A13;
+    color: #FFFFFF;
     font-size: 14px;
     font-weight: 600;
 }
 
-    .application-create-button:hover {
+    .feature-create-button:hover {
         background: #E85D0C;
         color: #FFFFFF;
     }
 
-    .application-create-button:focus {
+    .feature-create-button:focus {
         box-shadow: none;
     }
-/* ===============================
+
+/* ===========================================================
    Statistics
-================================== */
+=========================================================== */
 
 .statistics-section {
     margin-top: 2rem;
@@ -174,7 +166,7 @@
     border-radius: 12px;
     padding: 16px;
     height: 100%;
-    box-shadow: 0 2px 8px rgba(15, 23, 42, .04);
+    box-shadow: 0 2px 8px rgba(15,23,42,.04);
     transition: .25s ease;
 }
 
@@ -269,94 +261,114 @@
     .stat-change i {
         font-size: .85rem;
     }
+
+/* ===========================================================
+   Navigation
+=========================================================== */
+
+.feature-navigation {
+    margin-bottom: 28px;
+}
+
+.feature-navigation-card {
+    background: #FFFFFF;
+    border: 1px solid #E6EBF2;
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.feature-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+    .feature-nav .nav-item {
+        margin: 0;
+    }
+
+    .feature-nav .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 22px;
+        color: #344054;
+        font-size: 14px;
+        font-weight: 600;
+        border-bottom: 3px solid transparent;
+        transition: .20s ease;
+    }
+
+        .feature-nav .nav-link:hover {
+            background: #F8FAFC;
+            color: #0B5FFF;
+        }
+
+        .feature-nav .nav-link.active {
+            color: #0B5FFF;
+            border-bottom-color: #0B5FFF;
+            background: #F8FBFF;
+        }
+
+        .feature-nav .nav-link i {
+            font-size: 16px;
+        }
+
+.feature-nav-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: #EEF4FF;
+    color: #0B5FFF;
+    font-size: 12px;
+    font-weight: 700;
+}
+
 /* ===========================================================
    Responsive
 =========================================================== */
 
-@media (max-width: 1199.98px) {
+@media (max-width:1199.98px) {
 
-    .application-toolbar-container {
+    .feature-toolbar-container {
         margin-top: 20px;
     }
 
-    .application-toolbar {
+    .feature-toolbar {
         justify-content: flex-start;
+    }
+
+    .feature-navigation-card {
+        overflow-x: auto;
+    }
+
+    .feature-nav {
+        flex-wrap: nowrap;
+        min-width: max-content;
     }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width:767.98px) {
 
-    .application-search {
+    .feature-search {
         width: 100%;
     }
 
-    .application-toolbar {
+    .feature-toolbar {
         gap: 12px;
     }
 
-    .application-filter-button,
-    .application-create-button {
+    .feature-filter-button,
+    .feature-create-button {
         width: 100%;
         justify-content: center;
     }
 }
-
-/*Current Health*/
-.application-health-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 600;
-    white-space: nowrap;
-}
-
-    .application-health-badge .health-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        flex-shrink: 0;
-    }
-
-    .application-health-badge.excellent {
-        background: #EAF7EC;
-        color: #15803D;
-    }
-    .application-health-badge.good {
-        background: #EAF7EC;
-        color: #15803D;
-    }
-
-        .application-health-badge.good .health-dot {
-            background: #16A34A;
-        }
-    .application-health-badge.warning {
-        background: #FFF7E6;
-        color: #D97706;
-    }
-
-        .application-health-badge.warning .health-dot {
-            background: #F59E0B;
-        }
-    .application-health-badge.critical {
-        background: #FDECEC;
-        color: #DC2626;
-    }
-
-        .application-health-badge.critical .health-dot {
-            background: #EF4444;
-        }
-    .application-health-badge.retired {
-        background: #F3F4F6;
-        color: #6B7280;
-    }
-
-        .application-health-badge.retired .health-dot {
-            background: #9CA3AF;
-        }
-
-        .application-health-badge.excellent .health-dot {
-            background: #16A34A;
-        }

@@ -4,7 +4,7 @@ using EPPMS.Application.Interfaces.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EPPMS.API.Controllers.Admin
+namespace EPPMS.API.Controllers.Admin.Lookup
 { 
     public sealed class LookupController : AdminBaseApiController
     {
