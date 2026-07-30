@@ -68,13 +68,13 @@ public static class AdminNavigation
 
         // Reports
 
-        new()
-        {
-            DividerBefore = true,
-            Title = "Reports",
-            Icon = "bi-bar-chart-line",
-            Area = "Admin",
-            Route = "/Reports/Index"
-        }
+        //new()
+        //{
+        //    DividerBefore = true,
+        //    Title = "Reports",
+        //    Icon = "bi-bar-chart-line",
+        //    Area = "Admin",
+        //    Route = "/Reports/Index"
+        //}
     ];
 }

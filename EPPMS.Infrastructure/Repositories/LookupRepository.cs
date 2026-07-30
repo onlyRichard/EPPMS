@@ -74,6 +74,12 @@ namespace EPPMS.Infrastructure.Repositories
             => ExecuteLookupAsync(
                 StoredProcedureNames.Lookup.Type,
                 cancellationToken);
+
+        public Task<IReadOnlyList<ApplicationLookupResponseDTO>> GetApplicationAsync(
+            CancellationToken cancellationToken)
+            => ExecuteApplicationsLookupAsync(
+                StoredProcedureNames.Lookup.Application,
+                cancellationToken);
         #endregion
 
 
@@ -98,6 +104,23 @@ namespace EPPMS.Infrastructure.Repositories
 
             return lookups;
         }
+
+        private async Task<IReadOnlyList<ApplicationLookupResponseDTO>> ExecuteApplicationsLookupAsync(string storedProcedure, CancellationToken cancellationToken)
+        {
+            await using SqlConnection connection = await CreateConnectionAsync();
+            await using SqlCommand command = new(storedProcedure, connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+            await using SqlDataReader reader = await command.ExecuteReaderAsync(cancellationToken);
+
+            List<ApplicationLookupResponseDTO> lookups = [];
+            while (await reader.ReadAsync(cancellationToken))
+            {
+                lookups.Add(MapApplicationLookup(reader));
+            }
+
+            return lookups;
+        }
         #endregion
 
         #region Mapping
@@ -112,6 +135,20 @@ namespace EPPMS.Infrastructure.Repositories
                         : reader.GetString(
                             reader.GetOrdinal("Description")),
                 SortOrder = reader.GetInt32(reader.GetOrdinal("SortOrder"))
+            };
+        }
+
+        private static ApplicationLookupResponseDTO MapApplicationLookup(SqlDataReader reader)
+        {
+            return new ApplicationLookupResponseDTO
+            {
+                Id = reader.GetGuid(reader.GetOrdinal("Id")),
+                Name = reader.GetString(reader.GetOrdinal("Name"))
+                /*Description = reader.IsDBNull(reader.GetOrdinal("Description"))
+                        ? null
+                        : reader.GetString(
+                            reader.GetOrdinal("Description")),
+                SortOrder = reader.GetInt32(reader.GetOrdinal("SortOrder"))*/
             };
         }
         #endregion

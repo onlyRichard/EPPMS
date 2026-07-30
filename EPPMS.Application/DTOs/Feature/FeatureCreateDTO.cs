@@ -12,7 +12,7 @@ namespace EPPMS.Application.DTOs.Feature
         public int RequestTypeId { get; set; }
         public string Description { get; set; } = string.Empty;
         public string RequestedBy { get; set; } = string.Empty;
-        public DateTime DateRaised { get; set; }
+        public DateTime? DateRaised { get; set; }
         public string BusinessNeed { get; set; } = string.Empty;
         public string ExpectedValue { get; set; } = string.Empty;
         public int PriorityId { get; set; }

@@ -36,5 +36,7 @@ namespace EPPMS.Application.Interfaces.Repositories
 
         Task<IReadOnlyList<LookupResponseDTO>> GetTypesAsync(
             CancellationToken cancellationToken);
+        Task<IReadOnlyList<ApplicationLookupResponseDTO>> GetApplicationAsync(
+           CancellationToken cancellationToken);
     }
 }

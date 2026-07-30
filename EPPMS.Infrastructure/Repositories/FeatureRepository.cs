@@ -60,6 +60,7 @@ namespace EPPMS.Infrastructure.Repositories
         #region Commands
         public async Task<bool> CreateAsync(FeatureCreateDTO feature)
         {
+            feature.CreatedBy = "MS/rperal15";
             await using SqlConnection connection = await CreateConnectionAsync();
             await using SqlCommand command = new(StoredProcedureNames.Feature.Create, connection);
             command.CommandType = CommandType.StoredProcedure;
