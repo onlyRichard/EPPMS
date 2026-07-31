@@ -16,9 +16,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Middleware\" />
-    <Folder Include="Filters\" />
-    <Folder Include="Extensions\" />
+    <Folder Include="Controllers\Admin\Dashboard\" />
+    <Folder Include="Controllers\User\Dashboard\" />
+    <Folder Include="Controllers\User\Tasks\" />
+    <Folder Include="Controllers\User\Bug\" />
+    <Folder Include="Controllers\User\OngoingTasks\" />
+    <Folder Include="Controllers\User\Lookup\" />
+    <Folder Include="Controllers\User\Notificatons\" />
+    <Folder Include="Controllers\User\Profile\" />
     <Folder Include="Configuration\" />
   </ItemGroup>
 

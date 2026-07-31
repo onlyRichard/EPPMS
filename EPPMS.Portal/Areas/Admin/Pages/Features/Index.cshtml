@@ -1,0 +1,543 @@
+﻿@page
+@model EPPMS.Portal.Areas.Admin.Pages.Features.IndexModel
+
+@{
+    ViewData["Title"] = "Features";
+}
+
+@section Styles
+{
+    <link href="~/css/admin/feature/featureindex.css" rel="stylesheet" asp-append-version="true" />
+}
+
+<div class="features-page">
+
+    <!-- ==========================================
+         Feature Header
+    =========================================== -->
+    <section class="feature-header">
+        <div class="row align-items-center">
+            <!-- Left -->
+            <div class="col-xl-5 col-lg-12">
+                <h1 class="page-title">
+                    Features
+                </h1>
+                <p class="page-subtitle">
+                    Manage business feature requests and product enhancements.
+                </p>
+            </div>
+            <!-- Right -->
+            <div class="col-xl-7 col-lg-12">
+                <div class="feature-toolbar-container">
+                    <div class="feature-toolbar">
+                        <!-- Search -->
+                        @* <div class="feature-search">
+                            <input type="text"
+                                   class="form-control feature-search-input"
+                                   placeholder="Search features..." />
+                            <button type="button"
+                                    class="feature-search-button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div> *@
+
+                        <!-- Status -->
+                        <div class="dropdown">
+                            <button class="btn feature-filter-button dropdown-toggle"
+                                    type="button"
+                                    data-bs-toggle="dropdown">
+                                Status
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#">All Status</a></li>
+                                <li><a class="dropdown-item" href="#">Planned</a></li>
+                                <li><a class="dropdown-item" href="#">Pending</a></li>
+                                <li><a class="dropdown-item" href="#">In Progress</a></li>
+                                <li><a class="dropdown-item" href="#">Completed</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- More Actions -->
+                        <div class="dropdown">
+                            <button class="btn feature-filter-button dropdown-toggle"
+                                    type="button"
+                                    data-bs-toggle="dropdown">
+                                More Actions
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Export
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Import
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- New Feature -->
+                        <a asp-page="./Create"
+                               class="btn feature-create-button">
+                            <i class="bi bi-plus-lg"></i>
+                            New Feature
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         Statistics
+    =========================================== -->
+
+    <section class="statistics-section">
+        <div class="row g-3">
+            <!-- Total -->
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+                <article class="stat-card">
+                    <div class="stat-icon stat-primary">
+                        <i class="bi bi-grid"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-title">
+                            Total Features
+                        </h3>
+                        <div class="stat-value">
+                            @Model.Features.Count
+                        </div>
+                        @* <div class="stat-change positive">
+                            <i class="bi bi-arrow-up"></i>
+                            <span>12%</span>
+                            <small>vs last month</small>
+                        </div> *@
+                    </div>
+                </article>
+            </div>
+
+            <!-- Open -->
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+                <article class="stat-card">
+                    <div class="stat-icon stat-secondary">
+                        <i class="bi bi-folder2-open"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-title">
+                            Open Features
+                        </h3>
+                        <div class="stat-value">
+                            @Model.Features.Count(x => x.Status == "In Progress")
+                        </div>
+                       @*  <div class="stat-change positive">
+                            <i class="bi bi-arrow-up"></i>
+                            <span>8%</span>
+                            <small>vs last month</small>
+                        </div> *@
+                    </div>
+                </article>
+            </div>
+
+            <!-- Planned -->
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+                <article class="stat-card">
+                    <div class="stat-icon stat-warning">
+                        <i class="bi bi-calendar-event"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-title">
+                            Planned
+                        </h3>
+                        <div class="stat-value">
+                            @Model.Features.Count(x => x.Status == "Planned")
+                        </div>
+                        @* <div class="stat-change positive">
+                            <i class="bi bi-arrow-up"></i>
+                            <span>5%</span>
+                            <small>vs last month</small>
+                        </div> *@
+                    </div>
+                </article>
+            </div>
+
+            <!-- Completed -->
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+                <article class="stat-card">
+                    <div class="stat-icon stat-success">
+                        <i class="bi bi-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-title">
+                            Completed
+                        </h3>
+                        <div class="stat-value">
+                            @Model.Features.Count(x => x.Status == "Completed")
+                        </div>
+                       @*  <div class="stat-change positive">
+                            <i class="bi bi-arrow-up"></i>
+                            <span>15%</span>
+                            <small>vs last month</small>
+                        </div> *@
+                    </div>
+                </article>
+            </div>
+
+            <!-- Critical -->
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+                <article class="stat-card">
+                    <div class="stat-icon stat-danger">
+                        <i class="bi bi-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-title">
+                            Critical
+                        </h3>
+                        <div class="stat-value">
+                            @Model.Features.Count(x => x.Priority == "Critical")
+                        </div>
+                       @*  <div class="stat-change negative">
+                            <i class="bi bi-arrow-down"></i>
+                            <span>8%</span>
+                            <small>vs last month</small>
+                        </div> *@
+                    </div>
+                </article>
+            </div>
+
+            <!-- Due This Month -->
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+                <article class="stat-card">
+                    <div class="stat-icon stat-info">
+                        <i class="bi bi-calendar-week"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-title">
+                            Due This Month
+                        </h3>
+                        <div class="stat-value">
+                            @Model.Features.Count(x =>
+                                x.TargetRelease.HasValue &&
+                                x.TargetRelease.Value.Month == DateTime.Today.Month &&
+                                x.TargetRelease.Value.Year == DateTime.Today.Year)
+                        </div>
+                      @*   <div class="stat-change negative">
+                            <i class="bi bi-arrow-up"></i>
+                            <span>3%</span>
+                            <small>vs last month</small>
+                        </div> *@
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <!-- ==========================================
+         Feature Navigation
+    =========================================== -->
+
+    @* <section class="feature-navigation">
+        <div class="feature-navigation-card">
+            <ul class="nav feature-nav">
+                <li class="nav-item">
+                    <a class="nav-link active"
+                           href="#">
+                        <i class="bi bi-flag"></i>
+                        Features
+                        <span class="feature-nav-count">
+                            @Model.Features.Count
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-box"></i>
+                        Technical Modules
+                        <span class="feature-nav-count">
+                            64
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-list-task"></i>
+                        Tasks
+                        <span class="feature-nav-count">
+                            342
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-bug"></i>
+                        Bugs
+                        <span class="feature-nav-count">
+                            27
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-clock-history"></i>
+                        Ongoing Tasks
+                        <span class="feature-nav-count">
+                            118
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-paperclip"></i>
+                        Attachments
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section> *@
+    <!-- ==========================================
+         Feature List
+    =========================================== -->
+    <section class="feature-list">
+        <div class="feature-list-card">
+            <!-- Header -->
+            <div class="feature-list-header">
+                <div>
+                    <h2 class="feature-list-title">
+                        Feature List
+                    </h2>
+
+                    <p class="feature-list-subtitle">
+                        Showing @Model.Features.Count feature(s)
+                    </p>
+                </div>
+            </div>
+
+            @if (!Model.Features.Any())
+            {
+                <div class="feature-empty-state">
+                    <i class="bi bi-kanban"></i>
+                    <h4>
+                        No features found
+                    </h4>
+                    <p>
+                        There are currently no registered feature requests.
+                    </p>
+                </div>
+            }
+            else
+            {
+
+                <div class="table-responsive">
+                    <table class="table feature-table">
+                        <colgroup>
+                            <col style="width:24%;" />
+                            <col style="width:16%;" />
+                            <col style="width:10%;" />
+                            <col style="width:10%;" />
+                            <col style="width:10%;" />
+                            <col style="width:10%;" />
+                            <col style="width:10%;" />
+                            <col style="width:10%;" />
+                            <col style="width:6%;" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    Title
+                                </th>
+
+                                <th class="text-center">
+                                    Application
+                                </th>
+
+                                <th class="text-center">
+                                    Priority
+                                </th>
+
+                                <th class="text-center">
+                                    Status
+                                </th>
+
+                                <th class="text-center">
+                                    Complexity
+                                </th>
+
+                                <th class="text-center">
+                                    Request Type
+                                </th>
+
+                                <th class="text-center">
+                                    Target Release
+                                </th>
+
+                                <th class="text-center">
+                                    Date Raised
+                                </th>
+
+                                <th class="text-center">
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var feature in Model.Features)
+                            {
+                                <tr>
+
+                                    <!-- Title -->
+                                    <td>
+                                        <div class="feature-title">
+                                            @feature.Title
+                                        </div>
+                                    </td>
+
+                                    <!-- Application -->
+                                    <td class="text-center">
+                                        @feature.ApplicationModule
+                                    </td>
+
+                                    <!-- Priority -->
+                                    <td class="text-center">
+                                        <span class="feature-priority-badge priority-@feature.Priority.Replace(" ", "-").ToLowerInvariant()">
+                                            @feature.Priority
+                                        </span>
+                                    </td>
+
+                                    <!-- Status -->
+                                    <td class="text-center">
+                                        <span class="feature-status-badge status-@feature.Status.Replace(" ", "-").ToLowerInvariant()">
+                                            @feature.Status
+                                        </span>
+                                    </td>
+
+                                    <!-- Complexity -->
+                                    <td class="text-center">
+                                        <span class="feature-complexity-badge complexity-@feature.Complexity.Replace(" ", "-").ToLowerInvariant()">
+                                            @feature.Complexity
+                                        </span>
+                                    </td>
+
+                                    <!-- Request Type -->
+                                    <td class="text-center">
+                                        @feature.RequestType
+                                    </td>
+
+                                    <!-- Target Release -->
+                                    <td class="text-center">
+                                        @if (feature.TargetRelease.HasValue)
+                                        {
+                                            @feature.TargetRelease.Value.ToString("MMM dd, yyyy")
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">—</span>
+                                        }
+                                    </td>
+
+                                    <!-- Date Raised -->
+                                    <td class="text-center">
+                                        @feature.DateRaised.ToString("MMM dd, yyyy")
+                                    </td>
+
+                                    <!-- Actions -->
+                                    <td class="text-center">
+
+                                        <div class="dropdown">
+
+                                            <button class="btn feature-action-button"
+                                                    type="button"
+                                                    data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+
+                                                <i class="bi bi-three-dots-vertical"></i>
+
+                                            </button>
+
+                                            <ul class="dropdown-menu dropdown-menu-end">
+
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <i class="bi bi-eye me-2"></i>
+                                                        View Details
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <i class="bi bi-pencil-square me-2"></i>
+                                                        Edit Feature
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <i class="bi bi-arrow-repeat me-2"></i>
+                                                        Update Status
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <hr class="dropdown-divider" />
+                                                </li>
+
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <i class="bi bi-list-task me-2"></i>
+                                                        View Tasks
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <i class="bi bi-bug me-2"></i>
+                                                        View Related Bugs
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <i class="bi bi-clock-history me-2"></i>
+                                                        Audit Trail
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <hr class="dropdown-divider" />
+                                                </li>
+
+                                                <li>
+                                                    <a class="dropdown-item text-danger" href="#">
+                                                        <i class="bi bi-trash me-2"></i>
+                                                        Delete Feature
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Footer -->
+                <div class="features-list-footer">
+                    <div>
+                        Showing
+                        <strong>@Model.Features.Count()</strong>
+                        feature(s)
+                    </div>
+                    <nav>
+                        <!-- Pagination will be added later -->
+                    </nav>
+                </div>
+            }
+        </div>
+    </section>
+</div>

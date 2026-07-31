@@ -56,10 +56,12 @@ namespace EPPMS.Infrastructure.Repositories
             return null;
         }
         #endregion
-        #region Commands
 
+        #region Commands
         public async Task<bool> CreateAsync(FeatureCreateDTO feature)
         {
+            feature.CreatedBy = "MS/rperal15";
+            feature.FeatureId = Guid.NewGuid();
             await using SqlConnection connection = await CreateConnectionAsync();
             await using SqlCommand command = new(StoredProcedureNames.Feature.Create, connection);
             command.CommandType = CommandType.StoredProcedure;
@@ -133,8 +135,8 @@ namespace EPPMS.Infrastructure.Repositories
             command.Parameters.Add(DbParameterExtensions.Create("@UpdatedBy", feature.UpdatedBy, SqlDbType.NVarChar));
         }
         #endregion
-        #region Mapping
 
+        #region Mapping
         private static FeatureDetailsDTO MapFeature(SqlDataReader reader)
         {
             int linksNotesOrdinal = reader.GetOrdinal("LinksNotes");
@@ -196,7 +198,6 @@ namespace EPPMS.Infrastructure.Repositories
                 IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive"))
             };
         }
-
         #endregion
     }
 }

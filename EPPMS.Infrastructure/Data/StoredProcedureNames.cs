@@ -19,6 +19,7 @@ namespace EPPMS.Infrastructure.Data
             public const string TechnologyArea = "dbo.usp_TechnologyArea_Get";
             public const string TestingStatus = "dbo.usp_TestingStatus_Get";
             public const string Type = "dbo.usp_Type_Get";
+            public const string Application = "dbo.usp_Application_GetLookup";
         }
         public static class User
         {
@@ -49,11 +50,11 @@ namespace EPPMS.Infrastructure.Data
 
         public static class TechnicalModule
         {
-            public const string Get = "usp_TechnicalModule_Get";
-            public const string GetById = "usp_TechnicalModule_GetById";
-            public const string Create = "usp_TechnicalModule_Create";
-            public const string Update = "usp_TechnicalModule_Update";
-            public const string Delete = "usp_TechnicalModule_Delete";
+            public const string Create = "dbo.usp_Task_Create";
+            public const string Get = "dbo.usp_Task_Get";
+            public const string GetById = "dbo.usp_Task_GetById";
+            public const string Update = "dbo.usp_Task_Update";
+            public const string Delete = "dbo.usp_Task_Delete";
         }
 
         public static class Task
@@ -67,20 +68,20 @@ namespace EPPMS.Infrastructure.Data
 
         public static class Bug
         {
-            public const string Get = "usp_Bug_Get";
-            public const string GetById = "usp_Bug_GetById";
-            public const string Create = "usp_Bug_Create";
-            public const string Update = "usp_Bug_Update";
-            public const string Delete = "usp_Bug_Delete";
+            public const string Create = "dbo.usp_Bug_Create";
+            public const string Get = "dbo.usp_Bug_Get";
+            public const string GetById = "dbo.usp_Bug_GetById";
+            public const string Update = "dbo.usp_Bug_Update";
+            public const string Delete = "dbo.usp_Bug_Delete";
         }
 
         public static class OngoingTask
         {
-            public const string Get = "usp_OngoingTask_Get";
-            public const string GetById = "usp_OngoingTask_GetById";
-            public const string Create = "usp_OngoingTask_Create";
-            public const string Update = "usp_OngoingTask_Update";
-            public const string Delete = "usp_OngoingTask_Delete";
+            public const string Create = "dbo.usp_OngoingTask_Create";
+            public const string Get = "dbo.usp_OngoingTask_Get";
+            public const string GetById = "dbo.usp_OngoingTask_GetById";
+            public const string Update = "dbo.usp_OngoingTask_Update";
+            public const string Delete = "dbo.usp_OngoingTask_Delete";
         }
     }
 }

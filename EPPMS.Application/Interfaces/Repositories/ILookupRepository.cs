@@ -1,22 +1,42 @@
 ﻿using EPPMS.Application.DTOs.Lookup;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EPPMS.Application.Interfaces.Repositories
 {
     public interface ILookupRepository
     {
-        Task<List<LookupDTO>> GetActionTypesAsync();
-        Task<List<LookupDTO>> GetComplexitiesAsync();
-        Task<List<LookupDTO>> GetCurrentHealthAsync();
-        Task<List<LookupDTO>> GetPrioritiesAsync();
-        Task<List<LookupDTO>> GetReleaseStatusesAsync();
-        Task<List<LookupDTO>> GetRequestTypesAsync();
-        Task<List<LookupDTO>> GetSeveritiesAsync();
-        Task<List<LookupDTO>> GetStatusesAsync();
-        Task<List<LookupDTO>> GetTechnologyAreasAsync();
-        Task<List<LookupDTO>> GetTestingStatusesAsync();
-        Task<List<LookupDTO>> GetTypesAsync();
+        Task<IReadOnlyList<LookupResponseDTO>> GetActionTypesAsync(
+            CancellationToken cancellationToken);
+
+        Task<IReadOnlyList<LookupResponseDTO>> GetComplexitiesAsync(
+            CancellationToken cancellationToken);
+
+        Task<IReadOnlyList<LookupResponseDTO>> GetCurrentHealthsAsync(
+            CancellationToken cancellationToken);
+
+        Task<IReadOnlyList<LookupResponseDTO>> GetPrioritiesAsync(
+            CancellationToken cancellationToken);
+
+        Task<IReadOnlyList<LookupResponseDTO>> GetReleaseStatusesAsync(
+            CancellationToken cancellationToken);
+
+        Task<IReadOnlyList<LookupResponseDTO>> GetRequestTypesAsync(
+            CancellationToken cancellationToken);
+
+        Task<IReadOnlyList<LookupResponseDTO>> GetSeveritiesAsync(
+            CancellationToken cancellationToken);
+
+        Task<IReadOnlyList<LookupResponseDTO>> GetStatusesAsync(
+            CancellationToken cancellationToken);
+
+        Task<IReadOnlyList<LookupResponseDTO>> GetTechnologyAreasAsync(
+            CancellationToken cancellationToken);
+
+        Task<IReadOnlyList<LookupResponseDTO>> GetTestingStatusesAsync(
+            CancellationToken cancellationToken);
+
+        Task<IReadOnlyList<LookupResponseDTO>> GetTypesAsync(
+            CancellationToken cancellationToken);
+        Task<IReadOnlyList<ApplicationLookupResponseDTO>> GetApplicationAsync(
+           CancellationToken cancellationToken);
     }
 }

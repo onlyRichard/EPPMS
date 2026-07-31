@@ -7,22 +7,30 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Identity\" />
-    <Folder Include="Areas\Configuration\" />
-    <Folder Include="Areas\Dashboard\" />
-    <Folder Include="Areas\ProductManagement\Pages\Feature\" />
-    <Folder Include="Areas\ProductManagement\Pages\TechnicalModule\" />
-    <Folder Include="Areas\Reporting\" />
-    <Folder Include="Areas\WorkManagement\" />
-    <Folder Include="Components\" />
-    <Folder Include="Common\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="Middleware\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Services\" />
+    <Compile Remove="Services\ApiClients\ApplicationApiClient.cs" />
+    <Compile Remove="Services\ApiClients\FeatureApiClient.cs" />
+    <Compile Remove="Services\Application\ApplicationPortalService.cs" />
+    <Compile Remove="Services\Application\IApplicationPortalService.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Pages\Dashboard\" />
+    <Folder Include="Areas\Identity\" />
+    <Folder Include="Areas\Configuration\" />
+    <Folder Include="Areas\Dashboard\" />
+    <Folder Include="Areas\Reporting\" />
+    <Folder Include="Common\" />
+    <Folder Include="Middleware\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Services\Application\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="10.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EPPMS.Application\EPPMS.Application.csproj" />
     <ProjectReference Include="..\EPPMS.Infrastructure\EPPMS.Infrastructure.csproj" />
   </ItemGroup>
 

@@ -1,0 +1,362 @@
+﻿/* ===========================================================
+   Applications Page
+=========================================================== */
+
+.applications-page {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ===========================================================
+   Application Header
+=========================================================== */
+
+.application-header {
+    margin-bottom: 8px;
+}
+
+    .application-header .row {
+        min-height: 72px;
+    }
+
+/* ===========================================================
+   Page Title
+=========================================================== */
+
+.page-title {
+    margin: 0;
+    color: #071A38;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    margin: 8px 0 0;
+    color: #667085;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* ===========================================================
+   Toolbar Container
+=========================================================== */
+
+.application-toolbar-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.application-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+/* ===========================================================
+   Search
+=========================================================== */
+
+.application-search {
+    position: relative;
+    width: 320px;
+    flex-shrink: 0;
+}
+
+.application-search-input {
+    height: 40px;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    padding-right: 42px;
+    padding-left: 14px;
+    font-size: 14px;
+    box-shadow: none;
+}
+
+    .application-search-input:focus {
+        border-color: #0B5FFF;
+        box-shadow: 0 0 0 .15rem rgba(11,95,255,.15);
+    }
+
+.application-search-button {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: #344054;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+}
+
+/* ===========================================================
+   Filter Buttons
+=========================================================== */
+
+.application-filter-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 18px;
+    background: #FFFFFF;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    color: #101828;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: none;
+}
+
+    .application-filter-button:hover {
+        background: #F9FAFB;
+        border-color: #98A2B3;
+    }
+
+    .application-filter-button:focus {
+        box-shadow: none;
+    }
+
+    .application-filter-button i {
+        color: #344054;
+    }
+
+/* ===========================================================
+   New Application Button
+=========================================================== */
+
+.application-create-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    min-width: 165px;
+    padding: 0 22px;
+    background: #FF6A13;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+    .application-create-button:hover {
+        background: #E85D0C;
+        color: #FFFFFF;
+    }
+
+    .application-create-button:focus {
+        box-shadow: none;
+    }
+/* ===============================
+   Statistics
+================================== */
+
+.statistics-section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: #FFFFFF;
+    border: 1px solid #E6EBF2;
+    border-radius: 12px;
+    padding: 16px;
+    height: 100%;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, .04);
+    transition: .25s ease;
+}
+
+    .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(15,23,42,.08);
+    }
+
+.stat-icon {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+}
+
+.stat-primary {
+    background: #EEF4FF;
+    color: #2563EB;
+}
+
+.stat-success {
+    background: #EEF9F1;
+    color: #16A34A;
+}
+
+.stat-warning {
+    background: #FFF8EB;
+    color: #F59E0B;
+}
+
+.stat-danger {
+    background: #FEF1F2;
+    color: #DC2626;
+}
+
+.stat-info {
+    background: #EEF6FF;
+    color: #2563EB;
+}
+
+.stat-secondary {
+    background: #F4F6F8;
+    color: #1E3A8A;
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.stat-title {
+    margin: 2px 0 8px;
+    font-size: .90rem;
+    font-weight: 600;
+    color: #102A56;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #0F172A;
+    margin-bottom: 12px;
+}
+
+.stat-change {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .82rem;
+    font-weight: 600;
+}
+
+    .stat-change small {
+        color: #98A2B3;
+        font-weight: 500;
+    }
+
+    .stat-change.positive {
+        color: #16A34A;
+    }
+
+    .stat-change.negative {
+        color: #DC2626;
+    }
+
+    .stat-change i {
+        font-size: .85rem;
+    }
+/* ===========================================================
+   Responsive
+=========================================================== */
+
+@media (max-width: 1199.98px) {
+
+    .application-toolbar-container {
+        margin-top: 20px;
+    }
+
+    .application-toolbar {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    .application-search {
+        width: 100%;
+    }
+
+    .application-toolbar {
+        gap: 12px;
+    }
+
+    .application-filter-button,
+    .application-create-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/*Current Health*/
+.application-health-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+    .application-health-badge .health-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .application-health-badge.excellent {
+        background: #EAF7EC;
+        color: #15803D;
+    }
+    .application-health-badge.good {
+        background: #EAF7EC;
+        color: #15803D;
+    }
+
+        .application-health-badge.good .health-dot {
+            background: #16A34A;
+        }
+    .application-health-badge.warning {
+        background: #FFF7E6;
+        color: #D97706;
+    }
+
+        .application-health-badge.warning .health-dot {
+            background: #F59E0B;
+        }
+    .application-health-badge.critical {
+        background: #FDECEC;
+        color: #DC2626;
+    }
+
+        .application-health-badge.critical .health-dot {
+            background: #EF4444;
+        }
+    .application-health-badge.retired {
+        background: #F3F4F6;
+        color: #6B7280;
+    }
+
+        .application-health-badge.retired .health-dot {
+            background: #9CA3AF;
+        }
+
+        .application-health-badge.excellent .health-dot {
+            background: #16A34A;
+        }

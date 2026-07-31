@@ -1,4 +1,6 @@
 ﻿using EPPMS.Application.DTOs.Application;
+using EPPMS.Application.DTOs.Application.Requests;
+using EPPMS.Application.DTOs.Application.Response;
 using EPPMS.Application.Interfaces.Data;
 using EPPMS.Application.Interfaces.Repositories;
 using EPPMS.Infrastructure.Data;
@@ -17,7 +19,7 @@ namespace EPPMS.Infrastructure.Repositories
         }
 
         #region Queries
-        public async Task<List<ApplicationDetailsDTO>> GetApplicationsAsync(string? search = null,int? currentHealthId = null, bool isActive = true)
+        public async Task<List<ApplicationListResponseDTO>> GetApplicationsAsync(string? search = null,int? currentHealthId = null, bool isActive = true)
         {
             await using SqlConnection connection = await CreateConnectionAsync();
             await using SqlCommand command = new(StoredProcedureNames.Application.Get,connection);
@@ -26,7 +28,7 @@ namespace EPPMS.Infrastructure.Repositories
             command.Parameters.Add(DbParameterExtensions.Create("@CurrentHealthId",currentHealthId,SqlDbType.Int));
             command.Parameters.Add(DbParameterExtensions.Create("@IsActive",isActive,SqlDbType.Bit));
             await using SqlDataReader reader = await command.ExecuteReaderAsync();
-            List<ApplicationDetailsDTO> applications = [];
+            List<ApplicationListResponseDTO> applications = [];
             while (await reader.ReadAsync())
             {
                 applications.Add(MapApplication(reader));
@@ -34,7 +36,7 @@ namespace EPPMS.Infrastructure.Repositories
             return applications;
         }
 
-        public async Task<ApplicationDetailsDTO?> GetApplicationByIdAsync(Guid appId)
+        public async Task<ApplicationListResponseDTO?> GetApplicationByIdAsync(Guid appId)
         {
             await using SqlConnection connection = await CreateConnectionAsync();
             await using SqlCommand command = new(StoredProcedureNames.Application.GetById,connection);
@@ -53,11 +55,24 @@ namespace EPPMS.Infrastructure.Repositories
         #region Commands
         public async Task<bool> CreateAsync(ApplicationCreateDTO application)
         {
-            await using SqlConnection connection = await CreateConnectionAsync();
-            await using SqlCommand command = new(StoredProcedureNames.Application.Create,connection);
-            command.CommandType = CommandType.StoredProcedure;
-            AddCreateParameters(command, application);
-            return await command.ExecuteNonQueryAsync() > 0;
+            try
+            {
+                application.AppId = Guid.NewGuid();
+                application.CreatedBy = "MS/rperal15";
+
+                await using SqlConnection connection = await CreateConnectionAsync();
+                await using SqlCommand command = new(StoredProcedureNames.Application.Create, connection);
+
+                command.CommandType = CommandType.StoredProcedure;
+
+                AddCreateParameters(command, application);
+
+                return await command.ExecuteNonQueryAsync() > 0;
+            }
+            catch (SqlException ex)
+            {
+                throw new InvalidOperationException("An error occurred while creating the application.",  ex);
+            }
         }
 
         public async Task<bool> UpdateAsync(ApplicationUpdateDTO application)
@@ -109,13 +124,13 @@ namespace EPPMS.Infrastructure.Repositories
         #endregion
 
         #region Mapping
-        private static ApplicationDetailsDTO MapApplication(SqlDataReader reader)
+        private static ApplicationListResponseDTO MapApplication(SqlDataReader reader)
         {
             int notesOrdinal = reader.GetOrdinal("Notes");
             int updatedByOrdinal = reader.GetOrdinal("UpdatedBy");
             int updatedDateTimeOrdinal = reader.GetOrdinal("UpdatedDateTime");
 
-            return new ApplicationDetailsDTO
+            return new ApplicationListResponseDTO
             {
                 AppId = reader.GetGuid(reader.GetOrdinal("AppId")),
                 ApplicationModule = reader.GetString(reader.GetOrdinal("ApplicationModule")),
