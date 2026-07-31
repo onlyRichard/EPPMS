@@ -1,0 +1,1262 @@
+﻿/* ==========================================================
+   Bugs & Issues Index Page
+========================================================== */
+
+.bug-page {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* ===========================================================
+   Bug Header
+=========================================================== */
+
+.bug-header {
+    margin-bottom: 8px;
+}
+
+    .bug-header .row {
+        min-height: 72px;
+    }
+
+.page-title {
+    margin: 0;
+    color: #071A38;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    margin: 8px 0 0;
+    color: #667085;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.bug-toolbar-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.bug-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.bug-filter-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 18px;
+    background: #FFFFFF;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    color: #101828;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+    .bug-filter-button:hover {
+        background: #F9FAFB;
+        border-color: #98A2B3;
+    }
+
+    .bug-filter-button i {
+        color: #344054;
+    }
+
+.bug-create-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    min-width: 165px;
+    padding: 0 22px;
+    background: #FF6A13;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+    .bug-create-button:hover {
+        background: #E85D0C;
+        color: #FFFFFF;
+    }
+
+
+/* ==========================================================
+   Toolbar
+========================================================== */
+
+.bug-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.bug-toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.bug-toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+/* ==========================================================
+   Search
+========================================================== */
+
+.bug-search {
+    position: relative;
+    width: 340px;
+    max-width: 100%;
+}
+
+    .bug-search i {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #98A2B3;
+        font-size: 15px;
+    }
+
+    .bug-search input {
+        width: 100%;
+        height: 46px;
+        padding: 0 16px 0 42px;
+        border: 1px solid #D0D5DD;
+        border-radius: 10px;
+        background: #FFFFFF;
+        font-size: 14px;
+        color: #101828;
+        transition: .2s;
+    }
+
+        .bug-search input:focus {
+            outline: none;
+            border-color: #0B5FFF;
+            box-shadow: 0 0 0 .15rem rgba(11,95,255,.15);
+        }
+
+
+/* ==========================================================
+   Filter Button
+========================================================== */
+
+.btn-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 46px;
+    padding: 0 18px;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .2s;
+}
+
+    .btn-filter:hover {
+        background: #F9FAFB;
+    }
+
+
+/* ==========================================================
+   More Actions
+========================================================== */
+
+.btn-more-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 46px;
+    padding: 0 18px;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+    .btn-more-actions:hover {
+        background: #F9FAFB;
+    }
+
+
+/* ==========================================================
+   Create Button
+========================================================== */
+
+.btn-create-bug {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 46px;
+    padding: 0 24px;
+    border: none;
+    border-radius: 10px;
+    background: #FF6A13;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .2s;
+}
+
+    .btn-create-bug:hover {
+        background: #E85D0C;
+        color: #FFFFFF;
+    }
+
+    .btn-create-bug:focus,
+    .btn-filter:focus,
+    .btn-more-actions:focus {
+        box-shadow: none;
+    }
+
+
+/* ==========================================================
+   Statistics
+========================================================== */
+
+.bug-statistics {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.bug-stat-card {
+    background: #FFFFFF;
+    border: 1px solid #E4E7EC;
+    border-radius: 16px;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: .2s;
+}
+
+    .bug-stat-card:hover {
+        border-color: #D0D5DD;
+        box-shadow: 0 8px 24px rgba(15,23,42,.06);
+    }
+
+.bug-stat-content h2 {
+    margin: 0;
+    font-size: 30px;
+    color: #071A38;
+    font-weight: 700;
+}
+
+.bug-stat-content span {
+    display: block;
+    margin-top: 8px;
+    color: #667085;
+    font-size: 14px;
+}
+
+.bug-stat-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+    .bug-stat-icon.open {
+        background: #DBEAFE;
+        color: #2563EB;
+    }
+
+    .bug-stat-icon.progress {
+        background: #EDE9FE;
+        color: #7C3AED;
+    }
+
+    .bug-stat-icon.resolved {
+        background: #DCFCE7;
+        color: #16A34A;
+    }
+
+    .bug-stat-icon.critical {
+        background: #FEE2E2;
+        color: #DC2626;
+    }
+
+/* ==========================================================
+   Table Card
+========================================================== */
+
+.bug-table-card {
+    background: #FFFFFF;
+    border: 1px solid #E4E7EC;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(15,23,42,.04);
+}
+
+.bug-table-header {
+    padding: 22px 28px;
+    border-bottom: 1px solid #EAECF0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bug-table-title {
+    margin: 0;
+    color: #071A38;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.bug-table-subtitle {
+    margin-top: 6px;
+    color: #667085;
+    font-size: 13px;
+}
+
+
+/* ==========================================================
+   Table
+========================================================== */
+
+.bug-table {
+    width: 100%;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+    .bug-table thead th {
+        padding: 16px 18px;
+        background: #F9FAFB;
+        border-bottom: 1px solid #EAECF0;
+        color: #475467;
+        font-size: 13px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    .bug-table tbody td {
+        padding: 18px;
+        border-bottom: 1px solid #F2F4F7;
+        vertical-align: middle;
+    }
+
+    .bug-table tbody tr {
+        transition: background .18s ease;
+    }
+
+        .bug-table tbody tr:hover {
+            background: #FCFCFD;
+        }
+
+
+/* ==========================================================
+   Application
+========================================================== */
+
+.application-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.application-name {
+    color: #071A38;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.application-module {
+    color: #667085;
+    font-size: 13px;
+}
+
+
+/* ==========================================================
+   Bug Details
+========================================================== */
+
+.bug-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.bug-title {
+    color: #101828;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.bug-description {
+    color: #667085;
+    font-size: 13px;
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+/* ==========================================================
+   Assignee
+========================================================== */
+
+.assignee-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.assignee-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#2563EB,#1D4ED8);
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.assignee-name {
+    color: #101828;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.assignee-role {
+    margin-top: 2px;
+    color: #667085;
+    font-size: 12px;
+}
+
+
+/* ==========================================================
+   Date
+========================================================== */
+
+.date-primary {
+    color: #101828;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.date-secondary {
+    display: block;
+    margin-top: 2px;
+    color: #98A2B3;
+    font-size: 12px;
+}
+
+
+/* ==========================================================
+   Action Button
+========================================================== */
+
+.btn-action {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #667085;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s ease;
+}
+
+    .btn-action:hover {
+        background: #F9FAFB;
+        border-color: #98A2B3;
+        color: #2563EB;
+    }
+
+    .btn-action:focus {
+        box-shadow: none;
+    }
+
+
+/* ==========================================================
+   Dropdown
+========================================================== */
+
+.dropdown-menu {
+    border: none;
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 12px 32px rgba(16,24,40,.14);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #344054;
+    transition: .15s ease;
+}
+
+    .dropdown-item:hover {
+        background: #F9FAFB;
+    }
+
+.dropdown-divider {
+    margin: 8px 0;
+}
+
+
+/* ==========================================================
+   Empty State
+========================================================== */
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 90px 30px;
+}
+
+    .empty-state i {
+        font-size: 64px;
+        color: #D0D5DD;
+    }
+
+    .empty-state h3 {
+        margin-top: 20px;
+        color: #071A38;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .empty-state p {
+        max-width: 520px;
+        margin-top: 10px;
+        color: #667085;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+
+/* ==========================================================
+   Loading
+========================================================== */
+
+.loading-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+}
+
+.loading-spinner {
+    width: 42px;
+    height: 42px;
+    border: 4px solid #E4E7EC;
+    border-top-color: #2563EB;
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+}
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==========================================================
+   Enterprise Badge System
+========================================================== */
+
+.badge-pill,
+.severity-badge,
+.priority-badge,
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 110px;
+    height: 34px;
+    padding: 0 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+
+/* ==========================================================
+   Severity
+   (Technical Impact)
+========================================================== */
+
+.severity-critical {
+    background: #FEE2E2;
+    color: #B42318;
+}
+
+.severity-high {
+    background: #FFF1E8;
+    color: #C4320A;
+}
+
+.severity-medium {
+    background: #FEF3C7;
+    color: #B54708;
+}
+
+.severity-low {
+    background: #DBEAFE;
+    color: #1D4ED8;
+}
+
+.severity-minor {
+    background: #EFF8FF;
+    color: #026AA2;
+}
+
+.severity-info {
+    background: #F2F4F7;
+    color: #667085;
+}
+
+
+/* ==========================================================
+   Priority
+   (Business Urgency)
+========================================================== */
+
+.priority-critical {
+    background: #FEE2E2;
+    color: #B42318;
+}
+
+.priority-high {
+    background: #FFF1E8;
+    color: #C4320A;
+}
+
+.priority-medium {
+    background: #FEF3C7;
+    color: #B54708;
+}
+
+.priority-low {
+    background: #ECFDF3;
+    color: #027A48;
+}
+
+.priority-none {
+    background: #F2F4F7;
+    color: #667085;
+}
+
+
+/* ==========================================================
+   Status
+   (Workflow)
+========================================================== */
+
+.status-open {
+    background: #EFF8FF;
+    color: #026AA2;
+}
+
+.status-new {
+    background: #EFF8FF;
+    color: #026AA2;
+}
+
+.status-in-progress {
+    background: #EEF4FF;
+    color: #3538CD;
+}
+
+.status-under-review {
+    background: #F4F3FF;
+    color: #5925DC;
+}
+
+.status-testing {
+    background: #F4F3FF;
+    color: #5925DC;
+}
+
+.status-ready-for-testing {
+    background: #F4F3FF;
+    color: #5925DC;
+}
+
+.status-ready-for-deployment {
+    background: #ECFDF3;
+    color: #027A48;
+}
+
+.status-deployed {
+    background: #ECFDF3;
+    color: #027A48;
+}
+
+.status-resolved {
+    background: #ECFDF3;
+    color: #027A48;
+}
+
+.status-completed {
+    background: #ECFDF3;
+    color: #027A48;
+}
+
+.status-on-hold {
+    background: #FFF8E1;
+    color: #B54708;
+}
+
+.status-blocked {
+    background: #FEE4E2;
+    color: #D92D20;
+}
+
+.status-cancelled {
+    background: #F2F4F7;
+    color: #667085;
+}
+
+.status-closed {
+    background: #EAECF0;
+    color: #344054;
+}
+
+.status-rejected {
+    background: #FEE4E2;
+    color: #D92D20;
+}
+
+
+/* ==========================================================
+   Badge Hover
+========================================================== */
+
+.badge-pill:hover,
+.severity-badge:hover,
+.priority-badge:hover,
+.status-badge:hover {
+    filter: brightness(.98);
+    transition: .15s ease;
+}
+
+/* ==========================================================
+   Table Footer
+========================================================== */
+
+.bug-table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px 28px;
+    border-top: 1px solid #EAECF0;
+    background: #FFFFFF;
+}
+
+.footer-summary {
+    color: #667085;
+    font-size: 14px;
+}
+
+    .footer-summary strong {
+        color: #101828;
+        font-weight: 700;
+    }
+
+
+/* ==========================================================
+   Pagination
+========================================================== */
+
+.pagination {
+    display: flex;
+    gap: 8px;
+    margin: 0;
+}
+
+    .pagination .page-item {
+        list-style: none;
+    }
+
+    .pagination .page-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        border: 1px solid #D0D5DD;
+        background: #FFFFFF;
+        color: #475467;
+        font-size: 14px;
+        font-weight: 600;
+        transition: .18s ease;
+    }
+
+        .pagination .page-link:hover {
+            background: #F9FAFB;
+            border-color: #98A2B3;
+            color: #2563EB;
+        }
+
+    .pagination .page-item.active .page-link {
+        background: #2563EB;
+        color: #FFFFFF;
+        border-color: #2563EB;
+    }
+
+    .pagination .page-item.disabled .page-link {
+        background: #F9FAFB;
+        color: #98A2B3;
+        pointer-events: none;
+    }
+
+
+/* ==========================================================
+   Scrollbar
+========================================================== */
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+    .table-responsive::-webkit-scrollbar {
+        height: 10px;
+    }
+
+    .table-responsive::-webkit-scrollbar-track {
+        background: #F2F4F7;
+    }
+
+    .table-responsive::-webkit-scrollbar-thumb {
+        background: #D0D5DD;
+        border-radius: 20px;
+    }
+
+        .table-responsive::-webkit-scrollbar-thumb:hover {
+            background: #98A2B3;
+        }
+
+
+/* ==========================================================
+   Focus States
+========================================================== */
+
+button:focus,
+.btn:focus,
+.page-link:focus,
+.dropdown-item:focus,
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 .15rem rgba(11,95,255,.15);
+}
+
+
+/* ==========================================================
+   Card Animation
+========================================================== */
+
+.bug-table-card,
+.bug-stat-card {
+    transition: box-shadow .25s ease, transform .25s ease;
+}
+
+    .bug-table-card:hover {
+        box-shadow: 0 12px 30px rgba(16,24,40,.06);
+    }
+
+    .bug-stat-card:hover {
+        transform: translateY(-2px);
+    }
+
+
+/* ==========================================================
+   Utility
+========================================================== */
+
+.text-muted-small {
+    color: #98A2B3;
+    font-size: 12px;
+}
+
+.text-truncate-1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.text-truncate-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width:1400px) {
+
+    .bug-statistics {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width:1200px) {
+
+    .bug-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .bug-header-right {
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width:992px) {
+
+    .bug-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .bug-toolbar-left,
+    .bug-toolbar-right {
+        width: 100%;
+    }
+
+    .bug-search {
+        width: 100%;
+    }
+
+    .btn-filter,
+    .btn-more-actions,
+    .btn-create-bug {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .bug-statistics {
+        grid-template-columns: 1fr;
+    }
+
+    .bug-table thead th,
+    .bug-table tbody td {
+        padding: 14px;
+    }
+}
+
+@media (max-width:768px) {
+
+    .bug-header {
+        text-align: center;
+    }
+
+    .bug-header-right {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .bug-table-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .pagination {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width:576px) {
+
+    .bug-page {
+        gap: 20px;
+    }
+
+    .bug-header-left h1 {
+        font-size: 28px;
+    }
+
+    .bug-header-left p {
+        font-size: 14px;
+    }
+
+    .bug-stat-card {
+        padding: 18px;
+    }
+
+    .bug-table {
+        min-width: 1200px;
+    }
+}
+
+
+/* ==========================================================
+   Print
+========================================================== */
+
+@media print {
+
+    .bug-toolbar,
+    .dropdown,
+    .pagination,
+    .bug-table-footer {
+        display: none !important;
+    }
+
+    .bug-table-card {
+        box-shadow: none;
+        border: none;
+    }
+
+    .bug-table {
+        width: 100%;
+    }
+}
+
+/* ==========================================================
+   Statistics
+========================================================== */
+
+.statistics-section {
+    margin: 20px 0 28px;
+}
+
+.statistics-section .row {
+    row-gap: 20px;
+}
+
+.stat-card {
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    height: 120px;
+
+    padding: 22px;
+
+    background: #FFFFFF;
+
+    border: 1px solid #E4E7EC;
+
+    border-radius: 16px;
+
+    box-shadow: 0 2px 10px rgba(15,23,42,.04);
+
+    transition: all .20s ease;
+}
+
+.stat-card:hover {
+
+    transform: translateY(-2px);
+
+    border-color: #D0D5DD;
+
+    box-shadow: 0 10px 28px rgba(15,23,42,.08);
+}
+
+
+/* ==========================================================
+   Icon
+========================================================== */
+
+.stat-icon {
+
+    width: 56px;
+    height: 56px;
+
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    font-size: 24px;
+}
+
+
+/* Total */
+
+.stat-primary {
+
+    background: #EEF4FF;
+    color: #2563EB;
+}
+
+
+/* Healthy */
+
+.stat-success {
+
+    background: #ECFDF3;
+    color: #16A34A;
+}
+
+
+/* Warning */
+
+.stat-warning {
+
+    background: #FEF3C7;
+    color: #D97706;
+}
+
+
+/* Critical */
+
+.stat-danger {
+
+    background: #FEE2E2;
+    color: #DC2626;
+}
+
+
+/* Updated */
+
+.stat-info {
+
+    background: #EEF2FF;
+    color: #4338CA;
+}
+
+
+/* No Module */
+
+.stat-secondary {
+
+    background: #F3F4F6;
+    color: #6B7280;
+}
+
+
+/* ==========================================================
+   Content
+========================================================== */
+
+.stat-content {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-width: 0;
+
+    flex: 1;
+}
+
+.stat-title {
+
+    margin: 0;
+
+    color: #667085;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+.stat-value {
+
+    margin-top: 8px;
+
+    color: #071A38;
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width:1200px){
+
+    .stat-card{
+
+        height:110px;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .stat-card{
+
+        height:auto;
+
+        padding:18px;
+    }
+
+    .stat-icon{
+
+        width:48px;
+        height:48px;
+
+        font-size:20px;
+    }
+
+    .stat-value{
+
+        font-size:28px;
+    }
+
+}

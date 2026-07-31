@@ -1,0 +1,826 @@
+﻿@page
+@model EPPMS.Portal.Areas.Admin.Pages.Bug.IndexModel
+
+@{
+    ViewData["Title"] = "Bugs & Issues";
+}
+
+@section Styles
+{
+    <link href="~/css/admin/bug/bug-index.css" rel="stylesheet" asp-append-version="true" />
+}
+
+<div class="bugs-page">
+
+    <!-- ==========================================
+         Bug Header
+    =========================================== -->
+
+    <section class="bug-header">
+
+        <div class="row align-items-center g-4">
+
+            <!-- Left -->
+            <div class="col-lg">
+                <h1 class="page-title">
+                    Bugs &amp; Issues
+                </h1>
+
+                <p class="page-subtitle">
+                    Track and manage reported bugs and issues across the system.
+                </p>
+            </div>
+
+            <!-- Right -->
+            <div class="col-lg-auto">
+
+                <div class="bug-toolbar">
+
+                   @*  <!-- Search -->
+                    <div class="bug-search">
+
+                        <input type="text"
+                               class="form-control bug-search-input"
+                               placeholder="Search bugs..." />
+
+                        <button type="button"
+                                class="bug-search-button">
+                            <i class="bi bi-search"></i>
+                        </button>
+
+                    </div> *@
+
+                    <!-- Health Filter -->
+                    <div class="dropdown">
+
+                        <button class="btn bug-filter-button dropdown-toggle"
+                                type="button"
+                                data-bs-toggle="dropdown">
+
+                            <i class="bi bi-funnel"></i>
+
+                            Health Filter
+
+                        </button>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    All Bugs
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Healthy
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Warning
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Critical
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <!-- More Actions -->
+                    <div class="dropdown">
+
+                        <button class="btn bug-filter-button dropdown-toggle"
+                                type="button"
+                                data-bs-toggle="dropdown">
+
+                            More Actions
+
+                        </button>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Export
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Import
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <!-- New Bug -->
+                    <a asp-page="./Create"
+                           class="btn bug-create-button">
+
+                        <i class="bi bi-plus-lg"></i>
+
+                        New Bug
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+         Statistics
+    =========================================== -->
+
+    <section class="statistics-section">
+
+        <div class="row g-3">
+
+            <!-- Total Bugs -->
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+
+                <article class="stat-card">
+
+                    <div class="stat-icon stat-primary">
+
+                        <i class="bi bi-grid"></i>
+
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3 class="stat-title">
+
+                            Total Bugs
+
+                        </h3>
+
+                        <div class="stat-value">
+
+                            @Model.Bug.Count
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <!-- Healthy -->
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+
+                <article class="stat-card">
+
+                    <div class="stat-icon stat-success">
+
+                        <i class="bi bi-heart-pulse"></i>
+
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3 class="stat-title">
+
+                            Healthy Bugs
+
+                        </h3>
+
+                        <div class="stat-value">
+
+                           @*  @Model.Bug.Count(x =>
+                                x.Status == "Resolved" ||
+                                x.Status == "Closed") *@
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <!-- Warning -->
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+
+                <article class="stat-card">
+
+                    <div class="stat-icon stat-warning">
+
+                        <i class="bi bi-exclamation-triangle"></i>
+
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3 class="stat-title">
+
+                            Warning Bugs
+
+                        </h3>
+
+                        <div class="stat-value">
+
+                           @*  @Model.Bug.Count(x =>
+                                x.Severity == "Medium") *@
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <!-- Critical -->
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+
+                <article class="stat-card">
+
+                    <div class="stat-icon stat-danger">
+
+                        <i class="bi bi-shield-exclamation"></i>
+
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3 class="stat-title">
+
+                            Critical Bugs
+
+                        </h3>
+
+                        <div class="stat-value">
+
+                            @* @Model.Bug.Count(x =>
+                                x.Severity == "Critical") *@
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <!-- Recently Updated -->
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+
+                <article class="stat-card">
+
+                    <div class="stat-icon stat-info">
+
+                        <i class="bi bi-clock-history"></i>
+
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3 class="stat-title">
+
+                            Recently Updated
+
+                        </h3>
+
+                        <div class="stat-value">
+
+                           @*  @Model.Bug.Count(x =>
+                                x.UpdatedDateTime.Date == DateTime.Today) *@
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <!-- Without Modules -->
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+
+                <article class="stat-card">
+
+                    <div class="stat-icon stat-secondary">
+
+                        <i class="bi bi-box"></i>
+
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3 class="stat-title">
+
+                            Without Modules
+
+                        </h3>
+
+                        <div class="stat-value">
+
+                            @* @Model.Bug.Count(x =>
+                                string.IsNullOrWhiteSpace(x.ApplicationModule)) *@
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+        <!-- ==========================================
+         Bugs Table
+    =========================================== -->
+
+    <section class="bug-table-section">
+
+        <div class="card bug-table-card">
+
+            <div class="card-header bug-table-header">
+
+                <div>
+
+                    <h5 class="table-title">
+                        Bug List
+                    </h5>
+
+                    <span class="table-subtitle">
+                        Showing @Model.Bug.Count bug(s)
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="card-body p-0">
+
+                @if (!Model.Bug.Any())
+                {
+                    <div class="empty-state">
+
+                        <i class="bi bi-bug empty-icon"></i>
+
+                        <h4>
+                            No Bugs Found
+                        </h4>
+
+                        <p>
+                            There are currently no bugs available.
+                        </p>
+
+                        <a asp-page="./Create"
+                           class="btn bug-create-button">
+
+                            <i class="bi bi-plus-lg"></i>
+
+                            Report First Bug
+
+                        </a>
+
+                    </div>
+                }
+                else
+                {
+                    <div class="table-responsive">
+
+                        <table class="table bug-table align-middle">
+                            <thead>
+
+                                <tr>
+
+                                    <th style="min-width:220px;">
+                                        Application
+                                    </th>
+
+                                    <th style="min-width:320px;">
+                                        Bug Details
+                                    </th>
+
+                                    <th style="width:120px;">
+                                        Severity
+                                    </th>
+
+                                    <th style="width:120px;">
+                                        Priority
+                                    </th>
+
+                                    <th style="width:130px;">
+                                        Status
+                                    </th>
+@* 
+                                    <th style="min-width:180px;">
+                                        Assigned To
+                                    </th>
+
+                                    <th style="width:150px;">
+                                        Reported Date
+                                    </th> *@
+
+                                    <th style="width:170px;">
+                                        Updated Date/Time
+                                    </th>
+
+                                    <th style="width:70px;"
+                                        class="text-center">
+                                        Actions
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                @foreach (var item in Model.Bug)
+                                {
+                                    var assignedTo = item.AssignedTo ?? string.Empty;
+
+                                    var initials = string.Empty;
+
+                                    if (!string.IsNullOrWhiteSpace(assignedTo))
+                                    {
+                                        initials = string.Concat(
+                                            assignedTo
+                                                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                                                .Take(2)
+                                                .Select(x => x[0])
+                                        ).ToUpper();
+                                    }
+
+                                    <tr>
+
+                                        <!-- Application -->
+
+                                        <td>
+                                            <div class="application-details">
+
+                                                <div class="application-module">
+                                                    @item.ApplicationModule
+                                                </div>
+
+                                            </div>
+                                        </td>
+
+                                        <!-- Bug Details -->
+
+                                        <td>
+                                            <div class="bug-details">
+
+                                                <div class="bug-title">
+                                                    @item.BugTitle
+                                                </div>
+
+                                                <div class="bug-description">
+                                                    @item.Description
+                                                </div>
+
+                                            </div>
+                                        </td>
+
+                                        <!-- Severity -->
+
+                                        <td>
+                                            <span class="severity-badge severity-@item.Severity.Replace(" ", "-").ToLowerInvariant()">
+                                                @item.Severity
+                                            </span>
+                                        </td>
+
+                                        <!-- Priority -->
+
+                                        <td>
+                                            <span class="priority-badge priority-@item.Priority.Replace(" ", "-").ToLowerInvariant()">
+                                                @item.Priority
+                                            </span>
+                                        </td>
+
+                                        <!-- Status -->
+
+                                        <td>
+                                            <span class="status-badge status-@item.Status.Replace(" ", "-").ToLowerInvariant()">
+                                                @item.Status
+                                            </span>
+                                        </td>
+
+                                        <!-- Assigned To -->
+
+                                        @* <td>
+
+                                            <div class="assignee-container">
+
+                                                <div class="assignee-avatar">
+                                                    @initials
+                                                </div>
+
+                                                <div>
+
+                                                    <div class="assignee-name">
+                                                        @(string.IsNullOrWhiteSpace(assignedTo) ? "-" : assignedTo)
+                                                    </div>
+
+                                                    <div class="assignee-role">
+                                                        Developer
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+                                        <!-- Reported Date -->
+
+                                        <td>
+                                            @item.ReportedDate.ToString("MMM dd, yyyy")
+                                        </td> *@
+
+                                        <!-- Updated -->
+
+                                        <td>
+
+                                            @if (item.UpdatedDateTime.HasValue)
+                                            {
+                                                @item.UpdatedDateTime.Value.ToString("MMM dd, yyyy")
+
+                                                <br />
+
+                                                <small class="text-muted">
+                                                    @item.UpdatedDateTime.Value.ToString("hh:mm tt")
+                                                </small>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted">—</span>
+                                            }
+
+                                        </td>
+
+                                        <!-- Actions -->
+
+                                        <td class="text-center">
+
+                                            <div class="dropdown">
+
+                                                <button class="btn btn-action"
+                                                        type="button"
+                                                        data-bs-toggle="dropdown"
+                                                        aria-expanded="false">
+
+                                                    <i class="bi bi-three-dots-vertical"></i>
+
+                                                </button>
+
+                                                <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                               asp-page="./Details"
+                                                               asp-route-id="@item.BugId">
+
+                                                            <i class="bi bi-eye me-2"></i>
+
+                                                            View Details
+
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                               asp-page="./Edit"
+                                                               asp-route-id="@item.BugId">
+
+                                                            <i class="bi bi-pencil-square me-2"></i>
+
+                                                            Edit Bug
+
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                               href="#">
+
+                                                            <i class="bi bi-arrow-repeat me-2"></i>
+
+                                                            Update Status
+
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <hr class="dropdown-divider" />
+                                                    </li>
+
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                               href="#">
+
+                                                            <i class="bi bi-person-check me-2"></i>
+
+                                                            Assign Bug
+
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                               href="#">
+
+                                                            <i class="bi bi-check-circle me-2"></i>
+
+                                                            Mark as Resolved
+
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                               href="#">
+
+                                                            <i class="bi bi-upload me-2"></i>
+
+                                                            Deploy Fix
+
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <hr class="dropdown-divider" />
+                                                    </li>
+
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                               href="#">
+
+                                                            <i class="bi bi-list-task me-2"></i>
+
+                                                            View Related Tasks
+
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                               href="#">
+
+                                                            <i class="bi bi-clock-history me-2"></i>
+
+                                                            Audit Trail
+
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <hr class="dropdown-divider" />
+                                                    </li>
+
+                                                    <li>
+                                                        <a class="dropdown-item text-danger"
+                                                               href="#">
+
+                                                            <i class="bi bi-trash me-2"></i>
+
+                                                            Delete Bug
+
+                                                        </a>
+                                                    </li>
+
+                                                </ul>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                }
+
+            </div>
+
+            <!-- ==========================================
+                 Footer
+            =========================================== -->
+
+            <div class="card-footer bug-table-footer">
+
+                <div class="footer-left">
+
+                    Showing
+
+                    <strong>
+
+                        @Model.Bug.Count
+
+                    </strong>
+
+                    bug(s)
+
+                </div>
+
+                <div class="footer-right">
+
+                    <nav>
+
+                        <ul class="pagination pagination-sm mb-0">
+
+                            <li class="page-item disabled">
+
+                                <a class="page-link"
+                                       href="#">
+
+                                    Previous
+
+                                </a>
+
+                            </li>
+
+                            <li class="page-item active">
+
+                                <a class="page-link"
+                                       href="#">
+
+                                    1
+
+                                </a>
+
+                            </li>
+
+                            <li class="page-item">
+
+                                <a class="page-link"
+                                       href="#">
+
+                                    2
+
+                                </a>
+
+                            </li>
+
+                            <li class="page-item">
+
+                                <a class="page-link"
+                                       href="#">
+
+                                    3
+
+                                </a>
+
+                            </li>
+
+                            <li class="page-item">
+
+                                <a class="page-link"
+                                       href="#">
+
+                                    Next
+
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+@section Scripts
+{
+    @* <script src="~/js/admin/bug/bug-index.js"
+            asp-append-version="true">
+    </script> *@
+}

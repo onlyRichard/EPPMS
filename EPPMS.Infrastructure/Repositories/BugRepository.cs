@@ -73,6 +73,8 @@ namespace EPPMS.Infrastructure.Repositories
 
         public async Task<bool> CreateAsync(BugCreateDTO bug)
         {
+            bug.CreatedBy = "MS/rperal15";
+            bug.BugId = Guid.NewGuid();
             await using SqlConnection connection = await CreateConnectionAsync();
             await using SqlCommand command = new(StoredProcedureNames.Bug.Create, connection);
             command.CommandType = CommandType.StoredProcedure;
@@ -189,8 +191,8 @@ namespace EPPMS.Infrastructure.Repositories
                 BugTitle = reader.GetString(reader.GetOrdinal("BugTitle")),
                 Description = reader.IsDBNull(descriptionOrdinal) ? null : reader.GetString(descriptionOrdinal),
                 NumberOfUsersImpacted = reader.IsDBNull(numberOfUsersImpactedOrdinal) ? null : reader.GetInt32(numberOfUsersImpactedOrdinal),
-                ReportedBy = reader.GetString(reader.GetOrdinal("ReportedBy")),
-                ReportedDate = reader.GetDateTime(reader.GetOrdinal("ReportedDate")),
+                ReportedBy =  reader.GetString(reader.GetOrdinal("ReportedBy")),
+                ReportedDate =  reader.GetDateTime(reader.GetOrdinal("ReportedDate")),
                 SeverityId = reader.GetInt32(reader.GetOrdinal("SeverityId")),
                 Severity = reader.GetString(reader.GetOrdinal("Severity")),
                 PriorityId = reader.GetInt32(reader.GetOrdinal("PriorityId")),

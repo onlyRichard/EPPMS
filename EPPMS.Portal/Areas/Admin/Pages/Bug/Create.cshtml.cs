@@ -1,33 +1,36 @@
-using EPPMS.Application.DTOs.Feature;
+using EPPMS.Application.DTOs.Bug;
 using EPPMS.Application.DTOs.Lookup;
 using EPPMS.Application.Interfaces.Services;
-using EPPMS.Application.Services;
-using EPPMS.Portal.ViewModels.Feature;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace EPPMS.Portal.Areas.Admin.Pages.Features;
+namespace EPPMS.Portal.Areas.Admin.Pages.Bug;
 
 public class CreateModel : PageModel
 {
     private readonly ILookupService _lookupService;
-    private readonly IFeatureService _featureService;
+    private readonly IBugService _bugService;
 
-    public CreateModel(ILookupService lookupService, IFeatureService featureService)
+    public CreateModel(
+        ILookupService lookupService,
+        IBugService bugService)
     {
         ArgumentNullException.ThrowIfNull(lookupService);
-        _featureService = featureService;
+        ArgumentNullException.ThrowIfNull(bugService);
+
         _lookupService = lookupService;
+        _bugService = bugService;
     }
 
     [BindProperty]
-    public FeatureCreateDTO Feature { get; set; } = new();
+    public BugCreateDTO Bug { get; set; } = new();
+
     public IReadOnlyList<ApplicationLookupResponseDTO> Applications { get; private set; } = [];
-    public IReadOnlyList<LookupResponseDTO> RequestTypes { get; private set; } = [];
+    public IReadOnlyList<LookupResponseDTO> Severities { get; private set; } = [];
     public IReadOnlyList<LookupResponseDTO> Priorities { get; private set; } = [];
-    public IReadOnlyList<LookupResponseDTO> Complexities { get; private set; } = [];
     public IReadOnlyList<LookupResponseDTO> Statuses { get; private set; } = [];
-    public IReadOnlyList<LookupResponseDTO> Requesters { get; private set; } = [];
+    public IReadOnlyList<LookupResponseDTO> ReleaseStatuses { get; private set; } = [];
+    public IReadOnlyList<LookupResponseDTO> TestingStatuses { get; private set; } = [];
 
     public async Task OnGetAsync(CancellationToken cancellationToken)
     {
@@ -44,15 +47,15 @@ public class CreateModel : PageModel
 
         try
         {
-            await _featureService.CreateFeatureAsync(Feature);
+            await _bugService.CreateBugAsync(Bug);
 
-            TempData["Success"] = "Application created successfully.";
+            TempData["Success"] = "Bug created successfully.";
 
             return RedirectToPage("./Index");
         }
         catch (InvalidOperationException ex)
         {
-            TempData["Error"] = ex.InnerException.Message;
+            TempData["Error"] = ex.InnerException?.Message ?? ex.Message;
 
             await LoadLookupsAsync(cancellationToken);
 
@@ -63,11 +66,15 @@ public class CreateModel : PageModel
     private async Task LoadLookupsAsync(CancellationToken cancellationToken)
     {
         Applications = await _lookupService.GetApplicationAsync(cancellationToken);
-        RequestTypes = await _lookupService.GetRequestTypesAsync(cancellationToken);
+
+        Severities = await _lookupService.GetSeveritiesAsync(cancellationToken);
+
         Priorities = await _lookupService.GetPrioritiesAsync(cancellationToken);
-        Complexities = await _lookupService.GetComplexitiesAsync(cancellationToken);
+
         Statuses = await _lookupService.GetStatusesAsync(cancellationToken);
 
-        // Requesters = await _userService.GetLookupAsync(cancellationToken);
+        ReleaseStatuses = await _lookupService.GetReleaseStatusesAsync(cancellationToken);
+
+        TestingStatuses = await _lookupService.GetTestingStatusesAsync(cancellationToken);
     }
 }
