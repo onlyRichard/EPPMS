@@ -12,7 +12,7 @@ namespace EPPMS.Application.DTOs.Bug
         public string? Description { get; set; }
         public int? NumberOfUsersImpacted { get; set; }
         public string ReportedBy { get; set; } = string.Empty;
-        public DateTime ReportedDate { get; set; }
+        public DateTime? ReportedDate { get; set; }
         public int SeverityId { get; set; }
         public int PriorityId { get; set; }
         public string? UserBusinessImpact { get; set; }
