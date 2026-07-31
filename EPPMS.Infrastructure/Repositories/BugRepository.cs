@@ -73,6 +73,8 @@ namespace EPPMS.Infrastructure.Repositories
 
         public async Task<bool> CreateAsync(BugCreateDTO bug)
         {
+            bug.CreatedBy = "MS/rperal15";
+            bug.BugId = Guid.NewGuid();
             await using SqlConnection connection = await CreateConnectionAsync();
             await using SqlCommand command = new(StoredProcedureNames.Bug.Create, connection);
             command.CommandType = CommandType.StoredProcedure;
