@@ -1,0 +1,383 @@
+﻿/* ==========================================================
+   Bug Create Page
+========================================================== */
+
+.bug-create-page {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+/* ==========================================================
+   Header
+========================================================== */
+
+.bug-create-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.bug-create-title {
+    flex: 1;
+}
+
+.page-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0B5FFF;
+    text-decoration: none;
+    transition: color .2s ease;
+}
+
+    .page-back-link:hover {
+        color: #0846C2;
+        text-decoration: none;
+    }
+
+.page-title {
+    margin: 0;
+    color: #071A38;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    margin-top: 10px;
+    margin-bottom: 0;
+    color: #667085;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ==========================================================
+   Header Buttons
+========================================================== */
+
+.bug-create-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-save-bug {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FF6A13;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    padding: 11px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all .2s ease;
+}
+
+    .btn-save-bug:hover {
+        background: #E85D0C;
+        color: #FFFFFF;
+    }
+
+    .btn-save-bug:focus {
+        box-shadow: 0 0 0 .2rem rgba(11,95,255,.15);
+    }
+
+/* ==========================================================
+   Cards
+========================================================== */
+
+.content-card {
+    background: #FFFFFF;
+    border: 1px solid #E4E7EC;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(16,24,40,.04);
+}
+
+.card-section-title {
+    margin: 0 0 24px;
+    color: #071A38;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* ==========================================================
+   Form Labels
+========================================================== */
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 8px;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.required {
+    color: #D92D20;
+}
+
+/* ==========================================================
+   Textboxes / Dropdowns / Textareas
+========================================================== */
+
+.form-control,
+.form-select {
+    height: 46px;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #101828;
+    font-size: 14px;
+    transition: all .2s ease;
+    box-shadow: none;
+}
+
+    .form-control::placeholder {
+        color: #98A2B3;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #0B5FFF;
+        box-shadow: 0 0 0 .20rem rgba(11,95,255,.15);
+    }
+
+/* ==========================================================
+   Textareas
+========================================================== */
+
+textarea.form-control {
+    height: auto;
+    min-height: 110px;
+    resize: vertical;
+}
+
+/* ==========================================================
+   Date Inputs
+========================================================== */
+
+input[type="date"].form-control {
+    cursor: pointer;
+}
+
+/* ==========================================================
+   Number Inputs
+========================================================== */
+
+input[type="number"].form-control {
+    text-align: left;
+}
+
+/* Remove spinner (Chrome / Edge) */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    margin: 0;
+}
+
+/* ==========================================================
+   Disabled Controls
+========================================================== */
+
+.form-control:disabled,
+.form-select:disabled {
+    background: #F9FAFB;
+    color: #98A2B3;
+    opacity: 1;
+}
+
+/* ==========================================================
+   Validation
+========================================================== */
+
+.text-danger {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* ==========================================================
+   Character Counter
+========================================================== */
+
+.text-muted {
+    font-size: 12px;
+    color: #667085 !important;
+}
+
+.char-count {
+    font-weight: 600;
+}
+
+/* ==========================================================
+   Validation Summary
+========================================================== */
+
+.validation-summary-errors {
+    background: #FEF3F2;
+    border: 1px solid #FDA29B;
+    border-radius: 10px;
+    padding: 16px;
+    color: #B42318;
+    margin-bottom: 24px;
+}
+
+    .validation-summary-errors ul {
+        margin: 0;
+        padding-left: 18px;
+    }
+
+.validation-summary-valid {
+    display: none;
+}
+
+
+/* ==========================================================
+   Form Labels
+========================================================== */
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 8px;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.required {
+    color: #D92D20;
+}
+
+/* ==========================================================
+   Textboxes / Dropdowns / Textareas
+========================================================== */
+
+.form-control,
+.form-select {
+    height: 46px;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #101828;
+    font-size: 14px;
+    transition: all .2s ease;
+    box-shadow: none;
+}
+
+    .form-control::placeholder {
+        color: #98A2B3;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #0B5FFF;
+        box-shadow: 0 0 0 .20rem rgba(11,95,255,.15);
+    }
+
+/* ==========================================================
+   Textareas
+========================================================== */
+
+textarea.form-control {
+    height: auto;
+    min-height: 110px;
+    resize: vertical;
+}
+
+/* ==========================================================
+   Date Inputs
+========================================================== */
+
+input[type="date"].form-control {
+    cursor: pointer;
+}
+
+/* ==========================================================
+   Number Inputs
+========================================================== */
+
+input[type="number"].form-control {
+    text-align: left;
+}
+
+/* Remove spinner (Chrome / Edge) */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    margin: 0;
+}
+
+/* ==========================================================
+   Disabled Controls
+========================================================== */
+
+.form-control:disabled,
+.form-select:disabled {
+    background: #F9FAFB;
+    color: #98A2B3;
+    opacity: 1;
+}
+
+/* ==========================================================
+   Validation
+========================================================== */
+
+.text-danger {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* ==========================================================
+   Character Counter
+========================================================== */
+
+.text-muted {
+    font-size: 12px;
+    color: #667085 !important;
+}
+
+.char-count {
+    font-weight: 600;
+}
+
+/* ==========================================================
+   Validation Summary
+========================================================== */
+
+.validation-summary-errors {
+    background: #FEF3F2;
+    border: 1px solid #FDA29B;
+    border-radius: 10px;
+    padding: 16px;
+    color: #B42318;
+    margin-bottom: 24px;
+}
+
+    .validation-summary-errors ul {
+        margin: 0;
+        padding-left: 18px;
+    }
+
+.validation-summary-valid {
+    display: none;
+}
+
+.g-4, .gy-4 {
+    --bs-gutter-y: 0.5rem;
+}

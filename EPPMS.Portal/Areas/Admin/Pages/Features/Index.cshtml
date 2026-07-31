@@ -31,7 +31,7 @@
                 <div class="feature-toolbar-container">
                     <div class="feature-toolbar">
                         <!-- Search -->
-                        <div class="feature-search">
+                        @* <div class="feature-search">
                             <input type="text"
                                    class="form-control feature-search-input"
                                    placeholder="Search features..." />
@@ -39,7 +39,7 @@
                                     class="feature-search-button">
                                 <i class="bi bi-search"></i>
                             </button>
-                        </div>
+                        </div> *@
 
                         <!-- Status -->
                         <div class="dropdown">
@@ -385,45 +385,45 @@
                             @foreach (var feature in Model.Features)
                             {
                                 <tr>
-                                   @*  <!-- Feature Id -->
-                                    <td class="text-center">
-                                        <span class="feature-id">
-                                            @feature.FeatureId.ToString()[..8].ToUpper()
-                                        </span>
-                                    </td> *@
+
                                     <!-- Title -->
                                     <td>
                                         <div class="feature-title">
                                             @feature.Title
                                         </div>
                                     </td>
+
                                     <!-- Application -->
                                     <td class="text-center">
                                         @feature.ApplicationModule
                                     </td>
+
                                     <!-- Priority -->
                                     <td class="text-center">
-                                        <span class="feature-priority-badge @feature.Priority.Replace(" ", "-").ToLowerInvariant()">
+                                        <span class="feature-priority-badge priority-@feature.Priority.Replace(" ", "-").ToLowerInvariant()">
                                             @feature.Priority
                                         </span>
                                     </td>
+
                                     <!-- Status -->
                                     <td class="text-center">
-                                        <span class="feature-status-badge @feature.Status.Replace(" ", "-").ToLowerInvariant()">
+                                        <span class="feature-status-badge status-@feature.Status.Replace(" ", "-").ToLowerInvariant()">
                                             @feature.Status
                                         </span>
                                     </td>
 
                                     <!-- Complexity -->
                                     <td class="text-center">
-                                        <span class="feature-complexity-badge @feature.Complexity.Replace(" ", "-").ToLowerInvariant()">
+                                        <span class="feature-complexity-badge complexity-@feature.Complexity.Replace(" ", "-").ToLowerInvariant()">
                                             @feature.Complexity
                                         </span>
                                     </td>
+
                                     <!-- Request Type -->
                                     <td class="text-center">
                                         @feature.RequestType
                                     </td>
+
                                     <!-- Target Release -->
                                     <td class="text-center">
                                         @if (feature.TargetRelease.HasValue)
@@ -435,6 +435,7 @@
                                             <span class="text-muted">—</span>
                                         }
                                     </td>
+
                                     <!-- Date Raised -->
                                     <td class="text-center">
                                         @feature.DateRaised.ToString("MMM dd, yyyy")
@@ -442,64 +443,83 @@
 
                                     <!-- Actions -->
                                     <td class="text-center">
+
                                         <div class="dropdown">
+
                                             <button class="btn feature-action-button"
                                                     type="button"
-                                                    data-bs-toggle="dropdown">
+                                                    data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+
                                                 <i class="bi bi-three-dots-vertical"></i>
+
                                             </button>
+
                                             <ul class="dropdown-menu dropdown-menu-end">
+
                                                 <li>
-                                                    <a class="dropdown-item"  href="#">
+                                                    <a class="dropdown-item" href="#">
                                                         <i class="bi bi-eye me-2"></i>
                                                         View Details
                                                     </a>
                                                 </li>
+
                                                 <li>
                                                     <a class="dropdown-item" href="#">
                                                         <i class="bi bi-pencil-square me-2"></i>
                                                         Edit Feature
                                                     </a>
                                                 </li>
+
                                                 <li>
                                                     <a class="dropdown-item" href="#">
                                                         <i class="bi bi-arrow-repeat me-2"></i>
                                                         Update Status
                                                     </a>
                                                 </li>
+
                                                 <li>
                                                     <hr class="dropdown-divider" />
                                                 </li>
+
                                                 <li>
                                                     <a class="dropdown-item" href="#">
                                                         <i class="bi bi-list-task me-2"></i>
                                                         View Tasks
                                                     </a>
                                                 </li>
+
                                                 <li>
-                                                    <a class="dropdown-item"  href="#">
+                                                    <a class="dropdown-item" href="#">
                                                         <i class="bi bi-bug me-2"></i>
                                                         View Related Bugs
                                                     </a>
                                                 </li>
+
                                                 <li>
-                                                    <a class="dropdown-item"  href="#">
+                                                    <a class="dropdown-item" href="#">
                                                         <i class="bi bi-clock-history me-2"></i>
                                                         Audit Trail
                                                     </a>
                                                 </li>
+
                                                 <li>
                                                     <hr class="dropdown-divider" />
                                                 </li>
+
                                                 <li>
-                                                    <a class="dropdown-item text-danger"  href="#">
+                                                    <a class="dropdown-item text-danger" href="#">
                                                         <i class="bi bi-trash me-2"></i>
                                                         Delete Feature
                                                     </a>
                                                 </li>
+
                                             </ul>
+
                                         </div>
+
                                     </td>
+
                                 </tr>
                             }
                         </tbody>

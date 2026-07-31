@@ -55,7 +55,7 @@ public static class AdminNavigation
             Title = "Bugs & Issues",
             Icon = "bi-bug",
             Area = "Admin",
-            Route = "/Bugs/Index"
+            Route = "/Bug/Index"
         },
 
         new()

@@ -1,5 +1,5 @@
 ﻿@page
-@model EPPMS.Portal.Areas.Admin.Pages.Bugs.IndexModel
+@model EPPMS.Portal.Areas.Admin.Pages.Bug.IndexModel
 
 @{
     ViewData["Title"] = "Bugs & Issues";
@@ -18,12 +18,10 @@
 
     <section class="bug-header">
 
-        <div class="row align-items-center">
+        <div class="row align-items-center g-4">
 
             <!-- Left -->
-
-            <div class="col-xl-5 col-lg-12">
-
+            <div class="col-lg">
                 <h1 class="page-title">
                     Bugs &amp; Issues
                 </h1>
@@ -31,130 +29,108 @@
                 <p class="page-subtitle">
                     Track and manage reported bugs and issues across the system.
                 </p>
-
             </div>
 
             <!-- Right -->
+            <div class="col-lg-auto">
 
-            <div class="col-xl-7 col-lg-12">
+                <div class="bug-toolbar">
 
-                <div class="bug-toolbar-container">
+                   @*  <!-- Search -->
+                    <div class="bug-search">
 
-                    <div class="bug-toolbar">
+                        <input type="text"
+                               class="form-control bug-search-input"
+                               placeholder="Search bugs..." />
 
-                        <!-- Search -->
+                        <button type="button"
+                                class="bug-search-button">
+                            <i class="bi bi-search"></i>
+                        </button>
 
-                        <div class="bug-search">
+                    </div> *@
 
-                            <input type="text"
-                                   class="form-control bug-search-input"
-                                   placeholder="Search bugs..." />
+                    <!-- Health Filter -->
+                    <div class="dropdown">
 
-                            <button type="button"
-                                    class="bug-search-button">
+                        <button class="btn bug-filter-button dropdown-toggle"
+                                type="button"
+                                data-bs-toggle="dropdown">
 
-                                <i class="bi bi-search"></i>
+                            <i class="bi bi-funnel"></i>
 
-                            </button>
+                            Health Filter
 
-                        </div>
+                        </button>
 
-                        <!-- Health Filter -->
+                        <ul class="dropdown-menu dropdown-menu-end">
 
-                        <div class="dropdown">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    All Bugs
+                                </a>
+                            </li>
 
-                            <button class="btn bug-filter-button dropdown-toggle"
-                                    type="button"
-                                    data-bs-toggle="dropdown">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Healthy
+                                </a>
+                            </li>
 
-                                <i class="bi bi-funnel"></i>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Warning
+                                </a>
+                            </li>
 
-                                Health Filter
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Critical
+                                </a>
+                            </li>
 
-                            </button>
-
-                            <ul class="dropdown-menu dropdown-menu-end">
-
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        All Bugs
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        Healthy
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        Warning
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        Critical
-                                    </a>
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-                        <!-- More Actions -->
-
-                        <div class="dropdown">
-
-                            <button class="btn bug-filter-button dropdown-toggle"
-                                    type="button"
-                                    data-bs-toggle="dropdown">
-
-                                More Actions
-
-                            </button>
-
-                            <ul class="dropdown-menu dropdown-menu-end">
-
-                                <li>
-
-                                    <a class="dropdown-item"
-                                           href="#">
-
-                                        Export
-
-                                    </a>
-
-                                </li>
-
-                                <li>
-
-                                    <a class="dropdown-item"
-                                           href="#">
-
-                                        Import
-
-                                    </a>
-
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-                        <!-- New Bug -->
-
-                        <a asp-page="./Create"
-                               class="btn bug-create-button">
-
-                            <i class="bi bi-plus-lg"></i>
-
-                            New Bug
-
-                        </a>
+                        </ul>
 
                     </div>
+
+                    <!-- More Actions -->
+                    <div class="dropdown">
+
+                        <button class="btn bug-filter-button dropdown-toggle"
+                                type="button"
+                                data-bs-toggle="dropdown">
+
+                            More Actions
+
+                        </button>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Export
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Import
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <!-- New Bug -->
+                    <a asp-page="./Create"
+                           class="btn bug-create-button">
+
+                        <i class="bi bi-plus-lg"></i>
+
+                        New Bug
+
+                    </a>
 
                 </div>
 
@@ -429,25 +405,16 @@
                     <div class="table-responsive">
 
                         <table class="table bug-table align-middle">
-
                             <thead>
 
                                 <tr>
 
-                                    <th style="width:70px;">
-                                        #
-                                    </th>
-
-                                    <th style="min-width:280px;">
-                                        Bug
-                                    </th>
-
-                                    <th style="min-width:160px;">
+                                    <th style="min-width:220px;">
                                         Application
                                     </th>
 
-                                    <th style="min-width:150px;">
-                                        Module
+                                    <th style="min-width:320px;">
+                                        Bug Details
                                     </th>
 
                                     <th style="width:120px;">
@@ -461,22 +428,22 @@
                                     <th style="width:130px;">
                                         Status
                                     </th>
-
-                                    <th style="min-width:170px;">
+@* 
+                                    <th style="min-width:180px;">
                                         Assigned To
                                     </th>
 
                                     <th style="width:150px;">
-                                        Date Raised
-                                    </th>
+                                        Reported Date
+                                    </th> *@
 
                                     <th style="width:170px;">
-                                        Last Updated
+                                        Updated Date/Time
                                     </th>
 
                                     <th style="width:70px;"
                                         class="text-center">
-                                        Action
+                                        Actions
                                     </th>
 
                                 </tr>
@@ -487,150 +454,92 @@
 
                                 @foreach (var item in Model.Bug)
                                 {
+                                    var assignedTo = item.AssignedTo ?? string.Empty;
+
+                                    var initials = string.Empty;
+
+                                    if (!string.IsNullOrWhiteSpace(assignedTo))
+                                    {
+                                        initials = string.Concat(
+                                            assignedTo
+                                                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                                                .Take(2)
+                                                .Select(x => x[0])
+                                        ).ToUpper();
+                                    }
+
                                     <tr>
 
-                                        <td>
-
-                                            <span class="bug-number">
-
-                                                @item.BugId
-
-                                            </span>
-
-                                        </td>
+                                        <!-- Application -->
 
                                         <td>
+                                            <div class="application-details">
 
-                                            <div class="bug-details">
-
-                                                <div class="bug-title">
-
-                                                 @*    @item.Title *@
-
-                                                </div>
-
-                                                <div class="bug-description">
-
-                                                    @item.Description
-
+                                                <div class="application-module">
+                                                    @item.ApplicationModule
                                                 </div>
 
                                             </div>
-
                                         </td>
 
+                                        <!-- Bug Details -->
+
                                         <td>
+                                            <div class="bug-details">
 
-                                            @* @item.ApplicationName *@
+                                                <div class="bug-title">
+                                                    @item.BugTitle
+                                                </div>
 
+                                                <div class="bug-description">
+                                                    @item.Description
+                                                </div>
+
+                                            </div>
                                         </td>
 
-                                        <td>
-
-                                            @* @item.ApplicationModule *@
-
-                                        </td>
+                                        <!-- Severity -->
 
                                         <td>
-
-                                           @*  @{
-                                                var severityClass = item.Severity switch
-                                                {
-                                                    "Critical" => "severity-critical",
-                                                    "High" => "severity-high",
-                                                    "Medium" => "severity-medium",
-                                                    "Low" => "severity-low",
-                                                    _ => "severity-default"
-                                                };
-                                            } *@
-
-                                            <span class="severity-badge "> 
-
-                                                @* @item.Severity @severityClass *@
-
+                                            <span class="severity-badge severity-@item.Severity.Replace(" ", "-").ToLowerInvariant()">
+                                                @item.Severity
                                             </span>
-
                                         </td>
 
+                                        <!-- Priority -->
+
                                         <td>
-
-                                            @* @{
-                                                var priorityClass = item.Priority switch
-                                                {
-                                                    "Critical" => "priority-critical",
-                                                    "High" => "priority-high",
-                                                    "Medium" => "priority-medium",
-                                                    "Low" => "priority-low",
-                                                    _ => "priority-default"
-                                                };
-                                            }
-
-                                            <span class="priority-badge @priorityClass">
-
+                                            <span class="priority-badge priority-@item.Priority.Replace(" ", "-").ToLowerInvariant()">
                                                 @item.Priority
-
-                                            </span> *@
-
+                                            </span>
                                         </td>
 
+                                        <!-- Status -->
+
                                         <td>
-
-                                          @*   @{
-                                                var statusClass = item.Status switch
-                                                {
-                                                    "Open" => "status-open",
-                                                    "In Progress" => "status-progress",
-                                                    "Resolved" => "status-resolved",
-                                                    "Closed" => "status-closed",
-                                                    "Rejected" => "status-rejected",
-                                                    _ => "status-default"
-                                                };
-                                            }
-
-                                            <span class="status-badge @statusClass">
-
+                                            <span class="status-badge status-@item.Status.Replace(" ", "-").ToLowerInvariant()">
                                                 @item.Status
-
-                                            </span> *@
-
+                                            </span>
                                         </td>
 
-                                        <td>
+                                        <!-- Assigned To -->
+
+                                        @* <td>
 
                                             <div class="assignee-container">
 
                                                 <div class="assignee-avatar">
-
-                                                    @{
-                                                        var initials = "";
-
-                                                        if (!string.IsNullOrWhiteSpace(item.AssignedTo))
-                                                        {
-                                                            initials = string.Concat(
-                                                                item.AssignedTo
-                                                                    .Split(' ', StringSplitOptions.RemoveEmptyEntries)
-                                                                    .Take(2)
-                                                                    .Select(x => x[0])
-                                                            ).ToUpper();
-                                                        }
-                                                    }
-
                                                     @initials
-
                                                 </div>
 
                                                 <div>
 
                                                     <div class="assignee-name">
-
-                                                        @item.AssignedTo
-
+                                                        @(string.IsNullOrWhiteSpace(assignedTo) ? "-" : assignedTo)
                                                     </div>
 
                                                     <div class="assignee-role">
-
                                                         Developer
-
                                                     </div>
 
                                                 </div>
@@ -639,27 +548,37 @@
 
                                         </td>
 
+                                        <!-- Reported Date -->
+
+                                        <td>
+                                            @item.ReportedDate.ToString("MMM dd, yyyy")
+                                        </td> *@
+
+                                        <!-- Updated -->
+
                                         <td>
 
-                                            @* @item.DateRaised.ToString("MMM dd, yyyy") *@
+                                            @if (item.UpdatedDateTime.HasValue)
+                                            {
+                                                @item.UpdatedDateTime.Value.ToString("MMM dd, yyyy")
+
+                                                <br />
+
+                                                <small class="text-muted">
+                                                    @item.UpdatedDateTime.Value.ToString("hh:mm tt")
+                                                </small>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted">—</span>
+                                            }
 
                                         </td>
 
-                                        <td>
-
-                                            @* @item.UpdatedDateTime.ToString("MMM dd, yyyy") *@
-
-                                            <br />
-
-                                            <small class="text-muted">
-
-                                                @* @item.UpdatedDateTime.ToString("hh:mm tt") *@
-
-                                            </small>
-
-                                        </td>
+                                        <!-- Actions -->
 
                                         <td class="text-center">
+
                                             <div class="dropdown">
 
                                                 <button class="btn btn-action"
@@ -674,7 +593,6 @@
                                                 <ul class="dropdown-menu dropdown-menu-end shadow-sm">
 
                                                     <li>
-
                                                         <a class="dropdown-item"
                                                                asp-page="./Details"
                                                                asp-route-id="@item.BugId">
@@ -684,38 +602,47 @@
                                                             View Details
 
                                                         </a>
-
                                                     </li>
 
                                                     <li>
-
                                                         <a class="dropdown-item"
                                                                asp-page="./Edit"
                                                                asp-route-id="@item.BugId">
 
                                                             <i class="bi bi-pencil-square me-2"></i>
 
-                                                            Edit
+                                                            Edit Bug
 
                                                         </a>
-
                                                     </li>
 
                                                     <li>
+                                                        <a class="dropdown-item"
+                                                               href="#">
 
+                                                            <i class="bi bi-arrow-repeat me-2"></i>
+
+                                                            Update Status
+
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <hr class="dropdown-divider" />
+                                                    </li>
+
+                                                    <li>
                                                         <a class="dropdown-item"
                                                                href="#">
 
                                                             <i class="bi bi-person-check me-2"></i>
 
-                                                            Assign
+                                                            Assign Bug
 
                                                         </a>
-
                                                     </li>
 
                                                     <li>
-
                                                         <a class="dropdown-item"
                                                                href="#">
 
@@ -724,7 +651,17 @@
                                                             Mark as Resolved
 
                                                         </a>
+                                                    </li>
 
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                               href="#">
+
+                                                            <i class="bi bi-upload me-2"></i>
+
+                                                            Deploy Fix
+
+                                                        </a>
                                                     </li>
 
                                                     <li>
@@ -732,16 +669,40 @@
                                                     </li>
 
                                                     <li>
+                                                        <a class="dropdown-item"
+                                                               href="#">
 
+                                                            <i class="bi bi-list-task me-2"></i>
+
+                                                            View Related Tasks
+
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                               href="#">
+
+                                                            <i class="bi bi-clock-history me-2"></i>
+
+                                                            Audit Trail
+
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <hr class="dropdown-divider" />
+                                                    </li>
+
+                                                    <li>
                                                         <a class="dropdown-item text-danger"
                                                                href="#">
 
                                                             <i class="bi bi-trash me-2"></i>
 
-                                                            Delete
+                                                            Delete Bug
 
                                                         </a>
-
                                                     </li>
 
                                                 </ul>
@@ -754,7 +715,6 @@
                                 }
 
                             </tbody>
-
                         </table>
 
                     </div>

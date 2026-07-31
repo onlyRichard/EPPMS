@@ -1,0 +1,832 @@
+﻿@page
+@model EPPMS.Portal.Areas.Admin.Pages.Bug.CreateModel
+
+@{
+    ViewData["Title"] = "Add New Bug";
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/admin/bug/bug-create.css" asp-append-version="true" />
+}
+
+<div class="bug-create-page">
+
+    <!-- ===========================================================
+        PAGE HEADER
+    ============================================================ -->
+
+    <section class="bug-create-header">
+
+        <div class="bug-create-title">
+            <h1 class="page-title">
+
+                Add New Bug
+
+            </h1>
+
+            <p class="page-subtitle">
+
+                Report a new bug and provide sufficient information for the development team to investigate and resolve the issue.
+
+            </p>
+
+        </div>
+
+        <div class="bug-create-actions">
+
+            <a asp-page="./Index"
+               class="btn btn-light">
+
+                <i class="bi bi-x-lg"></i>
+
+                Cancel
+
+            </a>
+
+            <button type="submit"
+                    form="bugForm"
+                    class="btn btn-save-bug">
+
+                <i class="bi bi-floppy"></i>
+
+                Save Bug
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <form id="bugForm"
+          method="post"
+          novalidate>
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger mb-2">
+        </div>
+
+        <!-- ===========================================================
+            TOP LAYOUT
+        ============================================================ -->
+
+        <div class="row g-4 align-items-start">
+
+            <!-- =======================================================
+                LEFT COLUMN
+            ======================================================== -->
+
+            <div class="col-xl-7">
+
+                <div class="content-card">
+
+                    <h2 class="card-section-title">
+
+                        Bug Information
+
+                    </h2>
+
+                    <div class="row g-4">
+                        <!-- Bug Title -->
+                        <div class="col-md-5">
+
+                            <label asp-for="Bug.BugTitle"
+                                   class="form-label">
+
+                                Bug Title
+
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <input asp-for="Bug.BugTitle"
+                                   class="form-control"
+                                   maxlength="250"
+                                   placeholder="Enter bug title..." />
+
+                            <div class="d-flex justify-content-end">
+
+                                <small class="text-muted">
+
+                                    <span class="char-count">0</span> / 250
+
+                                </small>
+
+                            </div>
+
+                            <span asp-validation-for="Bug.BugTitle"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- Description -->
+
+                        <div class="col-md-7">
+                            <label asp-for="Bug.NumberOfUsersImpacted"  class="form-label">
+                                Number Of Users Impacted
+                            </label>
+
+                            <input asp-for="Bug.NumberOfUsersImpacted"
+                                   type="number"
+                                   min="0"
+                                   class="form-control"
+                                   placeholder="0" />
+
+                            <span asp-validation-for="Bug.NumberOfUsersImpacted"
+                                  class="text-danger">
+                            </span>                           
+
+                        </div>
+
+                        <!-- Number of Users Impacted -->
+
+                        <div class="col-md-6">
+                            <label asp-for="Bug.Description" class="form-label">
+                                Description
+                                <span class="required">*</span>
+                            </label>
+
+                            <textarea asp-for="Bug.Description"
+                                      class="form-control"
+                                      rows="4"
+                                      maxlength="4000"
+                                      placeholder="Describe the bug..."></textarea>
+                            <div class="d-flex justify-content-end">
+                                <small class="text-muted">
+                                    <span class="char-count">0</span> / 4000
+                                </small>
+                            </div>
+                            <span asp-validation-for="Bug.Description"
+                                  class="text-danger">
+                            </span>                          
+
+                        </div>
+
+                        <!-- User Business Impact -->
+
+                        <div class="col-md-6 mb-0">
+                            <label asp-for="Bug.UserBusinessImpact" class="form-label">
+                                User Business Impact
+                            </label>
+
+                            <textarea asp-for="Bug.UserBusinessImpact"
+                                      class="form-control"
+                                      rows="3"
+                                      maxlength="1000"
+                                      placeholder="Describe the business impact..."></textarea>
+                            <div class="d-flex justify-content-end">
+                                <small class="text-muted">
+                                    <span class="char-count">0</span> / 1000
+                                </small>
+                            </div>
+
+                            <span asp-validation-for="Bug.UserBusinessImpact" class="text-danger">  </span>
+                        </div>
+
+                        <div class="row g-4">
+
+                            <!-- Severity -->
+
+                            <div class="col-lg-4">
+
+                                <label asp-for="Bug.SeverityId" class="form-label">
+                                    Severity
+                                    <span class="required">*</span>
+                                </label>
+
+                                <select asp-for="Bug.SeverityId" class="form-select">
+
+                                    <option value="">Select Severity</option>
+
+                                    @foreach (var item in Model.Severities)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+
+                                </select>
+
+                                <span asp-validation-for="Bug.SeverityId"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- Priority -->
+
+                            <div class="col-lg-4">
+
+                                <label asp-for="Bug.PriorityId"
+                                       class="form-label">
+                                    Priority
+                                    <span class="required">*</span>
+                                </label>
+
+                                <select asp-for="Bug.PriorityId"
+                                        class="form-select">
+
+                                    <option value="">Select Priority</option>
+
+                                    @foreach (var item in Model.Priorities)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+
+                                </select>
+
+                                <span asp-validation-for="Bug.PriorityId"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- Status -->
+
+                            <div class="col-lg-4">
+
+                                <label asp-for="Bug.StatusId"
+                                       class="form-label">
+
+                                    Status
+
+                                    <span class="required">*</span>
+
+                                </label>
+
+                                <select asp-for="Bug.StatusId"
+                                        class="form-select">
+
+                                    <option value="">Select Status</option>
+
+                                    @foreach (var item in Model.Statuses)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+
+                                </select>
+
+                                <span asp-validation-for="Bug.StatusId"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+                        </div>
+
+                        <div class="row g-4">
+
+                            <!-- Reported By -->
+
+                            <div class="col-lg-6">
+
+                                <label asp-for="Bug.ReportedBy"
+                                       class="form-label">
+
+                                    Reported By
+
+                                    <span class="required">*</span>
+
+                                </label>
+
+                                <input asp-for="Bug.ReportedBy"
+                                       class="form-control"
+                                       placeholder="Enter reporter..." />
+
+                                <span asp-validation-for="Bug.ReportedBy"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- Reported Date -->
+
+                            <div class="col-lg-6">
+
+                                <label asp-for="Bug.ReportedDate"
+                                       class="form-label">
+
+                                    Reported Date
+
+                                    <span class="required">*</span>
+
+                                </label>
+
+                                <input asp-for="Bug.ReportedDate"
+                                       type="date"
+                                       class="form-control" />
+
+                                <span asp-validation-for="Bug.ReportedDate"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                        </div>
+                   </div>
+                       
+
+                </div>
+
+            </div>
+            <!-- =======================================================
+                RIGHT COLUMN
+            ======================================================== -->
+
+            <div class="col-xl-5">
+
+                <!-- ===================================================
+                    Application Module
+                ==================================================== -->
+
+                <div class="content-card">
+
+                    <h2 class="card-section-title">
+
+                        Application Module
+
+                    </h2>
+
+                    <div class="row g-4">
+
+                        <div class="col-6">
+
+                            <label asp-for="Bug.AppId"
+                                   class="form-label">
+
+                                Application Module
+
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <select asp-for="Bug.AppId" class="form-select">
+                                <option value="">
+                                    Select application
+                                </option>
+
+                                @foreach (var item in Model.Applications)
+                                {
+                                    <option value="@item.Id">
+
+                                        @item.Name
+
+                                    </option>
+                                }
+
+                            </select>
+
+                            <span asp-validation-for="Bug.AppId"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <div class="col-6">
+
+                            <label class="form-label">
+
+                                Technical Module
+
+                                <small class="text-muted">
+
+                                    (Optional)
+
+                                </small>
+
+                            </label>
+
+                            <select id="TechnicalModuleId"
+                                    class="form-select"
+                                    disabled>
+
+                                <option value="">
+
+                                    Select technical module...
+
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ===================================================
+     Bug Details
+==================================================== -->
+
+                <div class="content-card mt-4">
+
+                    <h2 class="card-section-title">
+
+                        Bug Details
+
+                    </h2>
+
+                    <div class="row g-4">
+
+                        <!-- Root Cause -->
+
+                        <div class="col-md-6">
+
+                            <label asp-for="Bug.RootCause"
+                                   class="form-label">
+
+                                Root Cause
+
+                            </label>
+
+                            <textarea asp-for="Bug.RootCause"
+                                      rows="3"
+                                      maxlength="1000"
+                                      class="form-control"
+                                      placeholder="Enter the identified root cause..."></textarea>
+
+                            <div class="d-flex justify-content-end">
+
+                                <small class="text-muted">
+
+                                    <span class="char-count">0</span> / 1000
+
+                                </small>
+
+                            </div>
+
+                            <span asp-validation-for="Bug.RootCause"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- Reproduction Steps -->
+
+                        <div class="col-md-6">
+
+                            <label asp-for="Bug.ReproductionSteps"
+                                   class="form-label">
+
+                                Reproduction Steps
+
+                            </label>
+
+                            <textarea asp-for="Bug.ReproductionSteps"
+                                      rows="3"
+                                      maxlength="2000"
+                                      class="form-control"
+                                      placeholder="Provide the steps to reproduce the issue..."></textarea>
+
+                            <div class="d-flex justify-content-end">
+
+                                <small class="text-muted">
+
+                                    <span class="char-count">0</span> / 2000
+
+                                </small>
+
+                            </div>
+
+                            <span asp-validation-for="Bug.ReproductionSteps"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- Workaround Available -->
+
+                        <div class="col-md-6">
+
+                            <label asp-for="Bug.WorkaroundAvailable"
+                                   class="form-label">
+
+                                Workaround Available
+
+                            </label>
+
+                            <select asp-for="Bug.WorkaroundAvailable"
+                                    class="form-select">
+
+                                <option value="">Select...</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+
+                            </select>
+
+                            <span asp-validation-for="Bug.WorkaroundAvailable"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <!-- Assigned To -->
+
+                        <div class="col-md-6">
+
+                            <label asp-for="Bug.AssignedTo"
+                                   class="form-label">
+
+                                Assigned To
+
+                            </label>
+
+                            <input asp-for="Bug.AssignedTo"
+                                   class="form-control"
+                                   placeholder="Enter assignee..." />
+
+                            <span asp-validation-for="Bug.AssignedTo"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- ===========================================================
+            LIFECYCLE & EFFORT
+        ============================================================ -->
+
+        <div class="content-card mt-4">
+
+            <h2 class="card-section-title">
+
+                Lifecycle &amp; Effort
+
+            </h2>
+
+            <!-- =======================================================
+                Dates
+            ======================================================== -->
+
+            <div class="row g-4">
+
+                <div class="col-lg-3">
+
+                    <label asp-for="Bug.StartDate"
+                           class="form-label">
+
+                        Start Date
+
+                    </label>
+
+                    <input asp-for="Bug.StartDate"
+                           type="date"
+                           class="form-control" />
+
+                    <span asp-validation-for="Bug.StartDate"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+                <div class="col-lg-3">
+
+                    <label asp-for="Bug.EndDate"
+                           class="form-label">
+
+                        End Date
+
+                    </label>
+
+                    <input asp-for="Bug.EndDate"
+                           type="date"
+                           class="form-control" />
+
+                    <span asp-validation-for="Bug.EndDate"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+                <div class="col-lg-3">
+
+                    <label asp-for="Bug.ProductionDeploymentDate"
+                           class="form-label">
+
+                        Production Deployment Date
+
+                    </label>
+
+                    <input asp-for="Bug.ProductionDeploymentDate"
+                           type="date"
+                           class="form-control" />
+
+                    <span asp-validation-for="Bug.ProductionDeploymentDate"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+                <div class="col-lg-3">
+
+                    <label asp-for="Bug.ReleaseDate"
+                           class="form-label">
+
+                        Release Date
+
+                    </label>
+
+                    <input asp-for="Bug.ReleaseDate"
+                           type="date"
+                           class="form-control" />
+
+                    <span asp-validation-for="Bug.ReleaseDate"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- =======================================================
+                Status
+            ======================================================== -->
+
+            <div class="row g-4 mt-4">
+
+                <div class="col-lg-6">
+
+                    <label asp-for="Bug.TestingStatusId"
+                           class="form-label">
+
+                        Testing Status
+
+                    </label>
+
+                    <select asp-for="Bug.TestingStatusId"
+                            class="form-select">
+
+                        <option value="">
+
+                            Select testing status...
+
+                        </option>
+
+                        @foreach (var item in Model.TestingStatuses)
+                        {
+                            <option value="@item.Id">
+
+                                @item.Name
+
+                            </option>
+                        }
+
+                    </select>
+
+                    <span asp-validation-for="Bug.TestingStatusId"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <label asp-for="Bug.ReleaseStatusId"
+                           class="form-label">
+
+                        Release Status
+
+                    </label>
+
+                    <select asp-for="Bug.ReleaseStatusId"
+                            class="form-select">
+
+                        <option value="">
+
+                            Select release status...
+
+                        </option>
+
+                        @foreach (var item in Model.ReleaseStatuses)
+                        {
+                            <option value="@item.Id">
+
+                                @item.Name
+
+                            </option>
+                        }
+
+                    </select>
+
+                    <span asp-validation-for="Bug.ReleaseStatusId"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- =======================================================
+                Effort
+            ======================================================== -->
+
+            <div class="row g-4 mt-4">
+
+                <div class="col-lg-6">
+
+                    <label asp-for="Bug.EstimatedEffort"
+                           class="form-label">
+
+                        Estimated Effort (Hours)
+
+                    </label>
+
+                    <input asp-for="Bug.EstimatedEffort"
+                           type="number"
+                           class="form-control"
+                           min="0"
+                           step="0.25"
+                           placeholder="Enter estimated effort..." />
+
+                    <span asp-validation-for="Bug.EstimatedEffort"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <label asp-for="Bug.ActualEffort"
+                           class="form-label">
+
+                        Actual Effort (Hours)
+
+                    </label>
+
+                    <input asp-for="Bug.ActualEffort"
+                           type="number"
+                           class="form-control"
+                           min="0"
+                           step="0.25"
+                           placeholder="Enter actual effort..." />
+
+                    <span asp-validation-for="Bug.ActualEffort"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- ===========================================================
+            ADDITIONAL INFORMATION
+        ============================================================ -->
+
+        <div class="content-card mt-4">
+
+            <h2 class="card-section-title">
+
+                Additional Information
+
+            </h2>
+
+            <div class="row">
+
+                <div class="col-12">
+
+                    <label asp-for="Bug.CommentsUpdates"
+                           class="form-label">
+
+                        Comments / Updates
+
+                    </label>
+
+                    <textarea asp-for="Bug.CommentsUpdates"
+                              class="form-control"
+                              rows="6"
+                              maxlength="4000"
+                              placeholder="Enter comments, investigation updates, deployment notes, or other relevant information..."></textarea>
+
+                    <div class="d-flex justify-content-end">
+
+                        <small class="text-muted">
+
+                            <span class="char-count">0</span> / 4000
+
+                        </small>
+
+                    </div>
+
+                    <span asp-validation-for="Bug.CommentsUpdates"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+@section Scripts
+{
+    <script src="~/js/admin/bug/bug-create.js" asp-append-version="true"></script>
+}

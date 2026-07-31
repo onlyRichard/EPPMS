@@ -31,5 +31,6 @@ namespace EPPMS.Application.DTOs.Bug
         public DateTime? ProductionDeploymentDate { get; set; }
         public string? CommentsUpdates { get; set; }
         public string CreatedBy { get; set; } = string.Empty;
+        public int TechnicalModuleId { get; set; }
     }
 }

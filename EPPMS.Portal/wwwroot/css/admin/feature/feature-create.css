@@ -1,5 +1,5 @@
 ﻿/* ===========================================================
-   Add Feature Page
+   Add feature Page
 =========================================================== */
 
 .feature-create-page {
@@ -9,7 +9,7 @@
 
 /* ===========================================================
    Header
-=========================================================== new*/
+=========================================================== */
 
 .feature-create-header {
     display: flex;
@@ -41,10 +41,10 @@
     transition: .2s ease;
 }
 
-    .page-back-link:hover {
-        color: #084ECC;
-        text-decoration: none;
-    }
+.page-back-link:hover {
+    color: #084ECC;
+    text-decoration: none;
+}
 
 .page-title {
     margin: 0;
@@ -74,7 +74,6 @@
 .btn-light {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 8px;
     height: 44px;
     padding: 0 22px;
@@ -84,19 +83,19 @@
     color: #344054;
     font-size: 14px;
     font-weight: 600;
+    text-decoration: none;
     transition: .2s ease;
 }
 
-    .btn-light:hover {
-        background: #F9FAFB;
-        border-color: #98A2B3;
-        color: #344054;
-    }
+.btn-light:hover {
+    background: #F9FAFB;
+    border-color: #98A2B3;
+    color: #344054;
+}
 
 .btn-save-feature {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 8px;
     height: 44px;
     padding: 0 26px;
@@ -109,18 +108,18 @@
     transition: .2s ease;
 }
 
-    .btn-save-feature:hover {
-        background: #E85D0C;
-        color: #FFFFFF;
-    }
+.btn-save-feature:hover {
+    background: #E85D0C;
+    color: #FFFFFF;
+}
 
-    .btn-save-feature:focus,
-    .btn-light:focus {
-        box-shadow: none;
-    }
+.btn-save-feature:focus,
+.btn-light:focus {
+    box-shadow: none;
+}
 
 /* ===========================================================
-   Form Card
+   Content Card
 =========================================================== */
 
 .content-card {
@@ -130,6 +129,24 @@
     overflow: hidden;
     box-shadow: 0 2px 10px rgba(15, 23, 42, .04);
     padding: 30px;
+    margin-bottom: 24px;
+}
+
+/* ===========================================================
+   Card Section
+=========================================================== */
+
+.card-section:not(:last-child) {
+    margin-bottom: 36px;
+}
+
+.card-section-title {
+    margin: 0 0 20px;
+    color: #071A38;
+    font-size: 18px;
+    font-weight: 700;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #EAECF0;
 }
 
 /* ===========================================================
@@ -171,4 +188,109 @@
 .content-card .form-select:focus {
     border-color: #0B5FFF;
     box-shadow: 0 0 0 .15rem rgba(11,95,255,.15);
+}
+
+/* ===========================================================
+   Switch
+=========================================================== */
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 46px;
+}
+
+.form-check-input {
+    cursor: pointer;
+}
+
+.form-check-label {
+    margin-bottom: 0;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* ===========================================================
+   Validation
+=========================================================== */
+
+.text-danger {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* ===========================================================
+   Helper Text
+=========================================================== */
+
+.form-text {
+    margin-top: 6px;
+    color: #667085;
+    font-size: 12px;
+}
+
+/* ===========================================================
+   Footer Actions
+=========================================================== */
+
+.form-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+    padding-top: 24px;
+    border-top: 1px solid #EAECF0;
+}
+
+/* ===========================================================
+   Responsive
+=========================================================== */
+
+@media (max-width: 991.98px) {
+
+    .feature-create-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .feature-create-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .content-card {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    .feature-create-actions {
+        flex-direction: column;
+    }
+
+    .feature-create-actions .btn-light,
+    .feature-create-actions .btn-save-feature {
+        width: 100%;
+    }
+
+    .content-card {
+        padding: 20px;
+    }
+
+    .form-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-footer .btn-light,
+    .form-footer .btn-save-feature {
+        width: 100%;
+    }
 }

@@ -372,3 +372,133 @@
         justify-content: center;
     }
 }
+
+
+/* ==========================================================
+   Badge Base
+========================================================== */
+
+.feature-priority-badge,
+.feature-status-badge,
+.feature-complexity-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 95px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+
+/* ==========================================================
+   Priority
+========================================================== */
+
+.priority-critical {
+    background: #FEE2E2;
+    color: #DC2626;
+}
+
+.priority-high {
+    background: #FFF1E8;
+    color: #F97316;
+}
+
+.priority-medium {
+    background: #FEF3C7;
+    color: #D97706;
+}
+
+.priority-low {
+    background: #DCFCE7;
+    color: #16A34A;
+}
+
+
+/* ==========================================================
+   Status
+========================================================== */
+
+.status-open {
+    background: #DBEAFE;
+    color: #2563EB;
+}
+
+.status-in-progress {
+    background: #DBEAFE;
+    color: #2563EB;
+}
+
+.status-planned {
+    background: #FEF3C7;
+    color: #D97706;
+}
+
+.status-pending {
+    background: #FEF3C7;
+    color: #D97706;
+}
+
+.status-testing {
+    background: #EDE9FE;
+    color: #7C3AED;
+}
+
+.status-ready-for-testing {
+    background: #EDE9FE;
+    color: #7C3AED;
+}
+
+.status-resolved {
+    background: #DCFCE7;
+    color: #16A34A;
+}
+
+.status-completed {
+    background: #DCFCE7;
+    color: #16A34A;
+}
+
+.status-closed {
+    background: #E2E8F0;
+    color: #475569;
+}
+
+.status-rejected {
+    background: #FEE2E2;
+    color: #DC2626;
+}
+
+.status-cancelled {
+    background: #FEE2E2;
+    color: #DC2626;
+}
+
+
+/* ==========================================================
+   Complexity
+========================================================== */
+
+.complexity-low {
+    background: #DCFCE7;
+    color: #16A34A;
+}
+
+.complexity-medium {
+    background: #FEF3C7;
+    color: #D97706;
+}
+
+.complexity-high {
+    background: #FFF1E8;
+    color: #F97316;
+}
+
+.complexity-critical {
+    background: #FEE2E2;
+    color: #DC2626;
+}
