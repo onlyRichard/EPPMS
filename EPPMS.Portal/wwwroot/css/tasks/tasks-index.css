@@ -1,0 +1,710 @@
+﻿/* ===========================================================
+   Tasks Board
+=========================================================== */
+
+.tasks-page {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ===========================================================
+   Header
+=========================================================== */
+
+.tasks-header {
+    margin-bottom: 8px;
+}
+
+    .tasks-header .row {
+        min-height: 72px;
+    }
+
+/* ===========================================================
+   Page Title
+=========================================================== */
+
+.page-title {
+    margin: 0;
+    color: #071A38;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    margin: 8px 0 0;
+    color: #667085;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* ===========================================================
+   Toolbar
+=========================================================== */
+
+.task-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ===========================================================
+   Search
+=========================================================== */
+
+.task-search {
+    position: relative;
+    width: 300px;
+}
+
+.task-search-input {
+    height: 42px;
+    padding-left: 42px;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    font-size: 14px;
+    background: #FFFFFF;
+    transition: all .2s ease;
+}
+
+    .task-search-input:focus {
+        border-color: #F58220;
+        box-shadow: 0 0 0 .2rem rgba(245,130,32,.15);
+    }
+
+.task-search-button {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #667085;
+    cursor: default;
+}
+
+/* ===========================================================
+   Toolbar Buttons
+=========================================================== */
+
+.task-filter-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 42px;
+    padding: 0 18px;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all .2s ease;
+}
+
+    .task-filter-button:hover {
+        background: #F9FAFB;
+        border-color: #98A2B3;
+    }
+
+    .task-filter-button:focus {
+        box-shadow: none;
+    }
+
+.task-create-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 42px;
+    padding: 0 20px;
+    border-radius: 10px;
+    background: #F58220;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+    .task-create-button:hover {
+        background: #E76E09;
+        color: #FFFFFF;
+    }
+
+    .task-create-button:focus {
+        box-shadow: none;
+    }
+
+/* ===========================================================
+   Navigation Tabs
+=========================================================== */
+
+.task-board-navigation {
+    margin-bottom: 8px;
+}
+
+.task-tabs {
+    border-bottom: 1px solid #E4E7EC;
+}
+
+    .task-tabs .nav-link {
+        position: relative;
+        padding: 14px 20px;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: #667085;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all .2s ease;
+    }
+
+        .task-tabs .nav-link:hover {
+            color: #071A38;
+            background: transparent;
+        }
+
+        .task-tabs .nav-link.active {
+            color: #F58220;
+            background: transparent;
+        }
+
+            .task-tabs .nav-link.active::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -1px;
+                height: 3px;
+                border-radius: 2px 2px 0 0;
+                background: #F58220;
+            }
+/* ===========================================================
+   Kanban Board
+=========================================================== */
+
+.task-board {
+    overflow-x: auto;
+}
+
+    .task-board > .row {
+        flex-wrap: nowrap;
+        min-width: 1440px;
+    }
+
+/* ===========================================================
+   Board Columns
+=========================================================== */
+
+.task-column {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 760px;
+    background: #F8FAFC;
+    border: 1px solid #E4E7EC;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+    .task-column.not-started {
+        border-top: 4px solid #98A2B3;
+    }
+
+    .task-column.in-progress {
+        border-top: 4px solid #2E90FA;
+    }
+
+    .task-column.completed {
+        border-top: 4px solid #12B76A;
+    }
+
+    .task-column.overdue {
+        border-top: 4px solid #F04438;
+    }
+
+/* ===========================================================
+   Column Header
+=========================================================== */
+
+.task-column-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 18px 16px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #EAECF0;
+}
+
+.task-column-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #071A38;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* ===========================================================
+   Count Badge
+=========================================================== */
+
+.task-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: #EEF2F6;
+    color: #344054;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* ===========================================================
+   Add Button
+=========================================================== */
+
+.task-column-add {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1px solid #D0D5DD;
+    border-radius: 8px;
+    background: #FFFFFF;
+    color: #667085;
+    transition: all .2s ease;
+}
+
+    .task-column-add:hover {
+        background: #F9FAFB;
+        border-color: #98A2B3;
+        color: #071A38;
+    }
+
+    .task-column-add:focus {
+        box-shadow: none;
+    }
+
+/* ===========================================================
+   Column Body
+=========================================================== */
+
+.task-column-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 16px;
+    padding: 18px;
+    overflow-y: auto;
+    min-height: 620px;
+}
+
+    /* ===========================================================
+   Empty State
+=========================================================== */
+
+    .task-column-body:empty::before {
+        content: "No tasks";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        min-height: 120px;
+        border: 2px dashed #D0D5DD;
+        border-radius: 10px;
+        color: #98A2B3;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    /* ===========================================================
+   Drag & Drop Drop Zone
+=========================================================== */
+
+    .task-column-body.drag-over {
+        background: rgba(245,130,32,.06);
+        border: 2px dashed #F58220;
+        border-radius: 10px;
+        transition: all .2s ease;
+    }
+
+    .task-column-body.drag-active {
+        background: rgba(46,144,250,.05);
+    }
+
+    /* ===========================================================
+   Scrollbar
+=========================================================== */
+
+    .task-column-body::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .task-column-body::-webkit-scrollbar-thumb {
+        background: #D0D5DD;
+        border-radius: 999px;
+    }
+
+    .task-column-body::-webkit-scrollbar-track {
+        background: transparent;
+    }
+/* ===========================================================
+   Task Card
+=========================================================== */
+
+.task-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 18px;
+    background: #FFFFFF;
+    border: 1px solid #E4E7EC;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(16,24,40,.04);
+    cursor: grab;
+    transition: all .2s ease;
+}
+
+    .task-card:hover {
+        border-color: #D0D5DD;
+        box-shadow: 0 8px 24px rgba(16,24,40,.10);
+        transform: translateY(-2px);
+    }
+
+    .task-card:active {
+        cursor: grabbing;
+    }
+
+/* ===========================================================
+   Card Header
+=========================================================== */
+
+.task-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-code {
+    color: #2E90FA;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+    .task-code:hover {
+        color: #1570EF;
+        text-decoration: underline;
+    }
+
+.task-card-menu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #667085;
+    transition: .2s ease;
+}
+
+    .task-card-menu:hover {
+        background: #F2F4F7;
+        color: #344054;
+    }
+
+    .task-card-menu:focus {
+        box-shadow: none;
+    }
+
+/* ===========================================================
+   Task Title
+=========================================================== */
+
+.task-title {
+    color: #071A38;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+/* ===========================================================
+   Feature / Technical Module
+=========================================================== */
+
+.task-reference {
+    color: #667085;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* ===========================================================
+   Due Date
+=========================================================== */
+
+.task-due-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #667085;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+    .task-due-date i {
+        color: #98A2B3;
+        font-size: 14px;
+    }
+
+    .task-due-date.overdue {
+        color: #D92D20;
+        font-weight: 700;
+    }
+
+        .task-due-date.overdue i {
+            color: #D92D20;
+        }
+
+/* ===========================================================
+   Footer
+=========================================================== */
+
+.task-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 6px;
+}
+
+/* ===========================================================
+   Assignee
+=========================================================== */
+
+.task-assignee {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+    .task-assignee span {
+        overflow: hidden;
+        color: #344054;
+        font-size: 13px;
+        font-weight: 600;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+/* ===========================================================
+   Avatar
+=========================================================== */
+
+.task-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #F58220;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* ===========================================================
+   Task Card
+=========================================================== */
+
+.task-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 18px;
+    background: #FFFFFF;
+    border: 1px solid #E4E7EC;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(16,24,40,.04);
+    cursor: grab;
+    transition: all .2s ease;
+}
+
+    .task-card:hover {
+        border-color: #D0D5DD;
+        box-shadow: 0 8px 24px rgba(16,24,40,.10);
+        transform: translateY(-2px);
+    }
+
+    .task-card:active {
+        cursor: grabbing;
+    }
+
+/* ===========================================================
+   Card Header
+=========================================================== */
+
+.task-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-code {
+    color: #2E90FA;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+    .task-code:hover {
+        color: #1570EF;
+        text-decoration: underline;
+    }
+
+.task-card-menu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #667085;
+    transition: .2s ease;
+}
+
+    .task-card-menu:hover {
+        background: #F2F4F7;
+        color: #344054;
+    }
+
+    .task-card-menu:focus {
+        box-shadow: none;
+    }
+
+/* ===========================================================
+   Task Title
+=========================================================== */
+
+.task-title {
+    color: #071A38;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+/* ===========================================================
+   Feature / Technical Module
+=========================================================== */
+
+.task-reference {
+    color: #667085;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* ===========================================================
+   Due Date
+=========================================================== */
+
+.task-due-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #667085;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+    .task-due-date i {
+        color: #98A2B3;
+        font-size: 14px;
+    }
+
+    .task-due-date.overdue {
+        color: #D92D20;
+        font-weight: 700;
+    }
+
+        .task-due-date.overdue i {
+            color: #D92D20;
+        }
+
+/* ===========================================================
+   Footer
+=========================================================== */
+
+.task-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 6px;
+}
+
+/* ===========================================================
+   Assignee
+=========================================================== */
+
+.task-assignee {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+    .task-assignee span {
+        overflow: hidden;
+        color: #344054;
+        font-size: 13px;
+        font-weight: 600;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+/* ===========================================================
+   Avatar
+=========================================================== */
+
+.task-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #F58220;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.task-board-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+}

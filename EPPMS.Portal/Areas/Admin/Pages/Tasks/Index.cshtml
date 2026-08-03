@@ -1,0 +1,558 @@
+﻿@page
+@model EPPMS.Portal.Areas.Admin.Pages.Tasks.IndexModel
+
+@{
+    ViewData["Title"] = "Tasks";
+}
+
+@section Styles
+{
+    <link href="~/css/tasks/tasks-index.css" rel="stylesheet" asp-append-version="true" /> 
+}
+
+<div class="tasks-page">
+
+    <!-- ========================================================= -->
+    <!-- Page Header -->
+    <!-- ========================================================= -->
+
+    <div class="tasks-header">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg">
+
+                <h1 class="page-title">
+
+                    Tasks
+
+                </h1>
+
+                <p class="page-subtitle">
+
+                    Track and manage detailed work items linked to features and technical modules.
+
+                </p>
+
+            </div>
+
+            <div class="col-lg-auto">
+
+                <div class="task-toolbar">
+
+                    <!-- Search -->
+
+                    <div class="task-search">
+
+                        <input type="text"
+                               id="taskSearch"
+                               class="form-control task-search-input"
+                               placeholder="Search tasks..." />
+
+                        <button type="button"
+                                class="task-search-button">
+
+                            <i class="bi bi-search"></i>
+
+                        </button>
+
+                    </div>
+
+                    <!-- Filter -->
+
+                    <button type="button"
+                            class="btn task-filter-button">
+
+                        <i class="bi bi-funnel"></i>
+
+                        Filter
+
+                    </button>
+
+                    <!-- More -->
+
+                    <button type="button"
+                            class="btn task-filter-button">
+
+                        <i class="bi bi-three-dots"></i>
+
+                        More Actions
+
+                    </button>
+
+                    <!-- New Task -->
+
+                    <a asp-page="./Create"
+                           class="btn task-create-button">
+
+                        <i class="bi bi-plus-lg"></i>
+
+                        New Task
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- Navigation -->
+    <!-- ========================================================= -->
+
+    <div class="task-board-navigation">
+
+        <ul class="nav nav-tabs task-tabs">
+
+            <li class="nav-item">
+
+                <a href="#"
+                       class="nav-link active">
+
+                    Board
+
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+
+                <a href="#"
+                       class="nav-link">
+
+                    My Tasks
+
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+
+                <a href="#"
+                       class="nav-link">
+
+                    Overdue
+
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+
+                <a href="#"
+                       class="nav-link">
+
+                    Completed
+
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+
+                <a href="#"
+                       class="nav-link">
+
+                    All Tasks
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- Kanban Board -->
+    <!-- ========================================================= -->
+
+    <div class="task-board">
+
+        <div class="row g-6">
+
+            <!-- ========================================================= -->
+            <!-- Not Started -->
+            <!-- ========================================================= -->
+
+            <div class="col-xl-4 col-lg-6">
+
+                <div class="task-column not-started">
+
+                    <div class="task-column-header">
+
+                        <div class="task-column-title">
+
+                            Not Started
+
+                            <span class="task-count">
+
+                                @Model.Tasks.Count(x => x.Status == "Open" || x.Status == "New")
+
+                            </span>
+
+                        </div>
+
+                        <button type="button"
+                                class="btn task-column-add">
+
+                            <i class="bi bi-plus-lg"></i>
+
+                        </button>
+
+                    </div>
+
+                    <div class="task-column-body"
+                         data-status="Not Started">
+                        @foreach (var task in Model.Tasks.Where(x => x.Status == "Open" || x.Status == "New"))
+                        {
+                            <div class="task-card"
+                                 data-task-id="@task.TaskId"
+                                 draggable="true">
+
+                                <div class="task-card-header">
+
+                                    <a href="#"
+                                           class="task-code">
+                                           Task Code
+                                        @* @task.TaskId *@
+                                    </a>
+
+                                    <button type="button"
+                                            class="btn task-card-menu">
+
+                                        <i class="bi bi-three-dots"></i>
+
+                                    </button>
+
+                                </div>
+
+                                <div class="task-title">
+
+                                    @task.Title
+
+                                </div>
+
+                                <div class="task-reference">
+
+                                    Sample Feature 
+                                    @* @task.Fea • @task.TechModuleCode *@
+
+                                </div>
+
+                                <div class="task-due-date">
+
+                                    <i class="bi bi-calendar3"></i>
+
+                                    @task.ActualEndDate?.ToString("MMM dd, yyyy")
+
+                                </div>
+
+                                <div class="task-footer">
+
+                                    <div class="task-assignee">
+
+                                        <div class="task-avatar">
+
+                                            @task.
+
+                                        </div>
+
+                                        <span>
+                                            Assign To
+                                            @* @task.AssignedTo *@
+
+                                        </span>
+
+                                    </div>
+
+                                    <span class="priority-badge @task.Priority.ToLower()">
+
+                                        @task.Priority
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- In Progress -->
+            <!-- ========================================================= -->
+
+            <div class="col-xl-4 col-lg-6">
+
+                <div class="task-column in-progress">
+
+                    <div class="task-column-header">
+
+                        <div class="task-column-title">
+
+                            In Progress
+
+                            <span class="task-count">
+
+                                @Model.Tasks.Count(x => x.Status == "In Progress")
+
+                            </span>
+
+                        </div>
+
+                        <button type="button"
+                                class="btn task-column-add">
+
+                            <i class="bi bi-plus-lg"></i>
+
+                        </button>
+
+                    </div>
+
+                    <div class="task-column-body"
+                         data-status="In Progress">
+                        @foreach (var task in Model.Tasks.Where(x => x.Status == "In Progress"))
+                        {
+                            <div class="task-card"
+                                 data-task-id="@task.TaskId"
+                                 draggable="true">
+
+                                <div class="task-card-header">
+
+                                    <a href="#"
+                                           class="task-code">
+                                            Task Code
+                                            @* @task.TaskCode *@
+
+                                    </a>
+
+                                    <button type="button"
+                                            class="btn task-card-menu">
+
+                                        <i class="bi bi-three-dots"></i>
+
+                                    </button>
+
+                                </div>
+
+                                <div class="task-title">
+
+                                    @task.Title
+
+                                </div>
+
+                                <div class="task-reference">
+                                    Feature Code + Task Code
+                                    @* @task.FeatureCode • @task.TechModuleCode *@
+
+                                </div>
+
+                                <div class="task-due-date">
+
+                                    <i class="bi bi-calendar3"></i>
+
+                                    @task.ActualEndDate?.ToString("MMM dd, yyyy")
+
+                                </div>
+
+                                <div class="task-progress">
+
+                                    <div class="progress">
+
+                                        <div class="progress-bar"
+                                             role="progressbar">
+                                             <!---->
+                                             @* style="width:@task.ProgressPercentage%;"> *@
+                                        </div>
+
+                                    </div>
+
+                                    <span class="progress-value">
+
+                                        @* @task.ProgressPercentage% *@
+
+                                    </span>
+
+                                </div>
+
+                                <div class="task-footer">
+
+                                    <div class="task-assignee">
+
+                                        <div class="task-avatar">
+
+                                            @* @task.AssignedInitials *@
+
+                                        </div>
+
+                                        <span>
+
+                                            @* @task.AssignedTo *@
+
+                                        </span>
+
+                                    </div>
+
+                                    <span class="priority-badge @task.Priority.ToLower()">
+
+                                        @task.Priority
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- Completed -->
+            <!-- ========================================================= -->
+
+            <div class="col-xl-4 col-lg-6">
+
+                <div class="task-column completed">
+
+                    <div class="task-column-header">
+
+                        <div class="task-column-title">
+
+                            Completed
+
+                            <span class="task-count">
+
+                                @Model.Tasks.Count(x => x.Status == "Resolved")
+
+                            </span>
+
+                        </div>
+
+                        <button type="button"
+                                class="btn task-column-add">
+
+                            <i class="bi bi-plus-lg"></i>
+
+                        </button>
+
+                    </div>
+
+                    <div class="task-column-body"
+                         data-status="Completed">
+                        @foreach (var task in Model.Tasks.Where(x => x.Status == "Resolved"))
+                        {
+                            <div class="task-card overdue"
+                                 data-task-id="@task.TaskId"
+                                 draggable="true">
+
+                                <div class="task-card-header">
+
+                                    <a href="#"
+                                           class="task-code">
+                                           Task Code
+                                        @* @task.TaskCode *@
+
+                                    </a>
+
+                                    <button type="button"
+                                            class="btn task-card-menu">
+
+                                        <i class="bi bi-three-dots"></i>
+
+                                    </button>
+
+                                </div>
+
+                                <div class="task-title">
+
+                                    @task.Title
+
+                                </div>
+
+                                <div class="task-reference">
+
+                                    @* @task.FeatureCode • @task.TechModuleCode *@
+
+                                </div>
+
+                                <div class="task-due-date overdue">
+
+                                    <i class="bi bi-calendar3"></i>
+
+                                    @task.ActualEndDate?.ToString("MMM dd, yyyy")
+
+                                </div>
+
+                                <div class="task-footer">
+
+                                    <div class="task-assignee">
+
+                                        <div class="task-avatar">
+
+                                            @* @task.AssignedInitials *@
+
+                                        </div>
+
+                                        <span>
+
+                                            @* @task.AssignedTo *@
+
+                                        </span>
+
+                                    </div>
+
+                                    <span class="priority-badge @task.Priority.ToLower()">
+
+                                        @task.Priority
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- Board Footer -->
+    <!-- ========================================================= -->
+
+    <div class="task-board-footer">
+
+        <i class="bi bi-arrows-move"></i>
+
+        <span>
+
+            Drag and drop tasks between columns to update status.
+
+        </span>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <script src="~/js/admin/tasks/tasks-index.js" asp-append-version="true"> </script>
+}
