@@ -1,0 +1,834 @@
+﻿/* ===========================================================
+   Technical Module Page
+=========================================================== */
+
+.technicalmodule-page {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ===========================================================
+   Technical Module Header
+=========================================================== */
+
+.technicalmodule-header {
+    margin-bottom: 8px;
+}
+
+    .technicalmodule-header .row {
+        min-height: 72px;
+    }
+
+/* ===========================================================
+   Page Title
+=========================================================== */
+
+.page-title {
+    margin: 0;
+    color: #071A38;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    margin: 8px 0 0;
+    color: #667085;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* ===========================================================
+   Toolbar
+=========================================================== */
+
+.technicalmodule-toolbar-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.technicalmodule-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+/* ===========================================================
+   Search
+=========================================================== */
+
+.technicalmodule-search {
+    position: relative;
+    width: 340px;
+    flex-shrink: 0;
+}
+
+.technicalmodule-search-input {
+    height: 40px;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    padding-left: 14px;
+    padding-right: 42px;
+    font-size: 14px;
+    box-shadow: none;
+}
+
+    .technicalmodule-search-input:focus {
+        border-color: #0B5FFF;
+        box-shadow: 0 0 0 .15rem rgba(11,95,255,.15);
+    }
+
+.technicalmodule-search-button {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    color: #344054;
+    padding: 0;
+}
+
+/* ===========================================================
+   Toolbar Buttons
+=========================================================== */
+
+.technicalmodule-filter-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 18px;
+    background: #FFFFFF;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    color: #101828;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: none;
+}
+
+    .technicalmodule-filter-button:hover {
+        background: #F9FAFB;
+        border-color: #98A2B3;
+    }
+
+    .technicalmodule-filter-button:focus {
+        box-shadow: none;
+    }
+
+    .technicalmodule-filter-button i {
+        color: #344054;
+    }
+
+/* ===========================================================
+   Create Button
+=========================================================== */
+
+.technicalmodule-create-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    min-width: 210px;
+    padding: 0 22px;
+    background: #FF6A13;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+    .technicalmodule-create-button:hover {
+        background: #E85D0C;
+        color: #FFFFFF;
+    }
+
+    .technicalmodule-create-button:focus {
+        box-shadow: none;
+    }
+
+    .technicalmodule-create-button i {
+        font-size: 16px;
+    }
+
+/* ===========================================================
+   Statistics
+=========================================================== */
+
+.statistics-section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #FFFFFF;
+    border: 1px solid #E6EBF2;
+    border-radius: 12px;
+    padding: 16px;
+    height: 100%;
+    box-shadow: 0 2px 8px rgba(15,23,42,.04);
+    transition: .25s ease;
+}
+
+    .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(15,23,42,.08);
+    }
+
+/* ===========================================================
+   Statistics Icon
+=========================================================== */
+
+.stat-icon {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    align-self: center;
+}
+
+.stat-primary {
+    background: #EEF4FF;
+    color: #2563EB;
+}
+
+.stat-success {
+    background: #EEF9F1;
+    color: #16A34A;
+}
+
+.stat-warning {
+    background: #FFF8EB;
+    color: #F59E0B;
+}
+
+.stat-danger {
+    background: #FEF1F2;
+    color: #DC2626;
+}
+
+.stat-info {
+    background: #EEF6FF;
+    color: #2563EB;
+}
+
+.stat-secondary {
+    background: #F4F6F8;
+    color: #1E3A8A;
+}
+
+/* ===========================================================
+   Statistics Content
+=========================================================== */
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+}
+
+.stat-title {
+    margin: 2px 0 8px;
+    font-size: .90rem;
+    font-weight: 600;
+    color: #102A56;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #0F172A;
+    margin-bottom: 12px;
+}
+
+.stat-change {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .82rem;
+    font-weight: 600;
+}
+
+    .stat-change small {
+        color: #98A2B3;
+        font-weight: 500;
+    }
+
+    .stat-change.positive {
+        color: #16A34A;
+    }
+
+    .stat-change.negative {
+        color: #DC2626;
+    }
+
+    .stat-change i {
+        font-size: .85rem;
+    }
+
+/* ===========================================================
+   Technical Module Statistics
+=========================================================== */
+
+.technicalmodule-stat-card {
+    height: 100%;
+}
+
+    .technicalmodule-stat-card .stat-title {
+        min-height: 42px;
+    }
+
+    .technicalmodule-stat-card .stat-value {
+        letter-spacing: -.5px;
+    }
+
+    .technicalmodule-stat-card .stat-icon {
+        flex-shrink: 0;
+    }
+
+    .technicalmodule-stat-card .stat-content {
+        justify-content: center;
+    }
+
+/* ===========================================================
+   Technical Module List
+=========================================================== */
+
+.technicalmodule-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.technicalmodule-list-card {
+    background: #FFFFFF;
+    border: 1px solid #E6EBF2;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(15,23,42,.04);
+}
+
+/* ===========================================================
+   List Header
+=========================================================== */
+
+.technicalmodule-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    border-bottom: 1px solid #E6EBF2;
+}
+
+.technicalmodule-list-title {
+    margin: 0;
+    color: #071A38;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.technicalmodule-list-subtitle {
+    margin: 6px 0 0;
+    color: #667085;
+    font-size: 14px;
+}
+
+/* ===========================================================
+   Table
+=========================================================== */
+
+.technicalmodule-table {
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+    .technicalmodule-table thead th {
+        background: #F8FAFC;
+        color: #344054;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .03em;
+        border-bottom: 1px solid #E6EBF2;
+        padding: 14px 16px;
+        white-space: nowrap;
+    }
+
+    .technicalmodule-table tbody td {
+        padding: 16px;
+        border-color: #EEF2F6;
+        color: #344054;
+        font-size: 14px;
+        vertical-align: middle;
+    }
+
+    .technicalmodule-table tbody tr:hover {
+        background: #FAFBFC;
+    }
+
+/* ===========================================================
+   Technical Module Name
+=========================================================== */
+
+.technicalmodule-name {
+    font-weight: 600;
+    color: #071A38;
+}
+
+.technicalmodule-task-title {
+    color: #475467;
+    line-height: 1.4;
+}
+
+/* ===========================================================
+   Enterprise Badge System
+=========================================================== */
+
+.badge-pill,
+.priority-badge,
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 110px;
+    height: 34px;
+    padding: 0 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* ===========================================================
+   Priority
+=========================================================== */
+
+.priority-critical {
+    background: #FEE2E2;
+    color: #B42318;
+}
+
+.priority-high {
+    background: #FFF1E8;
+    color: #C4320A;
+}
+
+.priority-medium {
+    background: #FEF3C7;
+    color: #B54708;
+}
+
+.priority-low {
+    background: #ECFDF3;
+    color: #027A48;
+}
+
+.priority-none {
+    background: #F2F4F7;
+    color: #667085;
+}
+
+/* ===========================================================
+   Status
+=========================================================== */
+
+.status-new,
+.status-open {
+    background: #EFF8FF;
+    color: #026AA2;
+}
+
+.status-in-progress {
+    background: #EEF4FF;
+    color: #3538CD;
+}
+
+.status-under-review,
+.status-testing,
+.status-ready-for-testing {
+    background: #F4F3FF;
+    color: #5925DC;
+}
+
+.status-ready-for-deployment,
+.status-deployed,
+.status-resolved,
+.status-completed {
+    background: #ECFDF3;
+    color: #027A48;
+}
+
+.status-on-hold {
+    background: #FFF8E1;
+    color: #B54708;
+}
+
+.status-blocked,
+.status-rejected {
+    background: #FEE4E2;
+    color: #D92D20;
+}
+
+.status-cancelled,
+.status-closed {
+    background: #F2F4F7;
+    color: #667085;
+}
+
+/* ===========================================================
+   Badge Hover
+=========================================================== */
+
+.badge-pill:hover,
+.priority-badge:hover,
+.status-badge:hover {
+    filter: brightness(.98);
+    transition: .15s ease;
+}
+
+/* ===========================================================
+   Current Health Badge
+=========================================================== */
+
+.technicalmodule-health-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+    .technicalmodule-health-badge .health-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+
+    .technicalmodule-health-badge.excellent {
+        background: #EAF7EC;
+        color: #15803D;
+    }
+
+        .technicalmodule-health-badge.excellent .health-dot {
+            background: #16A34A;
+        }
+
+    .technicalmodule-health-badge.good {
+        background: #EEF6FF;
+        color: #2563EB;
+    }
+
+        .technicalmodule-health-badge.good .health-dot {
+            background: #2563EB;
+        }
+
+    .technicalmodule-health-badge.warning {
+        background: #FFF7E6;
+        color: #D97706;
+    }
+
+        .technicalmodule-health-badge.warning .health-dot {
+            background: #F59E0B;
+        }
+
+    .technicalmodule-health-badge.critical {
+        background: #FDECEC;
+        color: #DC2626;
+    }
+
+        .technicalmodule-health-badge.critical .health-dot {
+            background: #EF4444;
+        }
+
+    .technicalmodule-health-badge.retired {
+        background: #F3F4F6;
+        color: #6B7280;
+    }
+
+        .technicalmodule-health-badge.retired .health-dot {
+            background: #9CA3AF;
+        }
+
+/* ===========================================================
+   Action Button
+=========================================================== */
+
+.technicalmodule-action-button {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #344054;
+}
+
+    .technicalmodule-action-button:hover {
+        background: #F3F4F6;
+    }
+
+    .technicalmodule-action-button:focus {
+        box-shadow: none;
+    }
+
+    .technicalmodule-action-button i {
+        font-size: 18px;
+    }
+
+/* ===========================================================
+   Dropdown Menu
+=========================================================== */
+
+.dropdown-menu {
+    border-radius: 10px;
+    border: 1px solid #E6EBF2;
+    box-shadow: 0 10px 24px rgba(15,23,42,.10);
+}
+
+.dropdown-item {
+    font-size: 14px;
+    padding: 10px 16px;
+}
+
+    .dropdown-item i {
+        width: 18px;
+        text-align: center;
+    }
+
+.dropdown-divider {
+    margin: 6px 0;
+}
+
+/* ===========================================================
+   Empty State
+=========================================================== */
+
+.technicalmodule-empty-state {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 420px;
+    padding: 80px 24px;
+    text-align: center;
+}
+
+    .technicalmodule-empty-state h4 {
+        margin-top: 20px;
+    }
+
+    .technicalmodule-empty-state p {
+        margin-top: 8px;
+        max-width: 420px;
+    }
+    .technicalmodule-empty-state i {
+        font-size: 60px;
+        color: #98A2B3;
+    }
+
+
+
+/* ===========================================================
+   Technical Module List Footer
+=========================================================== */
+
+.technicalmodule-list-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    border-top: 1px solid #E6EBF2;
+    background: #FFFFFF;
+    color: #667085;
+    font-size: 14px;
+}
+
+    .technicalmodule-list-footer strong {
+        color: #071A38;
+        font-weight: 700;
+    }
+
+/* ===========================================================
+   Pagination
+=========================================================== */
+
+.technicalmodule-pagination {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+    .technicalmodule-pagination .page-link {
+        min-width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        border: 1px solid #D0D5DD;
+        color: #344054;
+        background: #FFFFFF;
+        box-shadow: none;
+    }
+
+        .technicalmodule-pagination .page-link:hover {
+            background: #F9FAFB;
+            border-color: #98A2B3;
+        }
+
+    .technicalmodule-pagination .page-item.active .page-link {
+        background: #071A38;
+        color: #FFFFFF;
+        border-color: #071A38;
+    }
+
+/* ===========================================================
+   Table Responsive
+=========================================================== */
+
+.table-responsive {
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+    .table-responsive::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .table-responsive::-webkit-scrollbar-track {
+        background: #F3F4F6;
+    }
+
+    .table-responsive::-webkit-scrollbar-thumb {
+        background: #CBD5E1;
+        border-radius: 999px;
+    }
+
+        .table-responsive::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+
+/* ===========================================================
+   Responsive
+=========================================================== */
+
+@media (max-width:1199.98px) {
+
+    .technicalmodule-toolbar-container {
+        margin-top: 20px;
+    }
+
+    .technicalmodule-toolbar {
+        justify-content: flex-start;
+    }
+
+    .technicalmodule-list-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+}
+
+@media (max-width:991.98px) {
+
+    .statistics-section .col-xl-2 {
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width:767.98px) {
+
+    .technicalmodule-search {
+        width: 100%;
+    }
+
+    .technicalmodule-toolbar {
+        gap: 12px;
+    }
+
+    .technicalmodule-filter-button,
+    .technicalmodule-create-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .technicalmodule-list-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .technicalmodule-pagination {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .technicalmodule-table {
+        min-width: 1100px;
+    }
+}
+
+@media (max-width:575.98px) {
+
+    .page-title {
+        font-size: 28px;
+    }
+
+    .page-subtitle {
+        font-size: 14px;
+    }
+
+    .stat-card {
+        padding: 14px;
+    }
+
+    .stat-value {
+        font-size: 1.75rem;
+    }
+
+    .technicalmodule-list-header,
+    .technicalmodule-list-footer {
+        padding: 18px;
+    }
+}
+
+/* ===========================================================
+   Utilities
+=========================================================== */
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.shadow-none {
+    box-shadow: none !important;
+}
+
+.border-0 {
+    border: 0 !important;
+}

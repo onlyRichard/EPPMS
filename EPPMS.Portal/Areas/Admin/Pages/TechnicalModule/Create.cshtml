@@ -1,0 +1,634 @@
+﻿@page
+@model EPPMS.Portal.Areas.Admin.Pages.TechnicalModule.CreateModel
+
+@{
+    ViewData["Title"] = "Add Technical Module";
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/admin/technicalmodule/technicalmodule-create.css"  asp-append-version="true" />
+}
+
+<div class="technicalmodule-create-page">
+
+    <form id="technicalModuleForm" method="post" novalidate>
+
+        @Html.AntiForgeryToken()
+
+        <!-- ========================================================= -->
+        <!-- Page Header -->
+        <!-- ========================================================= -->
+
+        <div class="technicalmodule-create-header">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg">
+
+                    <h1 class="page-title">
+
+                        Add Technical Module
+
+                    </h1>
+
+                    <p class="page-subtitle">
+
+                        Create a new technical module and configure its details.
+
+                    </p>
+
+                </div>
+
+                <div class="col-lg-auto">
+
+                    <div class="technicalmodule-header-actions">
+
+                        <a asp-page="./Index"
+                           class="btn btn-cancel">
+
+                            Cancel
+
+                        </a>
+
+                        <button type="submit"
+                                id="btnSaveTechnicalModule"
+                                class="btn btn-save">
+
+                            <i class="bi bi-floppy me-2"></i>
+
+                            Save Module
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- General Information -->
+        <!-- ========================================================= -->
+
+        <div class="card form-section">
+
+            <div class="card-body">
+
+                <h2 class="section-title">
+
+                    General Information
+
+                </h2>
+
+                <div class="row g-4">
+
+                    <!-- Module / Title -->
+
+                    <div class="col-xl-4 col-lg-6">
+
+                        <label asp-for="TechnicalModule.TechModule"
+                               class="form-label">
+
+                            Module / Title
+
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <input asp-for="TechnicalModule.TechModule"
+                               class="form-control"
+                               maxlength="200"
+                               placeholder="Enter module title" />
+
+                        <span asp-validation-for="TechnicalModule.TechModule"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <!-- Technology Area -->
+
+                    <div class="col-xl-4 col-lg-6">
+
+                        <label asp-for="TechnicalModule.TechnologyAreaId"
+                               class="form-label">
+
+                            Technology Area
+
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <select asp-for="TechnicalModule.TechnologyAreaId"
+                                class="form-select">
+
+                            <option value="">
+
+                                Select Technology Area
+
+                            </option>
+
+                            @foreach (var item in Model.TechnologyAreas)
+                            {
+                                <option value="@item.Id">
+
+                                    @item.Name
+
+                                </option>
+                            }
+
+                        </select>
+
+                        <span asp-validation-for="TechnicalModule.TechnologyAreaId"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <!-- Feature -->
+
+                    <div class="col-xl-4 col-lg-12">
+
+                        <label asp-for="TechnicalModule.TaskTitle"
+                               class="form-label">
+
+                            Task Title
+
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <input asp-for="TechnicalModule.TaskTitle"
+                               class="form-control"
+                               maxlength="250"
+                               placeholder="Enter feature" />
+
+                        <span asp-validation-for="TechnicalModule.TaskTitle"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <!-- Priority -->
+
+                    <div class="col-xl-6 col-lg-6">
+
+                        <label asp-for="TechnicalModule.PriorityId"
+                               class="form-label">
+
+                            Priority
+
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <select asp-for="TechnicalModule.PriorityId"
+                                class="form-select">
+
+                            <option value="">
+
+                                Select Priority
+
+                            </option>
+
+                            @foreach (var item in Model.Priorities)
+                            {
+                                <option value="@item.Id">
+
+                                    @item.Name
+
+                                </option>
+                            }
+
+                        </select>
+
+                        <span asp-validation-for="TechnicalModule.PriorityId"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <!-- Status -->
+
+                    <div class="col-xl-6 col-lg-6">
+
+                        <label asp-for="TechnicalModule.StatusId"
+                               class="form-label">
+
+                            Status
+
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <select asp-for="TechnicalModule.StatusId"
+                                class="form-select">
+
+                            <option value="">
+
+                                Select Status
+
+                            </option>
+
+                            @foreach (var item in Model.Statuses)
+                            {
+                                <option value="@item.Id">
+
+                                    @item.Name
+
+                                </option>
+                            }
+
+                        </select>
+
+                        <span asp-validation-for="TechnicalModule.StatusId"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- Content -->
+        <!-- ========================================================= -->
+
+        <div class="row g-2">
+
+            <!-- Left Column -->
+
+            <div class="col-xl-7">
+                <div class="card form-section h-100">
+
+                    <div class="card-body">
+
+                        <h2 class="section-title">
+
+                            Module Details
+
+                        </h2>
+                        <div class="row g-4">
+
+                            <!-- Description -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="TechnicalModule.Description"
+                                       class="form-label">
+
+                                    Description
+
+                                    <span class="required">*</span>
+
+                                </label>
+
+                                <textarea asp-for="TechnicalModule.Description"
+                                          id="Description"
+                                          class="form-control"
+                                          rows="6"
+                                          maxlength="4000"
+                                          placeholder="Describe the technical module..."></textarea>
+
+                                <div class="character-counter">
+
+                                    <span id="descriptionCounter">0 / 4000</span>
+
+                                </div>
+
+                                <span asp-validation-for="TechnicalModule.Description"
+                                      class="text-danger"></span>
+
+                            </div>
+
+                            <!-- Reason -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="TechnicalModule.Reason"
+                                       class="form-label">
+
+                                    Reason
+
+                                </label>
+
+                                <textarea asp-for="TechnicalModule.Reason"
+                                          id="Reason"
+                                          class="form-control"
+                                          rows="6"
+                                          maxlength="1000"
+                                          placeholder="Enter business or technical justification..."></textarea>
+
+                                <div class="character-counter">
+
+                                    <span id="reasonCounter">0 / 1000</span>
+
+                                </div>
+
+                                <span asp-validation-for="TechnicalModule.Reason"
+                                      class="text-danger"></span>
+
+                            </div>
+
+                            <!-- Release Impact -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="TechnicalModule.ReleaseImpact"
+                                       class="form-label">
+
+                                    Release Impact
+
+                                </label>
+
+                                <textarea asp-for="TechnicalModule.ReleaseImpact"
+                                          id="ReleaseImpact"
+                                          class="form-control"
+                                          rows="4"
+                                          maxlength="1000"
+                                          placeholder="Describe the release impact..."></textarea>
+
+                                <div class="character-counter">
+
+                                    <span id="releaseImpactCounter">0 / 1000</span>
+
+                                </div>
+
+                                <span asp-validation-for="TechnicalModule.ReleaseImpact"
+                                      class="text-danger"></span>
+
+                            </div>
+
+                            <!-- Latest Update -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="TechnicalModule.LatestUpdate"
+                                       class="form-label">
+
+                                    Latest Update
+
+                                </label>
+
+                                <textarea asp-for="TechnicalModule.LatestUpdate"
+                                          id="LatestUpdate"
+                                          class="form-control"
+                                          rows="4"
+                                          maxlength="1000"
+                                          placeholder="Provide the latest implementation update..."></textarea>
+
+                                <div class="character-counter">
+
+                                    <span id="latestUpdateCounter">0 / 1000</span>
+
+                                </div>
+
+                                <span asp-validation-for="TechnicalModule.LatestUpdate"
+                                      class="text-danger"></span>
+
+                            </div>
+
+                            <!-- Notes -->
+
+                            <div class="col-12">
+
+                                <label asp-for="TechnicalModule.Notes"
+                                       class="form-label">
+
+                                    Notes
+
+                                </label>
+
+                                <textarea asp-for="TechnicalModule.Notes"
+                                          id="Notes"
+                                          class="form-control"
+                                          rows="4"
+                                          maxlength="1000"
+                                          placeholder="Additional notes..."></textarea>
+
+                                <div class="character-counter">
+
+                                    <span id="notesCounter">0 / 1000</span>
+
+                                </div>
+
+                                <span asp-validation-for="TechnicalModule.Notes"
+                                      class="text-danger"></span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Right Column -->
+
+            <div class="col-xl-5">
+                <div class="card form-section h-100">
+
+                    <div class="card-body">
+
+                        <h2 class="section-title">
+
+                            Schedule & Effort
+
+                        </h2>
+
+                        <div class="row g-4">
+
+                            <!-- Planned Start -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="TechnicalModule.PlannedStart"
+                                       class="form-label">
+
+                                    Planned Start
+
+                                    <span class="required">*</span>
+
+                                </label>
+
+                                <input asp-for="TechnicalModule.PlannedStart"
+                                       type="date"
+                                       class="form-control" />
+
+                                <span asp-validation-for="TechnicalModule.PlannedStart"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- Target Completion -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="TechnicalModule.TargetCompletion"
+                                       class="form-label">
+
+                                    Target Completion
+
+                                    <span class="required">*</span>
+
+                                </label>
+
+                                <input asp-for="TechnicalModule.TargetCompletion"
+                                       type="date"
+                                       class="form-control" />
+
+                                <span asp-validation-for="TechnicalModule.TargetCompletion"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- Actual Start -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="TechnicalModule.ActualStart"
+                                       class="form-label">
+
+                                    Actual Start
+
+                                </label>
+
+                                <input asp-for="TechnicalModule.ActualStart"
+                                       type="date"
+                                       class="form-control" />
+
+                                <span asp-validation-for="TechnicalModule.ActualStart"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- Actual Completion -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="TechnicalModule.ActualCompletion"
+                                       class="form-label">
+
+                                    Actual Completion
+
+                                </label>
+
+                                <input asp-for="TechnicalModule.ActualCompletion"
+                                       type="date"
+                                       class="form-control" />
+
+                                <span asp-validation-for="TechnicalModule.ActualCompletion"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- Estimated Effort -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="TechnicalModule.EstimatedEffort"
+                                       class="form-label">
+
+                                    Estimated Effort
+
+                                </label>
+
+                                <input asp-for="TechnicalModule.EstimatedEffort"
+                                       type="number"
+                                       class="form-control"
+                                       step="0.01"
+                                       min="0"
+                                       placeholder="e.g. 40.00" />
+
+                                <small class="form-text text-muted">
+
+                                    Planned implementation effort.
+
+                                </small>
+
+                                <span asp-validation-for="TechnicalModule.EstimatedEffort"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- Actual Effort -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="TechnicalModule.ActualEffort"
+                                       class="form-label">
+
+                                    Actual Effort
+
+                                </label>
+
+                                <input asp-for="TechnicalModule.ActualEffort"
+                                       type="number"
+                                       class="form-control"
+                                       step="0.01"
+                                       min="0"
+                                       placeholder="e.g. 38.50" />
+
+                                <small class="form-text text-muted">
+
+                                    Actual implementation effort.
+
+                                </small>
+
+                                <span asp-validation-for="TechnicalModule.ActualEffort"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- Required Fields -->
+        <!-- ========================================================= -->
+
+        <div class="row mt-4">
+
+            <div class="col-12">
+
+                <div class="required-fields-note">
+
+                    <span class="required">*</span>
+
+                    Fields marked with an asterisk (*) are required.
+
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+
+</div>
+
+@section Scripts
+{
+    <script src="~/js/admin/technicalmodule/technicalmodule-create.js" asp-append-version="true"> </script>
+}

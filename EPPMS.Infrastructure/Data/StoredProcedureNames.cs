@@ -50,11 +50,11 @@ namespace EPPMS.Infrastructure.Data
 
         public static class TechnicalModule
         {
-            public const string Create = "dbo.usp_Task_Create";
-            public const string Get = "dbo.usp_Task_Get";
-            public const string GetById = "dbo.usp_Task_GetById";
-            public const string Update = "dbo.usp_Task_Update";
-            public const string Delete = "dbo.usp_Task_Delete";
+            public const string Create = "dbo.usp_TechnicalModule_Create";
+            public const string Get = "dbo.usp_TechnicalModule_Get";
+            public const string GetById = "dbo.usp_TechnicalModule_GetById";
+            public const string Update = "dbo.usp_TechnicalModule_Update";
+            public const string Delete = "dbo.usp_TechnicalModule_Delete";
         }
 
         public static class Task

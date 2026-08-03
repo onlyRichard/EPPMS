@@ -70,6 +70,8 @@ namespace EPPMS.Infrastructure.Repositories
 
         public async Task<bool> CreateAsync(TechnicalModuleCreateDTO technicalModule)
         {
+            technicalModule.CreatedBy = "MS/rperal15";
+            technicalModule.TechModuleId = Guid.NewGuid();
             await using SqlConnection connection = await CreateConnectionAsync();
             await using SqlCommand command = new(StoredProcedureNames.TechnicalModule.Create, connection);
             command.CommandType = CommandType.StoredProcedure;

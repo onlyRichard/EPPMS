@@ -1,0 +1,383 @@
+﻿/* ===========================================================
+   Technical Module Create Page
+=========================================================== */
+
+.technicalmodule-create-page {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ===========================================================
+   Create Header
+=========================================================== */
+
+.technicalmodule-create-header {
+    margin-bottom: 8px;
+}
+
+    .technicalmodule-create-header .row {
+        min-height: 72px;
+    }
+
+/* ===========================================================
+   Page Title
+=========================================================== */
+
+.page-title {
+    margin: 0;
+    color: #071A38;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    margin: 8px 0 0;
+    color: #667085;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* ===========================================================
+   Header Actions
+=========================================================== */
+
+.technicalmodule-header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+/* ===========================================================
+   Buttons
+=========================================================== */
+
+.btn-cancel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    min-width: 120px;
+    padding: 0 22px;
+    background: #FFFFFF;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: .2s ease;
+}
+
+    .btn-cancel:hover {
+        background: #F9FAFB;
+        border-color: #98A2B3;
+        color: #344054;
+    }
+
+    .btn-cancel:focus {
+        box-shadow: none;
+    }
+
+.btn-save {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    min-width: 165px;
+    padding: 0 22px;
+    background: #FF6A13;
+    border: none;
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .2s ease;
+}
+
+    .btn-save:hover {
+        background: #E85D0C;
+        color: #FFFFFF;
+    }
+
+    .btn-save:focus {
+        box-shadow: none;
+    }
+
+/* ===========================================================
+   Form Sections
+=========================================================== */
+
+.form-section {
+    border: 1px solid #E6EBF2;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(15,23,42,.04);
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+    .form-section .card-body {
+        padding: 32px;
+    }
+
+/* ===========================================================
+   Section Title
+=========================================================== */
+
+.section-title {
+    margin: 0 0 24px;
+    color: #071A38;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* ===========================================================
+   Form Labels
+=========================================================== */
+
+.form-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 8px;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.required {
+    color: #DC2626;
+}
+
+/* ===========================================================
+   Form Controls
+=========================================================== */
+
+.form-control,
+.form-select {
+    height: 44px;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #101828;
+    box-shadow: none;
+    transition: .2s ease;
+}
+
+    .form-control::placeholder {
+        color: #98A2B3;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #0B5FFF;
+        box-shadow: 0 0 0 .15rem rgba(11,95,255,.15);
+    }
+
+.form-select {
+    padding-right: 2.5rem;
+}
+
+/* ===========================================================
+   Textarea
+=========================================================== */
+
+textarea.form-control {
+    min-height: 120px;
+    height: auto;
+    resize: vertical;
+    line-height: 1.6;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+/* ===========================================================
+   Date Controls
+=========================================================== */
+
+input[type="date"].form-control {
+    cursor: pointer;
+}
+
+/* ===========================================================
+   Number Controls
+=========================================================== */
+
+input[type="number"].form-control {
+    text-align: left;
+}
+
+/* ===========================================================
+   Helper Text
+=========================================================== */
+
+.form-text {
+    margin-top: 6px;
+    color: #667085;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* ===========================================================
+   Character Counter
+=========================================================== */
+
+.character-counter {
+    display: flex;
+    justify-content: flex-end; 
+    color: #98A2B3;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+    .character-counter span {
+        white-space: nowrap;
+    }
+
+/* ===========================================================
+   Validation
+=========================================================== */
+
+.text-danger {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* ===========================================================
+   Disabled Controls
+=========================================================== */
+
+.form-control:disabled,
+.form-select:disabled {
+    background: #F9FAFB;
+    color: #98A2B3;
+    cursor: not-allowed;
+}
+
+/* ===========================================================
+   Schedule & Effort
+=========================================================== */
+
+.form-section .row:last-child {
+    margin-bottom: 0;
+}
+
+/* ===========================================================
+   Card Spacing
+=========================================================== */
+
+.form-section + .form-section {
+    margin-top: 28px;
+}
+
+.form-section:last-of-type {
+    margin-bottom: 20px;
+}
+
+/* ===========================================================
+   Required Fields Note
+=========================================================== */
+
+.required-fields-note {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    color: #667085;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+    .required-fields-note .required {
+        color: #DC2626;
+        font-weight: 700;
+    }
+
+/* ===========================================================
+   Save Button Loading State
+=========================================================== */
+
+.btn-save:disabled {
+    opacity: 1;
+    cursor: not-allowed;
+    background: #FF6A13;
+    border-color: #FF6A13;
+}
+
+.btn-save .spinner-border {
+    width: 16px;
+    height: 16px;
+}
+
+/* ===========================================================
+   Form Layout Improvements
+=========================================================== */
+
+
+/* ===========================================================
+   Textarea Consistency
+=========================================================== */
+
+#Description {
+    min-height: 140px;
+}
+
+#Reason,
+#ReleaseImpact,
+#LatestUpdate,
+#Notes {
+    min-height: 120px;
+}
+
+/* ===========================================================
+   Number Inputs
+=========================================================== */
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* ===========================================================
+   Validation State
+=========================================================== */
+
+.g-4, .gy-4 {
+    --bs-gutter-y: 0 rem !important
+}
+
+.input-validation-error,
+.form-control.input-validation-error,
+.form-select.input-validation-error {
+    border-color: #DC2626;
+}
+
+    .input-validation-error:focus,
+    .form-control.input-validation-error:focus,
+    .form-select.input-validation-error:focus {
+        border-color: #DC2626;
+        box-shadow: 0 0 0 .15rem rgba(220,38,38,.15);
+    }
+
+/* ===========================================================
+   Section Animation
+=========================================================== */
+
+.form-section {
+    transition: box-shadow .2s ease;
+}
+
+    .form-section:hover {
+        box-shadow: 0 6px 16px rgba(15,23,42,.06);
+    }
+

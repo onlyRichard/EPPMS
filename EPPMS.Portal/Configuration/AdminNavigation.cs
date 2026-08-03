@@ -39,7 +39,7 @@ public static class AdminNavigation
             Title = "Technical Modules",
             Icon = "bi-box-seam",
             Area = "Admin",
-            Route = "/TechnicalModules/Index"
+            Route = "/TechnicalModule/Index"
         },
 
         new()

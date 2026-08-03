@@ -1,0 +1,815 @@
+﻿@page
+@model EPPMS.Portal.Areas.Admin.Pages.TechnicalModule.IndexModel
+
+@{
+    ViewData["Title"] = "Technical Modules";
+}
+
+@section Styles
+{
+    <link href="~/css/admin/technicalmodule/technicalmodule-index.css" rel="stylesheet" asp-append-version="true" />
+}
+
+<div class="technicalmodule-page">
+
+    <!-- ==========================================
+         Technical Module Header
+    =========================================== -->
+
+    <section class="technicalmodule-header">
+
+        <div class="row align-items-center">
+
+            <!-- Left -->
+
+            <div class="col-xl-5 col-lg-12">
+
+                <h1 class="page-title">
+
+                    Technical Modules
+
+                </h1>
+
+                <p class="page-subtitle">
+
+                    Manage technical modules and their configuration.
+
+                </p>
+
+            </div>
+
+            <!-- Right -->
+
+            <div class="col-xl-7 col-lg-12">
+
+                <div class="technicalmodule-toolbar-container">
+
+                    <div class="technicalmodule-toolbar">
+
+                       @*  <!-- Search -->
+
+                        <div class="technicalmodule-search">
+
+                            <input type="text"
+                                   class="form-control technicalmodule-search-input"
+                                   placeholder="Search technical modules..." />
+
+                            <button type="button"
+                                    class="technicalmodule-search-button">
+
+                                <i class="bi bi-search"></i>
+
+                            </button>
+
+                        </div> *@
+
+                        <!-- Status Filter -->
+
+                        <div class="dropdown">
+
+                            <button class="btn technicalmodule-filter-button dropdown-toggle"
+                                    type="button"
+                                    data-bs-toggle="dropdown">
+
+                                <i class="bi bi-funnel"></i>
+
+                                Status Filter
+
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-menu-end">
+
+                                <li>
+
+                                    <a class="dropdown-item"
+                                           href="#">
+
+                                        All Status
+
+                                    </a>
+
+                                </li>
+
+                                <li>
+
+                                    <a class="dropdown-item"
+                                           href="#">
+
+                                        Not Started
+
+                                    </a>
+
+                                </li>
+
+                                <li>
+
+                                    <a class="dropdown-item"
+                                           href="#">
+
+                                        In Progress
+
+                                    </a>
+
+                                </li>
+
+                                <li>
+
+                                    <a class="dropdown-item"
+                                           href="#">
+
+                                        Completed
+
+                                    </a>
+
+                                </li>
+
+                                <li>
+
+                                    <a class="dropdown-item"
+                                           href="#">
+
+                                        On Hold
+
+                                    </a>
+
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                        <!-- More Actions -->
+
+                        <div class="dropdown">
+
+                            <button class="btn technicalmodule-filter-button dropdown-toggle"
+                                    type="button"
+                                    data-bs-toggle="dropdown">
+
+                                More Actions
+
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-menu-end">
+
+                                <li>
+
+                                    <a class="dropdown-item"
+                                           href="#">
+
+                                        Export
+
+                                    </a>
+
+                                </li>
+
+                                <li>
+
+                                    <a class="dropdown-item"
+                                           href="#">
+
+                                        Import
+
+                                    </a>
+
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                        <!-- New Technical Module -->
+
+                        <a asp-page="./Create"
+                               class="btn technicalmodule-create-button"
+                               style="position:relative;">
+
+                            <i class="bi bi-plus-lg"></i>
+
+                            New Technical Module
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+         Statistics
+    =========================================== -->
+
+    <section class="statistics-section">
+
+        <div class="row g-3">
+
+            <!-- Total Modules -->
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+
+                <article class="stat-card">
+
+                    <div class="stat-icon stat-primary">
+
+                        <i class="bi bi-grid-3x2-gap"></i>
+
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3 class="stat-title">
+
+                            Total<br />Modules
+
+                        </h3>
+
+                        <div class="stat-value">
+
+                            @Model.TechnicalModule.Count()
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <!-- Not Started -->
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+
+                <article class="stat-card">
+
+                    <div class="stat-icon stat-secondary">
+
+                        <i class="bi bi-hourglass-split"></i>
+
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3 class="stat-title">
+
+                            Not Started
+
+                        </h3>
+
+                        <div class="stat-value">
+
+                            @Model.TechnicalModule.Count(x => x.Status == "Not Started")
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <!-- In Progress -->
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+
+                <article class="stat-card">
+
+                    <div class="stat-icon stat-info">
+
+                        <i class="bi bi-play-circle"></i>
+
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3 class="stat-title">
+
+                            In Progress
+
+                        </h3>
+
+                        <div class="stat-value">
+
+                            @Model.TechnicalModule.Count(x => x.Status == "In Progress")
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <!-- Completed -->
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+
+                <article class="stat-card">
+
+                    <div class="stat-icon stat-success">
+
+                        <i class="bi bi-check-circle"></i>
+
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3 class="stat-title">
+
+                            Completed
+
+                        </h3>
+
+                        <div class="stat-value">
+
+                            @Model.TechnicalModule.Count(x => x.Status == "Completed")
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <!-- High Priority -->
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+
+                <article class="stat-card">
+
+                    <div class="stat-icon stat-warning">
+
+                        <i class="bi bi-flag"></i>
+
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3 class="stat-title">
+
+                            High Priority
+
+                        </h3>
+
+                        <div class="stat-value">
+
+                            @Model.TechnicalModule.Count(x => x.Priority == "High")
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <!-- Active -->
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-2">
+
+                <article class="stat-card">
+
+                    <div class="stat-icon stat-danger">
+
+                        <i class="bi bi-lightning-charge"></i>
+
+                    </div>
+
+                    <div class="stat-content">
+
+                        <h3 class="stat-title">
+
+                            Active Modules
+
+                        </h3>
+
+                        <div class="stat-value">
+
+                            @Model.TechnicalModule.Count(x => x.IsActive)
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+         Technical Module List
+    =========================================== -->
+
+    <section class="technicalmodule-list">
+
+        <div class="technicalmodule-list-card">
+
+            <!-- Header -->
+
+            <div class="technicalmodule-list-header">
+
+                <div>
+
+                    <h2 class="technicalmodule-list-title">
+
+                        Technical Module List
+
+                    </h2>
+
+                    <p class="technicalmodule-list-subtitle">
+
+                        Showing @Model.TechnicalModule.Count technical module(s)
+
+                    </p>
+
+                </div>
+           </div>
+            @if (!Model.TechnicalModule.Any())
+            {
+                <div class="technicalmodule-empty-state">
+
+                    <i class="bi bi-diagram-3"></i>
+
+                    <h4>
+
+                        No technical modules found
+
+                    </h4>
+
+                    <p>
+
+                        There are currently no registered technical modules.
+
+                    </p>
+
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+
+                    <table class="table technicalmodule-table">
+
+                        <colgroup>
+
+                            <col style="width:12%;" />
+                            <col style="width:16%;" />
+                            <col style="width:18%;" />
+                            <col style="width:14%;" />
+                            <col style="width:10%;" />
+                            <col style="width:10%;" />
+                            <col style="width:10%;" />
+                            <col style="width:10%;" />
+                            <col style="width:8%;" />
+
+                        </colgroup>
+
+                        <thead>
+
+                            <tr>
+
+                                <th class="text-center">
+
+                                    Module ID
+
+                                </th>
+
+                                <th class="text-center">
+
+                                    Technical Module
+
+                                </th>
+
+                                <th class="text-center">
+
+                                    Task Title
+
+                                </th>
+
+                                <th class="text-center">
+
+                                    Technology Area
+
+                                </th>
+
+                                <th class="text-center">
+
+                                    Priority
+
+                                </th>
+
+                                <th class="text-center">
+
+                                    Status
+
+                                </th>
+
+                                <th class="text-center">
+
+                                    Planned Start
+
+                                </th>
+
+                                <th class="text-center">
+
+                                    Target Completion
+
+                                </th>
+
+                                <th class="text-center">
+
+                                    Actions
+
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var technicalModule in Model.TechnicalModule)
+                            {
+                                <tr>
+
+                                    <!-- Module ID -->
+
+                                    <td class="text-center">
+
+                                        @technicalModule.TechModuleId
+
+                                    </td>
+
+                                    <!-- Technical Module -->
+
+                                    <td class="text-center">
+
+                                        <div class="technicalmodule-name">
+
+                                            @technicalModule.TechModule
+
+                                        </div>
+
+                                    </td>
+
+                                    <!-- Task Title -->
+
+                                    <td class="text-center">
+
+                                        @technicalModule.TaskTitle
+
+                                    </td>
+
+                                    <!-- Technology Area -->
+
+                                    <td class="text-center">
+
+                                        @technicalModule.TechnologyArea
+
+                                    </td>
+
+                                    <!-- Priority -->
+
+                                    <td class="text-center">
+
+                                        <span class="priority-badge priority-@technicalModule.Priority.ToLower().Replace(" ", "-")">
+                                            @technicalModule.Priority
+                                        </span>
+                                    </td>
+
+                                    <!-- Status -->
+
+                                    <td class="text-center">
+
+                                        <span class="status-badge status-@technicalModule.Status.ToLower().Replace(" ", "-")">
+                                            @technicalModule.Status
+                                        </span>
+
+                                    </td>
+
+                                    <!-- Planned Start -->
+
+                                    <td class="text-center">
+
+                                        @(technicalModule.PlannedStart?.ToString("MMM dd, yyyy") ?? "—")
+
+                                    </td>
+
+                                    <!-- Target Completion -->
+
+                                    <td class="text-center">
+
+                                        @(technicalModule.TargetCompletion?.ToString("MMM dd, yyyy") ?? "—")
+
+                                    </td>
+
+                                    <!-- Actions -->
+
+                                    <td class="text-center">
+
+                                        <div class="dropdown">
+
+                                            <button class="btn technicalmodule-action-button"
+                                                    type="button"
+                                                    data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+
+                                                <i class="bi bi-three-dots-vertical"></i>
+
+                                            </button>
+
+                                            <ul class="dropdown-menu dropdown-menu-end">
+
+                                                <li>
+
+                                                    <a class="dropdown-item"
+                                                       href="#">
+
+                                                        <i class="bi bi-eye me-2"></i>
+
+                                                        View Details
+
+                                                    </a>
+
+                                                </li>
+
+                                                <li>
+
+                                                    <a class="dropdown-item"
+                                                       asp-page="./Edit"
+                                                       asp-route-techModuleId="@technicalModule.TechModuleId">
+
+                                                        <i class="bi bi-pencil-square me-2"></i>
+
+                                                        Edit Module
+
+                                                    </a>
+
+                                                </li>
+
+                                                <li>
+
+                                                    <a class="dropdown-item"
+                                                       href="#">
+
+                                                        <i class="bi bi-files me-2"></i>
+
+                                                        Duplicate
+
+                                                    </a>
+
+                                                </li>
+
+                                                <li>
+
+                                                    <a class="dropdown-item"
+                                                       href="#">
+
+                                                        <i class="bi bi-arrow-repeat me-2"></i>
+
+                                                        Update Status
+
+                                                    </a>
+
+                                                </li>
+
+                                                <li>
+
+                                                    <a class="dropdown-item"
+                                                       href="#">
+
+                                                        <i class="bi bi-pause-circle me-2"></i>
+
+                                                        Move To On Hold
+
+                                                    </a>
+
+                                                </li>
+
+                                                <li>
+
+                                                    <hr class="dropdown-divider">
+
+                                                </li>
+
+                                                <li>
+
+                                                    <a class="dropdown-item"
+                                                       href="#">
+
+                                                        <i class="bi bi-list-task me-2"></i>
+
+                                                        View Tasks
+
+                                                    </a>
+
+                                                </li>
+
+                                                <li>
+
+                                                    <a class="dropdown-item"
+                                                       href="#">
+
+                                                        <i class="bi bi-bug me-2"></i>
+
+                                                        View Related Bugs
+
+                                                    </a>
+
+                                                </li>
+
+                                                <li>
+
+                                                    <a class="dropdown-item"
+                                                       href="#">
+
+                                                        <i class="bi bi-clock-history me-2"></i>
+
+                                                        Audit Trail
+
+                                                    </a>
+
+                                                </li>
+
+                                                <li>
+
+                                                    <hr class="dropdown-divider">
+
+                                                </li>
+
+                                                <li>
+
+                                                    <a class="dropdown-item text-danger"
+                                                       href="#">
+
+                                                        <i class="bi bi-trash me-2"></i>
+
+                                                        Delete Module
+
+                                                    </a>
+
+                                                </li>
+
+                                            </ul>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+                    <!-- ==========================================
+                     Footer
+                =========================================== -->
+
+                    <div class="technicalmodule-list-footer">
+
+                        <div>
+
+                            Showing
+
+                            <strong>
+
+                                @Model.TechnicalModule.Count
+
+                            </strong>
+
+                            technical module(s)
+
+                        </div>
+
+                        <nav>
+
+                            <!-- Pagination will be added later -->
+
+                        </nav>
+
+                    </div>
+
+                }
+
+            </div>
+
+    </section>
+
+</div>
+
+@section Scripts
+{
+   <script src="~/js/admin/technicalmodule/technicalmodule-index.js" asp-append-version="true"> </script>
+}
