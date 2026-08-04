@@ -22,7 +22,7 @@ public class CreateModel : PageModel
 
     [BindProperty]
     public FeatureCreateDTO Feature { get; set; } = new();
-    public IReadOnlyList<ApplicationLookupResponseDTO> Applications { get; private set; } = [];
+    public IReadOnlyList<ModulesLookupResponseDTO> Applications { get; private set; } = [];
     public IReadOnlyList<LookupResponseDTO> RequestTypes { get; private set; } = [];
     public IReadOnlyList<LookupResponseDTO> Priorities { get; private set; } = [];
     public IReadOnlyList<LookupResponseDTO> Complexities { get; private set; } = [];

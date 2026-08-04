@@ -20,66 +20,54 @@ namespace EPPMS.Infrastructure.Repositories
 
         public Task<IReadOnlyList<LookupResponseDTO>> GetActionTypesAsync(
             CancellationToken cancellationToken)
-            => ExecuteLookupAsync(
-                StoredProcedureNames.Lookup.ActionType,
-                cancellationToken);
+            => ExecuteLookupAsync(StoredProcedureNames.Lookup.ActionType, cancellationToken);
 
         public Task<IReadOnlyList<LookupResponseDTO>> GetComplexitiesAsync(
             CancellationToken cancellationToken)
-            => ExecuteLookupAsync(
-                StoredProcedureNames.Lookup.Complexity,
-                cancellationToken);
+            => ExecuteLookupAsync(StoredProcedureNames.Lookup.Complexity, cancellationToken);
         public Task<IReadOnlyList<LookupResponseDTO>> GetCurrentHealthsAsync(
             CancellationToken cancellationToken)
-            => ExecuteLookupAsync(
-                StoredProcedureNames.Lookup.CurrentHealth,
-                cancellationToken);
+            => ExecuteLookupAsync(StoredProcedureNames.Lookup.CurrentHealth, cancellationToken);
         public Task<IReadOnlyList<LookupResponseDTO>> GetPrioritiesAsync(
             CancellationToken cancellationToken)
-            => ExecuteLookupAsync(
-                StoredProcedureNames.Lookup.Priority,
-                cancellationToken);
+            => ExecuteLookupAsync(StoredProcedureNames.Lookup.Priority, cancellationToken);
         public Task<IReadOnlyList<LookupResponseDTO>> GetReleaseStatusesAsync(
             CancellationToken cancellationToken)
-            => ExecuteLookupAsync(
-                StoredProcedureNames.Lookup.ReleaseStatus,
-                cancellationToken);
+            => ExecuteLookupAsync(StoredProcedureNames.Lookup.ReleaseStatus, cancellationToken);
         public Task<IReadOnlyList<LookupResponseDTO>> GetRequestTypesAsync(
             CancellationToken cancellationToken)
-            => ExecuteLookupAsync(
-                StoredProcedureNames.Lookup.RequestType,
-                cancellationToken);
+            => ExecuteLookupAsync(StoredProcedureNames.Lookup.RequestType, cancellationToken);
         public Task<IReadOnlyList<LookupResponseDTO>> GetSeveritiesAsync(
             CancellationToken cancellationToken)
-            => ExecuteLookupAsync(
-                StoredProcedureNames.Lookup.Severity,
-                cancellationToken);
+            => ExecuteLookupAsync(StoredProcedureNames.Lookup.Severity, cancellationToken);
         public Task<IReadOnlyList<LookupResponseDTO>> GetStatusesAsync(
             CancellationToken cancellationToken)
-            => ExecuteLookupAsync(
-                StoredProcedureNames.Lookup.Status,
-                cancellationToken);
+            => ExecuteLookupAsync(StoredProcedureNames.Lookup.Status, cancellationToken);
         public Task<IReadOnlyList<LookupResponseDTO>> GetTechnologyAreasAsync(
             CancellationToken cancellationToken)
-            => ExecuteLookupAsync(
-                StoredProcedureNames.Lookup.TechnologyArea,
-                cancellationToken);
+            => ExecuteLookupAsync(StoredProcedureNames.Lookup.TechnologyArea, cancellationToken);
         public Task<IReadOnlyList<LookupResponseDTO>> GetTestingStatusesAsync(
             CancellationToken cancellationToken)
-            => ExecuteLookupAsync(
-                StoredProcedureNames.Lookup.TestingStatus,
-                cancellationToken);
+            => ExecuteLookupAsync(StoredProcedureNames.Lookup.TestingStatus, cancellationToken);
         public Task<IReadOnlyList<LookupResponseDTO>> GetTypesAsync(
             CancellationToken cancellationToken)
-            => ExecuteLookupAsync(
-                StoredProcedureNames.Lookup.Type,
-                cancellationToken);
+            => ExecuteLookupAsync(StoredProcedureNames.Lookup.Type,cancellationToken);
 
-        public Task<IReadOnlyList<ApplicationLookupResponseDTO>> GetApplicationAsync(
+        public Task<IReadOnlyList<ModulesLookupResponseDTO>> GetApplicationAsync(
             CancellationToken cancellationToken)
-            => ExecuteApplicationsLookupAsync(
-                StoredProcedureNames.Lookup.Application,
-                cancellationToken);
+            => ExecuteApplicationsLookupAsync(StoredProcedureNames.Lookup.Application, cancellationToken);
+
+        public Task<IReadOnlyList<ModulesLookupResponseDTO>> GetFeatureAsync(
+          CancellationToken cancellationToken)
+          => ExecuteApplicationsLookupAsync(StoredProcedureNames.Lookup.Feature, cancellationToken);
+
+        public Task<IReadOnlyList<ModulesLookupResponseDTO>> GetTechnicalModuleAsync(
+         CancellationToken cancellationToken)
+         => ExecuteApplicationsLookupAsync(StoredProcedureNames.Lookup.TechnicalModule, cancellationToken);
+
+        public Task<IReadOnlyList<ModulesLookupResponseDTO>> GetBugAsync(
+         CancellationToken cancellationToken)
+         => ExecuteApplicationsLookupAsync(StoredProcedureNames.Lookup.Bug, cancellationToken);
         #endregion
 
 
@@ -105,7 +93,7 @@ namespace EPPMS.Infrastructure.Repositories
             return lookups;
         }
 
-        private async Task<IReadOnlyList<ApplicationLookupResponseDTO>> ExecuteApplicationsLookupAsync(string storedProcedure, CancellationToken cancellationToken)
+        private async Task<IReadOnlyList<ModulesLookupResponseDTO>> ExecuteApplicationsLookupAsync(string storedProcedure, CancellationToken cancellationToken)
         {
             await using SqlConnection connection = await CreateConnectionAsync();
             await using SqlCommand command = new(storedProcedure, connection);
@@ -113,10 +101,10 @@ namespace EPPMS.Infrastructure.Repositories
             command.CommandType = CommandType.StoredProcedure;
             await using SqlDataReader reader = await command.ExecuteReaderAsync(cancellationToken);
 
-            List<ApplicationLookupResponseDTO> lookups = [];
+            List<ModulesLookupResponseDTO> lookups = [];
             while (await reader.ReadAsync(cancellationToken))
             {
-                lookups.Add(MapApplicationLookup(reader));
+                lookups.Add(MapModulesLookup(reader));
             }
 
             return lookups;
@@ -138,19 +126,16 @@ namespace EPPMS.Infrastructure.Repositories
             };
         }
 
-        private static ApplicationLookupResponseDTO MapApplicationLookup(SqlDataReader reader)
+        private static ModulesLookupResponseDTO MapModulesLookup(SqlDataReader reader)
         {
-            return new ApplicationLookupResponseDTO
+            return new ModulesLookupResponseDTO
             {
                 Id = reader.GetGuid(reader.GetOrdinal("Id")),
                 Name = reader.GetString(reader.GetOrdinal("Name"))
-                /*Description = reader.IsDBNull(reader.GetOrdinal("Description"))
-                        ? null
-                        : reader.GetString(
-                            reader.GetOrdinal("Description")),
-                SortOrder = reader.GetInt32(reader.GetOrdinal("SortOrder"))*/
             };
         }
+
+      
         #endregion
 
     }

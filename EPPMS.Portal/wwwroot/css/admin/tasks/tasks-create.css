@@ -1,0 +1,677 @@
+﻿/* ===========================================================
+   Task Create Page
+=========================================================== */
+
+.task-create-page {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===========================================================
+   Page Header
+=========================================================== */
+
+.task-create-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 20px;
+}
+
+.task-create-title {
+    flex: 1;
+}
+
+.page-title {
+    margin: 0;
+    color: #071A38;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    margin: 8px 0 0;
+    max-width: 760px;
+    color: #667085;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.task-create-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* ===========================================================
+   Bootstrap Layout
+=========================================================== */
+
+.row.g-4 {
+    --bs-gutter-x: 24px;
+    --bs-gutter-y: 20px;
+}
+
+/* ===========================================================
+   Form
+=========================================================== */
+
+#taskForm {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===========================================================
+   Footer
+=========================================================== */
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    padding-top: 24px;
+    border-top: 1px solid #E4E7EC;
+}
+
+.footer-actions-left,
+.footer-actions-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ===========================================================
+   Utilities
+=========================================================== */
+
+.w-100 {
+    width: 100%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.mt-0 {
+    margin-top: 0 !important;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.content-card {
+    margin-bottom: 20px;
+}
+/* ===========================================================
+   Content Card
+=========================================================== */
+
+.content-card {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid #E4E7EC;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(16,24,40,.04);
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+    .content-card:hover {
+        border-color: #D0D5DD;
+    }
+
+/* ===========================================================
+   Card Header
+=========================================================== */
+
+.card-header {
+    padding: 20px 24px;
+    background: #FCFCFD;
+    border-bottom: 1px solid #EAECF0;
+}
+
+.card-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    color: #071A38;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+    .card-section-title i {
+        color: #FF6A13;
+        font-size: 18px;
+    }
+
+.card-subtitle {
+    margin: 8px 0 0;
+    color: #667085;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* ===========================================================
+   Card Body
+=========================================================== */
+
+.card-body {
+    flex: 1;
+    padding: 24px;
+}
+
+    /* ===========================================================
+   Card Body Layout
+=========================================================== */
+
+    .card-body > .row:last-child {
+        margin-bottom: 0;
+    }
+
+    .card-body .row + .row {
+        margin-top: 20px;
+    }
+
+/* ===========================================================
+   Card Divider
+=========================================================== */
+
+.card-divider {
+    margin: 24px 0;
+    border: 0;
+    border-top: 1px solid #EAECF0;
+}
+
+/* ===========================================================
+   Card States
+=========================================================== */
+
+.content-card.card-disabled {
+    opacity: .65;
+    pointer-events: none;
+}
+
+.content-card.card-highlight {
+    border-color: #0B5FFF;
+    box-shadow: 0 0 0 3px rgba(11,95,255,.08);
+}
+
+/* ===========================================================
+   Validation Summary
+=========================================================== */
+
+.validation-summary-errors {
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    border: 1px solid #FECACA;
+    border-radius: 10px;
+    background: #FEF2F2;
+}
+
+    .validation-summary-errors ul {
+        margin: 0;
+        padding-left: 18px;
+    }
+
+    .validation-summary-errors li {
+        color: #B42318;
+        font-size: 13px;
+    }
+
+/* ===========================================================
+   Empty State
+=========================================================== */
+
+.card-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    color: #98A2B3;
+    text-align: center;
+}
+
+    .card-empty i {
+        margin-bottom: 12px;
+        font-size: 34px;
+    }
+
+.card-empty-title {
+    margin-bottom: 6px;
+    color: #344054;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.card-empty-description {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* ===========================================================
+   Form Labels
+=========================================================== */
+
+.form-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 8px;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.required {
+    color: #DC2626;
+    font-weight: 700;
+}
+
+/* ===========================================================
+   Form Controls
+=========================================================== */
+
+.form-control,
+.form-select {
+    min-height: 44px;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #101828;
+    font-size: 14px;
+    padding: 10px 14px;
+    box-shadow: none;
+    transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+
+    .form-control:hover,
+    .form-select:hover {
+        border-color: #98A2B3;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #0B5FFF;
+        box-shadow: 0 0 0 3px rgba(11,95,255,.12);
+        outline: none;
+    }
+
+/* ===========================================================
+   Textarea
+=========================================================== */
+
+textarea.form-control {
+    resize: vertical;
+    line-height: 1.6;
+}
+
+/* ===========================================================
+   Progress Updates
+=========================================================== */
+
+textarea[name$="LatestUpdate"] {
+    min-height: 220px;
+    max-height: 400px;
+    resize: vertical;
+}
+
+/* ===========================================================
+   Additional Notes
+=========================================================== */
+
+textarea[name$="Notes"] {
+    min-height: 220px;
+    max-height: 400px;
+    resize: vertical;
+}
+
+/* ===========================================================
+   Placeholder
+=========================================================== */
+
+.form-control::placeholder,
+textarea::placeholder {
+    color: #98A2B3;
+}
+
+/* ===========================================================
+   Character Counter
+=========================================================== */
+
+.character-counter {
+    color: #98A2B3;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+    .character-counter.warning {
+        color: #F79009;
+    }
+
+    .character-counter.limit {
+        color: #DC2626;
+    }
+
+/* ===========================================================
+   Field Validation
+=========================================================== */
+
+.field-validation-error {
+    display: block;
+    margin-top: 6px;
+    color: #DC2626;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.input-validation-error {
+    border-color: #DC2626 !important;
+}
+
+    .input-validation-error:focus {
+        box-shadow: 0 0 0 3px rgba(220,38,38,.12);
+    }
+
+/* ===========================================================
+   Helper Text
+=========================================================== */
+
+.form-text {
+    margin-top: 6px;
+    color: #667085;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* ===========================================================
+   Disabled State
+=========================================================== */
+
+.form-control:disabled,
+.form-select:disabled {
+    background: #F9FAFB;
+    color: #98A2B3;
+    border-color: #EAECF0;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+/* ===========================================================
+   Input Groups
+=========================================================== */
+
+.input-group-text {
+    background: #F9FAFB;
+    border: 1px solid #D0D5DD;
+    color: #667085;
+}
+
+/* ===========================================================
+   Date Inputs
+=========================================================== */
+
+input[type="date"] {
+    cursor: pointer;
+}
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        opacity: .8;
+        transition: opacity .2s ease;
+    }
+
+        input[type="date"]::-webkit-calendar-picker-indicator:hover {
+            opacity: 1;
+        }
+/* ===========================================================
+   Action Buttons
+=========================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 120px;
+    height: 44px;
+    padding: 0 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+}
+
+    .btn i {
+        font-size: 15px;
+    }
+
+/* Secondary */
+
+.btn-light {
+    background: #FFFFFF;
+    border: 1px solid #D0D5DD;
+    color: #344054;
+}
+
+    .btn-light:hover {
+        background: #F9FAFB;
+        border-color: #98A2B3;
+        color: #344054;
+    }
+
+/* Primary */
+
+.btn-save-task {
+    background: #FF6A13;
+    border: 1px solid #FF6A13;
+    color: #FFFFFF;
+}
+
+    .btn-save-task:hover {
+        background: #E85D0C;
+        border-color: #E85D0C;
+        color: #FFFFFF;
+    }
+
+.btn:focus {
+    box-shadow: none;
+}
+
+/* ===========================================================
+   Relationship Cards
+=========================================================== */
+
+.link-task-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.task-link-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 110px;
+    border: 1px solid #D0D5DD;
+    border-radius: 12px;
+    background: #FFFFFF;
+    cursor: pointer;
+    transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+
+    .task-link-card:hover {
+        border-color: #0B5FFF;
+        background: #F8FAFF;
+    }
+
+    .task-link-card input {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .task-link-card label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin: 0;
+        cursor: pointer;
+    }
+
+    .task-link-card i {
+        color: #FF6A13;
+        font-size: 28px;
+    }
+
+    .task-link-card span {
+        color: #344054;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    /* Selected */
+
+    .task-link-card:has(input:checked) {
+        border-color: #0B5FFF;
+        background: #EFF6FF;
+        box-shadow: 0 0 0 3px rgba(11,95,255,.08);
+    }
+
+        .task-link-card:has(input:checked) i {
+            color: #0B5FFF;
+        }
+
+/* ===========================================================
+   Lookup Containers
+=========================================================== */
+
+#featureLookupContainer,
+#technicalModuleLookupContainer,
+#bugLookupContainer {
+    margin-top: 24px;
+}
+
+/* ===========================================================
+   Information Panel
+=========================================================== */
+
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+    padding: 14px 16px;
+    border: 1px solid #D6E4FF;
+    border-radius: 10px;
+    background: #F5F9FF;
+    color: #344054;
+    font-size: 13px;
+}
+
+    .alert i {
+        color: #0B5FFF;
+    }
+
+/* ===========================================================
+   Responsive
+=========================================================== */
+
+@media (max-width: 991.98px) {
+
+    .task-create-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .task-create-actions {
+        justify-content: flex-end;
+    }
+
+    .link-task-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    .task-create-actions {
+        flex-direction: column;
+    }
+
+        .task-create-actions .btn {
+            width: 100%;
+        }
+
+    .footer-actions-left,
+    .footer-actions-right {
+        width: 100%;
+        justify-content: stretch;
+    }
+
+    .form-footer {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .footer-actions-left .btn,
+    .footer-actions-right .btn {
+        width: 100%;
+    }
+
+    .btn {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 575.98px) {
+
+    .page-title {
+        font-size: 28px;
+    }
+
+    .card-header {
+        padding: 18px 20px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+}
+
+
+/* ===========================================================
+   Lookup Animation
+=========================================================== */
+
+.lookup-container {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity .20s ease, transform .20s ease, max-height .20s ease;
+}
+
+    .lookup-container.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        max-height: 120px;
+    }
+
+/* ===========================================================
+   ROW 2
+=========================================================== */
+
+.task-create-page .content-card {
+    height: 100%;
+}

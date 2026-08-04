@@ -76,9 +76,24 @@ namespace EPPMS.Application.Services
             return await _lookupRepository.GetTypesAsync(cancellationToken);
         }
 
-        public async Task<IReadOnlyList<ApplicationLookupResponseDTO>> GetApplicationAsync(CancellationToken cancellationToken)
+        public async Task<IReadOnlyList<ModulesLookupResponseDTO>> GetApplicationAsync(CancellationToken cancellationToken)
         {
             return await _lookupRepository.GetApplicationAsync(cancellationToken);
+        }
+
+        public async Task<IReadOnlyList<ModulesLookupResponseDTO>> GetFeatureAsync(CancellationToken cancellationToken)
+        {
+            return await _lookupRepository.GetFeatureAsync(cancellationToken);
+        }
+
+        public async Task<IReadOnlyList<ModulesLookupResponseDTO>> GetTechnicalModuleAsync(CancellationToken cancellationToken)
+        {
+            return await _lookupRepository.GetTechnicalModuleAsync(cancellationToken);
+        }
+
+        public async Task<IReadOnlyList<ModulesLookupResponseDTO>> GetBugAsync(CancellationToken cancellationToken)
+        {
+            return await _lookupRepository.GetBugAsync(cancellationToken);
         }
 
         #endregion

@@ -25,7 +25,7 @@ public class CreateModel : PageModel
     [BindProperty]
     public BugCreateDTO Bug { get; set; } = new();
 
-    public IReadOnlyList<ApplicationLookupResponseDTO> Applications { get; private set; } = [];
+    public IReadOnlyList<ModulesLookupResponseDTO> Applications { get; private set; } = [];
     public IReadOnlyList<LookupResponseDTO> Severities { get; private set; } = [];
     public IReadOnlyList<LookupResponseDTO> Priorities { get; private set; } = [];
     public IReadOnlyList<LookupResponseDTO> Statuses { get; private set; } = [];

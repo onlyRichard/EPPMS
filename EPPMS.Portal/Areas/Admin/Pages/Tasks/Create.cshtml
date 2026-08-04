@@ -1,0 +1,825 @@
+﻿@page
+@model EPPMS.Portal.Areas.Admin.Pages.Tasks.CreateModel
+
+@{
+    ViewData["Title"] = "Add New Task";
+}
+
+@section Styles
+{
+    <link rel="stylesheet"
+          href="~/css/admin/tasks/tasks-create.css"
+          asp-append-version="true" />
+}
+
+<div class="task-create-page">
+
+    <!-- ===========================================================
+        PAGE HEADER
+    ============================================================ -->
+
+    <section class="task-create-header">
+
+        <div class="task-create-title">
+
+            <h1 class="page-title">
+                Add New Task
+            </h1>
+
+            <p class="page-subtitle">
+                Create a new task and associate it with an existing Feature,
+                Technical Module, or Bug within the Enterprise Project and
+                Portfolio Management System.
+            </p>
+
+        </div>
+
+        <div class="task-create-actions">
+
+            <a asp-page="./Index"
+               class="btn btn-light">
+
+                <i class="bi bi-arrow-left"></i>
+
+                Cancel
+
+            </a>
+
+            <button type="button"
+                    id="btnSaveTask"
+                    class="btn btn-save-task">
+
+                <i class="bi bi-floppy"></i>
+
+                Save Task
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ===========================================================
+        CREATE TASK FORM
+    ============================================================ -->
+
+    <form id="taskForm"
+          method="post"
+          novalidate>
+
+        <div asp-validation-summary="ModelOnly"
+             class="validation-summary-errors">
+        </div>
+
+        <!-- ===========================================================
+            TASK INFORMATION
+        ============================================================ -->
+
+        <section class="content-card">
+
+            <!-- Card Header -->
+
+            <div class="card-header">
+
+                <h2 class="card-section-title">
+
+                    <i class="bi bi-card-text"></i>
+
+                    Task Information
+
+                </h2>
+
+                <p class="card-subtitle">
+
+                    Define the primary information that describes this task.
+
+                </p>
+
+            </div>
+
+            <!-- Card Body -->
+
+            <div class="card-body">
+
+                <div class="row g-4">
+
+                    <!-- Task Title -->
+
+                    <div class="col-lg-6">
+
+                        <label asp-for="Task.Title"
+                               class="form-label">
+
+                            Task Title
+
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <input asp-for="Task.Title"
+                               class="form-control"
+                               maxlength="250"
+                               placeholder="Enter task title..." />
+
+                        <div class="d-flex justify-content-end mt-2">
+
+                            <small class="character-counter">
+
+                                <span id="titleCounter">0</span> / 250
+
+                            </small>
+
+                        </div>
+
+                        <span asp-validation-for="Task.Title"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <!-- Description -->
+
+                    <div class="col-lg-6">
+
+                        <label asp-for="Task.Description"
+                               class="form-label">
+
+                            Description
+
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <textarea asp-for="Task.Description"
+                                  class="form-control"
+                                  rows="8"
+                                  maxlength="2000"
+                                  placeholder="Describe the purpose, expected outcome, implementation details, or acceptance criteria for this task..."></textarea>
+
+                        <div class="d-flex justify-content-end mt-2">
+
+                            <small class="character-counter">
+
+                                <span id="descriptionCounter">0</span> / 2000
+
+                            </small>
+
+                        </div>
+
+                        <span asp-validation-for="Task.Description"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+      
+        <!-- =======================================================
+    ROW 2
+    Relationship + Planning
+======================================================== -->
+
+        <div class="row g-4">
+
+            <!-- =======================================================
+        RELATIONSHIP
+    ======================================================== -->
+
+            <div class="col-xl-6">
+
+                <section class="content-card h-100">
+
+                    <!-- Card Header -->
+
+                    <div class="card-header">
+
+                        <h2 class="card-section-title">
+
+                            <i class="bi bi-diagram-3"></i>
+
+                            Relationship
+
+                        </h2>
+
+                        <p class="card-subtitle">
+
+                            Associate this task with an existing Feature,
+                            Technical Module, or Bug.
+
+                        </p>
+
+                    </div>
+
+                    <!-- Card Body -->
+
+                    <div class="card-body">
+
+                        <!-- Relationship Type -->
+
+                        <label class="form-label">
+
+                            Work Item Type
+
+                            <span class="required">*</span>
+
+                        </label>
+
+                        <div class="link-task-container mb-4">
+
+                            <div class="task-link-card">
+
+                                <input class="form-check-input"
+                                       type="radio"
+                                       name="LinkType"
+                                       id="linkFeature"
+                                       value="Feature" />
+
+                                <label class="form-check-label"
+                                       for="linkFeature">
+
+                                    <i class="bi bi-diagram-3"></i>
+
+                                    <span>Feature</span>
+
+                                </label>
+
+                            </div>
+
+                            <div class="task-link-card">
+
+                                <input class="form-check-input"
+                                       type="radio"
+                                       name="LinkType"
+                                       id="linkTechnicalModule"
+                                       value="TechnicalModule" />
+
+                                <label class="form-check-label"
+                                       for="linkTechnicalModule">
+
+                                    <i class="bi bi-cpu"></i>
+
+                                    <span>Technical Module</span>
+
+                                </label>
+
+                            </div>
+
+                            <div class="task-link-card">
+
+                                <input class="form-check-input"
+                                       type="radio"
+                                       name="LinkType"
+                                       id="linkBug"
+                                       value="Bug" />
+
+                                <label class="form-check-label"
+                                       for="linkBug">
+
+                                    <i class="bi bi-bug"></i>
+
+                                    <span>Bug</span>
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Feature Lookup -->
+
+                        <div id="featureLookupContainer"
+                             style="display:none;">
+
+                            <label asp-for="Task.FeatureId"
+                                   class="form-label">
+
+                                Feature
+
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <select asp-for="Task.FeatureId"
+                                    class="form-select">
+
+                                <option value="">
+                                    Select Feature
+                                </option>
+
+                                @foreach (var item in Model.Feature)
+                                {
+                                    <option value="@item.Id">
+                                        @item.Name
+                                    </option>
+                                }
+
+                            </select>
+
+                            <span asp-validation-for="Task.FeatureId"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                        <!-- Technical Module Lookup -->
+
+                        <div id="technicalModuleLookupContainer"
+                             style="display:none;">
+
+                            <label asp-for="Task.TechModuleId"
+                                   class="form-label">
+
+                                Technical Module
+
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <select asp-for="Task.TechModuleId"
+                                    class="form-select">
+
+                                <option value="">
+                                    Select Technical Module
+                                </option>
+
+                                @foreach (var item in Model.TechnicalModule)
+                                {
+                                    <option value="@item.Id">
+                                        @item.Name
+                                    </option>
+                                }
+
+                            </select>
+
+                            <span asp-validation-for="Task.TechModuleId"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                        <!-- Bug Lookup -->
+
+                        <div id="bugLookupContainer"
+                             style="display:none;">
+
+                            <label asp-for="Task.BugId"
+                                   class="form-label">
+
+                                Bug
+
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <select asp-for="Task.BugId"
+                                    class="form-select">
+
+                                <option value="">
+                                    Select Bug
+                                </option>
+
+                                @foreach (var item in Model.Bug)
+                                {
+                                    <option value="@item.Id">
+                                        @item.Name
+                                    </option>
+                                }
+
+                            </select>
+
+                            <span asp-validation-for="Task.BugId"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                        <div class="alert alert-light mt-4 mb-0">
+
+                            <i class="bi bi-info-circle-fill me-2"></i>
+
+                            Select the work item that this task belongs to.
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+            <!-- =======================================================
+                PLANNING
+            ======================================================== -->
+
+            <div class="col-xl-6">
+
+                <section class="content-card h-100">
+
+                    <div class="card-header">
+
+                        <h2 class="card-section-title">
+
+                            <i class="bi bi-kanban"></i>
+
+                            Planning
+
+                        </h2>
+
+                        <p class="card-subtitle">
+
+                            Define ownership and execution settings.
+
+                        </p>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="row g-3">
+
+                            <!-- =======================================================
+            Assign To
+        ======================================================== -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="Task.AssignTo"
+                                       class="form-label">
+
+                                    Assign To
+
+                                    <span class="required">*</span>
+
+                                </label>
+
+                                <input asp-for="Task.AssignTo"
+                                       class="form-control"
+                                       maxlength="250"
+                                       placeholder="Enter MSID" />
+
+                                <span asp-validation-for="Task.AssignTo"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- =======================================================
+            Priority
+        ======================================================== -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="Task.PriorityId"
+                                       class="form-label">
+
+                                    Priority
+
+                                    <span class="required">*</span>
+
+                                </label>
+
+                                <select asp-for="Task.PriorityId"
+                                        class="form-select">
+
+                                    <option value="">
+                                        Select Priority
+                                    </option>
+
+                                    @foreach (var item in Model.Priorities)
+                                    {
+                                        <option value="@item.Id">
+                                            @item.Name
+                                        </option>
+                                    }
+
+                                </select>
+
+                                <span asp-validation-for="Task.PriorityId"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- =======================================================
+            Status
+        ======================================================== -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="Task.StatusId"
+                                       class="form-label">
+
+                                    Status
+
+                                    <span class="required">*</span>
+
+                                </label>
+
+                                <select asp-for="Task.StatusId"
+                                        class="form-select">
+
+                                    <option value="">
+                                        Select Status
+                                    </option>
+
+                                    @foreach (var item in Model.Statuses)
+                                    {
+                                        <option value="@item.Id">
+                                            @item.Name
+                                        </option>
+                                    }
+
+                                </select>
+
+                                <span asp-validation-for="Task.StatusId"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- =======================================================
+            Estimated Start
+        ======================================================== -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="Task.EstimatedStartDate"
+                                       class="form-label">
+
+                                    Estimated Start
+
+                                </label>
+
+                                <input asp-for="Task.EstimatedStartDate"
+                                       type="date"
+                                       class="form-control" />
+
+                                <span asp-validation-for="Task.EstimatedStartDate"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- =======================================================
+            Estimated End
+        ======================================================== -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="Task.EstimatedEndDate"
+                                       class="form-label">
+
+                                    Estimated End
+
+                                </label>
+
+                                <input asp-for="Task.EstimatedEndDate"
+                                       type="date"
+                                       class="form-control" />
+
+                                <span asp-validation-for="Task.EstimatedEndDate"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- =======================================================
+            Actual Start
+        ======================================================== -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="Task.ActualStartDate"
+                                       class="form-label">
+
+                                    Actual Start
+
+                                </label>
+
+                                <input asp-for="Task.ActualStartDate"
+                                       type="date"
+                                       class="form-control" />
+
+                                <span asp-validation-for="Task.ActualStartDate"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <!-- =======================================================
+            Actual End
+        ======================================================== -->
+
+                            <div class="col-md-6">
+
+                                <label asp-for="Task.ActualEndDate"
+                                       class="form-label">
+
+                                    Actual End
+
+                                </label>
+
+                                <input asp-for="Task.ActualEndDate"
+                                       type="date"
+                                       class="form-control" />
+
+                                <span asp-validation-for="Task.ActualEndDate"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+        <!-- ===========================================================
+    ROW 3
+    Progress Updates + Additional Notes
+=========================================================== -->
+
+        <div class="row g-4 mt-2">
+
+            <!-- =======================================================
+        PROGRESS UPDATES
+    ======================================================== -->
+
+            <div class="col-xl-6">
+
+                <section class="content-card h-100">
+
+                    <!-- Existing Progress Updates content continues here -->
+
+                    <!-- Card Header -->
+
+                    <div class="card-header">
+
+                        <h2 class="card-section-title">
+
+                            <i class="bi bi-graph-up-arrow"></i>
+
+                            Progress Updates
+
+                        </h2>
+
+                   @*      <p class="card-subtitle">
+
+                            Record the latest implementation progress, completed work,
+                            blockers, deployment activities, or other status updates &nbsp;.
+                        </p> *@
+
+                    </div>
+
+                    <!-- Card Body -->
+
+                    <div class="card-body">
+
+                        <label asp-for="Task.LatestUpdate"
+                               class="form-label">
+                            Latest Update
+                        </label>
+
+                        <textarea asp-for="Task.LatestUpdate"
+                                  class="form-control"
+                                  rows="8"                                  
+                                  placeholder="Enter the latest progress update..."></textarea>
+
+                        <div class="d-flex justify-content-end mt-2">
+                            <small class="character-counter">
+                                <span id="latestUpdateCounter">
+                                    0
+                                </span> / 4000
+                            </small>
+                        </div>
+
+                        <span asp-validation-for="Task.LatestUpdate"
+                              class="text-danger">
+                        </span>
+                    </div>
+                </section>
+            </div>
+
+            <!-- =======================================================
+                ADDITIONAL NOTES
+            ======================================================== -->
+
+            <div class="col-xl-6">
+
+                <section class="content-card h-100">
+                    <!-- Card Header -->
+                    <div class="card-header">
+                        <h2 class="card-section-title">
+                            <i class="bi bi-journal-text"></i>
+                            Additional Notes
+                        </h2>
+                       @*  <p class="card-subtitle">
+                            Optional information, reminders, references,
+                            assumptions, or supporting documentation.
+                        </p> *@
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <label asp-for="Task.Notes"
+                               class="form-label">
+                            Notes
+                        </label>
+                        <textarea asp-for="Task.Notes"
+                                  class="form-control"
+                                  rows="8"
+                                  placeholder="Enter additional notes..."></textarea>
+                        <div class="d-flex justify-content-end mt-2">
+                            <small class="character-counter">
+                                <span id="notesCounter">
+                                    0
+                                </span> / 4000
+                            </small>
+                        </div>
+
+                        <span asp-validation-for="Task.Notes"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+        <!-- ===========================================================
+            FOOTER ACTIONS
+            Continues in Part 4
+        =========================================================== -->
+        <!-- ===========================================================
+            FOOTER ACTIONS
+        =========================================================== -->
+
+        @* <section class="form-footer">
+
+            <div class="footer-actions-left">
+
+                <a asp-page="./Index"
+                       class="btn btn-light">
+
+                    <i class="bi bi-x-circle"></i>
+
+                    Cancel
+
+                </a>
+
+                <button type="reset"
+                        class="btn btn-light">
+
+                    <i class="bi bi-arrow-counterclockwise"></i>
+
+                    Reset
+
+                </button>
+
+            </div>
+
+            <div class="footer-actions-right">
+
+                <button type="submit"
+                        name="action"
+                        value="SaveAndClose"
+                        class="btn btn-light">
+
+                    <i class="bi bi-check2-square"></i>
+
+                    Save & Close
+
+                </button>
+
+                <button type="submit"
+                        name="action"
+                        value="Save"
+                        class="btn btn-save-task">
+
+                    <i class="bi bi-floppy"></i>
+
+                    Save Task
+
+                </button>
+
+            </div>
+
+        </section> *@
+
+    </form>
+
+</div>
+
+@section Scripts
+{
+    <script src="~/js/admin/tasks/tasks-create.js" asp-append-version="true"></script>
+}

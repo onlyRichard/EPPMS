@@ -20,6 +20,9 @@ namespace EPPMS.Infrastructure.Data
             public const string TestingStatus = "dbo.usp_TestingStatus_Get";
             public const string Type = "dbo.usp_Type_Get";
             public const string Application = "dbo.usp_Application_GetLookup";
+            public const string Feature = "dbo.usp_Feature_GetLookup";
+            public const string TechnicalModule = "dbo.usp_TechnicalModule_GetLookup";
+            public const string Bug = "dbo.usp_Bug_GetLookup";
         }
         public static class User
         {

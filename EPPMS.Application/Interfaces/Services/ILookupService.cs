@@ -15,6 +15,9 @@ namespace EPPMS.Application.Interfaces.Services
         Task<IReadOnlyList<LookupResponseDTO>> GetTechnologyAreasAsync(CancellationToken cancellationToken);
         Task<IReadOnlyList<LookupResponseDTO>> GetTestingStatusesAsync(CancellationToken cancellationToken);
         Task<IReadOnlyList<LookupResponseDTO>> GetTypesAsync(CancellationToken cancellationToken);
-        Task<IReadOnlyList<ApplicationLookupResponseDTO>> GetApplicationAsync(CancellationToken cancellationToken);
+        Task<IReadOnlyList<ModulesLookupResponseDTO>> GetApplicationAsync(CancellationToken cancellationToken);
+        Task<IReadOnlyList<ModulesLookupResponseDTO>> GetFeatureAsync(CancellationToken cancellationToken);
+        Task<IReadOnlyList<ModulesLookupResponseDTO>> GetTechnicalModuleAsync(CancellationToken cancellationToken);
+        Task<IReadOnlyList<ModulesLookupResponseDTO>> GetBugAsync(CancellationToken cancellationToken);
     }
 }

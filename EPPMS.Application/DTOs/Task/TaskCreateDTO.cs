@@ -7,8 +7,9 @@ namespace EPPMS.Application.DTOs.Task
     public class TaskCreateDTO
     {
         public Guid TaskId { get; set; }
-        public Guid FeatureId { get; set; }
-        public Guid TechModuleId { get; set; }
+        public Guid? FeatureId { get; set; }
+        public Guid? TechModuleId { get; set; }
+        public Guid? BugId { get; set; } 
         public string Title { get; set; } = string.Empty;
         public string? Description { get; set; }
         public int PriorityId { get; set; }
@@ -19,6 +20,7 @@ namespace EPPMS.Application.DTOs.Task
         public DateTime? ActualEndDate { get; set; }
         public string? LatestUpdate { get; set; }
         public string? Notes { get; set; }
-        public string CreatedBy { get; set; } = string.Empty;
+        public string? CreatedBy { get; set; } = string.Empty;
+        public string? AssignTo { get; set; }
     }
 }

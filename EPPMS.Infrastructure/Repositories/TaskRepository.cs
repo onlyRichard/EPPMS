@@ -73,6 +73,8 @@ namespace EPPMS.Infrastructure.Repositories
 
         public async Task<bool> CreateAsync(TaskCreateDTO task)
         {
+            task.CreatedBy = "MS/rperal15";
+            task.TaskId = Guid.NewGuid();
             await using SqlConnection connection = await CreateConnectionAsync();
             await using SqlCommand command = new(StoredProcedureNames.Task.Create, connection);
             command.CommandType = CommandType.StoredProcedure;
@@ -108,6 +110,7 @@ namespace EPPMS.Infrastructure.Repositories
             command.Parameters.Add(DbParameterExtensions.Create("@TaskId", task.TaskId, SqlDbType.UniqueIdentifier));
             command.Parameters.Add(DbParameterExtensions.Create("@FeatureId", task.FeatureId, SqlDbType.UniqueIdentifier));
             command.Parameters.Add(DbParameterExtensions.Create("@TechModuleId", task.TechModuleId, SqlDbType.UniqueIdentifier));
+            command.Parameters.Add(DbParameterExtensions.Create("@BugId", task.BugId, SqlDbType.UniqueIdentifier));
             command.Parameters.Add(DbParameterExtensions.Create("@Title", task.Title, SqlDbType.NVarChar));
             command.Parameters.Add(DbParameterExtensions.Create("@Description", task.Description, SqlDbType.NVarChar));
             command.Parameters.Add(DbParameterExtensions.Create("@PriorityId", task.PriorityId, SqlDbType.Int));
@@ -119,6 +122,7 @@ namespace EPPMS.Infrastructure.Repositories
             command.Parameters.Add(DbParameterExtensions.Create("@LatestUpdate", task.LatestUpdate, SqlDbType.NVarChar));
             command.Parameters.Add(DbParameterExtensions.Create("@Notes", task.Notes, SqlDbType.NVarChar));
             command.Parameters.Add(DbParameterExtensions.Create("@CreatedBy", task.CreatedBy, SqlDbType.NVarChar));
+            command.Parameters.Add(DbParameterExtensions.Create("@AssignTo", task.AssignTo, SqlDbType.NVarChar));
         }
         private static void AddUpdateParameters(SqlCommand command, TaskUpdateDTO task)
         {
@@ -154,28 +158,42 @@ namespace EPPMS.Infrastructure.Repositories
 
             return new TaskDetailsDTO
             {
-                TaskId = reader.GetGuid(reader.GetOrdinal("TaskId")),
-                FeatureId = reader.GetGuid(reader.GetOrdinal("FeatureId")),
+                TaskId = reader.GetString(reader.GetOrdinal("TaskId")),
+
+                FeatureId = reader.GetString(reader.GetOrdinal("FeatureId")),
                 FeatureTitle = reader.GetString(reader.GetOrdinal("FeatureTitle")),
-                TechModuleId = reader.GetGuid(reader.GetOrdinal("TechModuleId")),
+
+                TechModuleId = reader.GetString(reader.GetOrdinal("TechModuleId")),
                 TechModule = reader.GetString(reader.GetOrdinal("TechModule")),
+
+                BugId = reader.GetString(reader.GetOrdinal("BugId")),
+                BugTitle = reader.GetString(reader.GetOrdinal("BugTitle")),
+
                 Title = reader.GetString(reader.GetOrdinal("Title")),
-                Description = reader.IsDBNull(descriptionOrdinal) ? null : reader.GetString(descriptionOrdinal),
+                Description = reader.GetString(reader.GetOrdinal("Description")),
+
                 PriorityId = reader.GetInt32(reader.GetOrdinal("PriorityId")),
                 Priority = reader.GetString(reader.GetOrdinal("Priority")),
+
                 StatusId = reader.GetInt32(reader.GetOrdinal("StatusId")),
                 Status = reader.GetString(reader.GetOrdinal("Status")),
-                EstimatedStartDate = reader.IsDBNull(estimatedStartDateOrdinal) ? null : reader.GetDateTime(estimatedStartDateOrdinal),
-                EstimatedEndDate = reader.IsDBNull(estimatedEndDateOrdinal) ? null : reader.GetDateTime(estimatedEndDateOrdinal),
-                ActualStartDate = reader.IsDBNull(actualStartDateOrdinal) ? null : reader.GetDateTime(actualStartDateOrdinal),
-                ActualEndDate = reader.IsDBNull(actualEndDateOrdinal) ? null : reader.GetDateTime(actualEndDateOrdinal),
-                LatestUpdate = reader.IsDBNull(latestUpdateOrdinal) ? null : reader.GetString(latestUpdateOrdinal),
-                Notes = reader.IsDBNull(notesOrdinal) ? null : reader.GetString(notesOrdinal),
+
+                EstimatedStartDate = reader.GetString(reader.GetOrdinal("EstimatedStartDate")),
+                EstimatedEndDate = reader.GetString(reader.GetOrdinal("EstimatedEndDate")),
+
+                ActualStartDate = reader.GetString(reader.GetOrdinal("ActualStartDate")),
+                ActualEndDate = reader.GetString(reader.GetOrdinal("ActualEndDate")),
+
+                LatestUpdate = reader.GetString(reader.GetOrdinal("LatestUpdate")),
+                Notes = reader.GetString(reader.GetOrdinal("Notes")),
+
                 CreatedBy = reader.GetString(reader.GetOrdinal("CreatedBy")),
-                CreatedDateTime = reader.GetDateTime(reader.GetOrdinal("CreatedDateTime")),
-                UpdatedBy = reader.IsDBNull(updatedByOrdinal) ? null : reader.GetString(updatedByOrdinal),
-                UpdatedDateTime = reader.IsDBNull(updatedDateTimeOrdinal) ? null : reader.GetDateTime(updatedDateTimeOrdinal),
-                IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive"))
+                CreatedDateTime = reader.GetString(reader.GetOrdinal("CreatedDateTime")),
+
+                UpdatedBy = reader.GetString(reader.GetOrdinal("UpdatedBy")),
+                UpdatedDateTime = reader.GetString(reader.GetOrdinal("UpdatedDateTime")),
+
+                IsActive = reader.GetString(reader.GetOrdinal("IsActive"))
             };
         }
         #endregion

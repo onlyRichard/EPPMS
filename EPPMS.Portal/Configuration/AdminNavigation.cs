@@ -58,13 +58,13 @@ public static class AdminNavigation
             Route = "/Bug/Index"
         },
 
-        new()
-        {
-            Title = "Ongoing Tasks",
-            Icon = "bi-clock-history",
-            Area = "Admin",
-            Route = "/OngoingTasks/Index"
-        },
+        //new()
+        //{
+        //    Title = "Ongoing Tasks",
+        //    Icon = "bi-clock-history",
+        //    Area = "Admin",
+        //    Route = "/OngoingTasks/Index"
+        //},
 
         // Reports
 
