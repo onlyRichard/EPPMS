@@ -1,16 +1,20 @@
 using EPPMS.Application.DependencyInjection;
 using EPPMS.Infrastructure.DependencyInjection;
+using EPPMS.Portal.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+builder.Services
+    .AddRazorPages()
+    .AddRazorRuntimeCompilation();
 
 builder.Services
     .AddApplication()
     .AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 if (!app.Environment.IsDevelopment())
 {
@@ -21,6 +25,10 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseRouting();
+
+app.UseStatusCodePagesWithReExecute(
+    "/Error",
+    "?statusCode={0}");
 
 app.UseAuthorization();
 

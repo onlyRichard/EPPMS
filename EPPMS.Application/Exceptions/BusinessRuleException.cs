@@ -1,19 +1,24 @@
-﻿namespace EPPMS.Application.Exceptions;
-
-/// <summary>
-/// Represents an exception that is thrown when a business rule is violated.
-/// </summary>
-public sealed class BusinessRuleException : EppmsException
+﻿namespace EPPMS.Application.Exceptions
 {
-    public BusinessRuleException() : base("A business rule has been violated.")
+    public abstract class BusinessRuleException : Exception
     {
-    }
+        protected BusinessRuleException(
+            int statusCode,
+            string message)
+            : base(message)
+        {
+            StatusCode = statusCode;
+        }
 
-    public BusinessRuleException(string message) : base(message)
-    {
-    }
+        protected BusinessRuleException(
+            int statusCode,
+            string message,
+            Exception innerException)
+            : base(message, innerException)
+        {
+            StatusCode = statusCode;
+        }
 
-    public BusinessRuleException(string message, Exception innerException) : base(message, innerException)
-    {
+        public int StatusCode { get; }
     }
 }

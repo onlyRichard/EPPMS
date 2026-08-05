@@ -20,7 +20,6 @@
     <Folder Include="Areas\Dashboard\" />
     <Folder Include="Areas\Reporting\" />
     <Folder Include="Common\" />
-    <Folder Include="Middleware\" />
     <Folder Include="Resources\" />
     <Folder Include="Services\Application\" />
   </ItemGroup>

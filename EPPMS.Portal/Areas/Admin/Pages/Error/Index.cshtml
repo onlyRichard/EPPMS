@@ -1,0 +1,310 @@
+﻿@page "{statusCode:int?}"
+@model EPPMS.Portal.Pages.Error.IndexModel
+
+@{
+    ViewData["Title"] = Model.Error.Title;
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/error/error-index.css" asp-append-version="true" />
+}
+
+<div class="error-page">
+
+    <!-- ========================================================= -->
+    <!-- Header                                                    -->
+    <!-- ========================================================= -->
+
+    <header class="error-header">
+
+        <div class="container-fluid">
+
+            <div class="row align-items-center">
+
+                <!-- Branding -->
+
+                <div class="col">
+
+                    <div class="error-brand">
+
+                        <img src="~/images/logo/optum-logo.svg" asp-append-version="true" alt="Optum" class="brand-logo" />
+
+                        <span class="brand-divider"></span>
+
+                        <div class="brand-text">
+
+                            Product Action Book
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- User Information -->
+
+                <div class="col-auto">
+
+                    <div class="error-user">
+
+                        <button type="button"
+                                class="btn btn-link notification-button">
+
+                            <i class="bi bi-bell"></i>
+
+                            <span class="notification-badge">
+
+                                12
+
+                            </span>
+
+                        </button>
+
+                        <img src="~/images/profile/default-profile.png"
+                             asp-append-version="true"
+                             alt="Profile"
+                             class="user-avatar" />
+
+                        <div class="user-details">
+
+                            <div class="user-name">
+
+                                Richard Pogi
+
+                            </div>
+
+                            <div class="user-role">
+
+                                Administrator
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- ========================================================= -->
+    <!-- Main                                                      -->
+    <!-- ========================================================= -->
+
+    <main class="error-main">
+
+        <div class="container">
+
+            <div class="row justify-content-center">
+
+                <div class="col-xl-8 col-lg-9 col-md-10">
+
+                    <!-- ========================================= -->
+                    <!-- Illustration                              -->
+                    <!-- ========================================= -->
+
+                    <div class="error-illustration text-center">
+
+                        <img src="~/images/errors/error-illustration.svg"
+                             asp-append-version="true"
+                             alt="System Error"
+                             class="img-fluid" />
+
+                    </div>
+                    <!-- ========================================= -->
+                    <!-- Error Content                             -->
+                    <!-- ========================================= -->
+
+                    <section class="error-content text-center">
+
+                        <h1 class="error-title">
+
+                            @Model.Error.Title
+
+                        </h1>
+
+                        <p class="error-message">
+
+                            @Model.Error.Message
+
+                        </p>
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Error.Description))
+                        {
+                            <p class="error-description">
+
+                                @Model.Error.Description
+
+                            </p>
+                        }
+
+                    </section>
+
+                    <!-- ========================================= -->
+                    <!-- Error Reference                           -->
+                    <!-- ========================================= -->
+
+                    <section class="error-reference-section">
+
+                        <div class="card error-reference-card">
+
+                            <div class="card-body">
+
+                                <div class="row align-items-center g-3">
+
+                                    <div class="col-auto">
+
+                                        <div class="reference-icon">
+
+                                            <i class="bi bi-clipboard-data"></i>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col">
+
+                                        <div class="reference-label">
+
+                                            Error Reference
+
+                                        </div>
+
+                                        <div class="reference-code">
+
+                                            @Model.Error.ErrorReference
+
+                                        </div>
+
+                                        <div class="reference-description">
+
+                                            Please provide this reference ID if you contact support.
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+                    <!-- ========================================= -->
+                    <!-- Actions                                   -->
+                    <!-- ========================================= -->
+
+                    <section class="error-actions">
+
+                        <div class="row g-3 justify-content-center">
+
+                            @if (Model.Error.ShowGoBack)
+                            {
+                                <div class="col-md-5 d-grid">
+
+                                    <button type="button"
+                                            id="btnGoBack"
+                                            class="btn btn-outline-primary btn-lg">
+
+                                        <i class="bi bi-arrow-left me-2"></i>
+
+                                        Go Back
+
+                                    </button>
+
+                                </div>
+                            }
+
+                            @if (Model.Error.ShowDashboardButton)
+                            {
+                                <div class="col-md-5 d-grid">
+
+                                    <a href="@Model.Error.DashboardUrl"
+                                           class="btn btn-primary btn-lg">
+
+                                        <i class="bi bi-house-door me-2"></i>
+
+                                        Return to Dashboard
+
+                                    </a>
+
+                                </div>
+                            }
+
+                        </div>
+
+                    </section>
+
+                    <!-- ========================================= -->
+                    <!-- Support                                   -->
+                    <!-- ========================================= -->
+
+                    <section class="error-support text-center">
+
+                        <div class="support-icon">
+
+                            <i class="bi bi-headset"></i>
+
+                        </div>
+
+                        <p class="support-text">
+
+                            Need help?
+
+                            Contact the
+
+                            <span class="support-contact">
+
+                                @Model.Error.SupportContact
+
+                            </span>
+
+                        </p>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- ========================================================= -->
+    <!-- Footer                                                    -->
+    <!-- ========================================================= -->
+
+    <footer class="error-footer">
+
+        <div class="container">
+
+            <p class="mb-1">
+
+                © @DateTime.UtcNow.Year Optum Product Action Book.
+                All rights reserved.
+
+            </p>
+
+            <p class="mb-0">
+
+                Enterprise Project &amp; Portfolio Management System (EPPMS)
+
+            </p>
+
+        </div>
+
+    </footer>
+
+</div>
+
+@section Scripts
+{
+    <script src="~/js/error/error-index.js" asp-append-version="true"> </script>
+}

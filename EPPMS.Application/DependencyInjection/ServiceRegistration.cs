@@ -23,6 +23,7 @@ namespace EPPMS.Application.DependencyInjection
             services.AddScoped<IOngoingTaskService, OngoingTaskService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ILookupService, LookupService>();
+            services.AddScoped<IErrorPageService, ErrorPageService>();
 
             return services;
         }

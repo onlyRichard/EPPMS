@@ -1,0 +1,499 @@
+﻿/* ==========================================================
+   1. Page Layout
+========================================================== */
+
+.error-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #F5F7FB;
+    color: #071A38;
+    overflow-x: hidden;
+}
+
+.error-main {
+    flex: 1;
+    position: relative;
+    padding: 3rem 0 4rem;
+}
+
+    .error-main::before,
+    .error-main::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: .35;
+    }
+
+    .error-main::before {
+        width: 420px;
+        height: 420px;
+        left: -210px;
+        top: 30px;
+        background: rgba(0, 163, 173, .05);
+    }
+
+    .error-main::after {
+        width: 520px;
+        height: 520px;
+        right: -260px;
+        bottom: -160px;
+        background: rgba(7, 26, 56, .04);
+    }
+
+/* ==========================================================
+   2. Header
+========================================================== */
+
+.error-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid #E5E7EB;
+    padding: 1rem 2rem;
+}
+
+.error-brand {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.brand-logo {
+    height: 48px;
+    width: auto;
+}
+
+.brand-divider {
+    width: 1px;
+    height: 42px;
+    background: #D0D5DD;
+}
+
+.brand-text {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #071A38;
+}
+
+.error-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.notification-button {
+    position: relative;
+    color: #071A38;
+    font-size: 1.4rem;
+    text-decoration: none;
+}
+
+    .notification-button:hover {
+        color: #002677;
+    }
+
+.notification-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #FF5A1F;
+    color: #FFFFFF;
+    font-size: .65rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-avatar {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.user-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #071A38;
+}
+
+.user-role {
+    font-size: .90rem;
+    color: #667085;
+}
+
+/* ==========================================================
+   3. Illustration
+========================================================== */
+
+.error-illustration {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+    .error-illustration img {
+        display: inline-block;
+        max-width: 100%;
+        width: min(100%, 480px);
+        height: auto;
+        user-select: none;
+        pointer-events: none;
+    }
+
+/* ==========================================================
+   4. Error Content
+========================================================== */
+
+.error-content {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.error-title {
+    margin: 0 0 1rem;
+    color: #071A38;
+    font-size: clamp(2.25rem, 4vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -.02em;
+}
+
+.error-message {
+    max-width: 720px;
+    margin: 0 auto 1rem;
+    color: #344054;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.7;
+}
+
+.error-description {
+    max-width: 760px;
+    margin: 0 auto;
+    color: #667085;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* ==========================================================
+   5. Content Animation
+========================================================== */
+
+.error-illustration,
+.error-content {
+    animation: fadeInUp .45s ease-out;
+}
+
+@keyframes fadeInUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================
+   6. Error Reference Card
+========================================================== */
+
+.error-reference-section {
+    margin-bottom: 3rem;
+}
+
+.error-reference-card {
+    border: 1px solid #E4E7EC;
+    border-radius: 1rem;
+    background: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(16, 24, 40, .05);
+    overflow: hidden;
+}
+
+    .error-reference-card .card-body {
+        padding: 1.75rem 2rem;
+    }
+
+.reference-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(0, 163, 173, .10);
+    color: #00A3AD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+}
+
+.reference-label {
+    color: #667085;
+    font-size: .90rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-bottom: .35rem;
+}
+
+.reference-code {
+    color: #071A38;
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: "Consolas", "Cascadia Code", monospace;
+    letter-spacing: .08em;
+    word-break: break-word;
+}
+
+.reference-description {
+    margin-top: .50rem;
+    color: #667085;
+    font-size: .95rem;
+    line-height: 1.6;
+}
+
+/* ==========================================================
+   7. Action Buttons
+========================================================== */
+
+.error-actions {
+    margin-bottom: 3rem;
+}
+
+    .error-actions .btn {
+        min-height: 54px;
+        border-radius: .75rem;
+        font-weight: 600;
+        transition: background-color .25s ease, border-color .25s ease, color .25s ease, transform .20s ease;
+    }
+
+        .error-actions .btn:hover {
+            transform: translateY(-2px);
+        }
+
+    .error-actions .btn-primary {
+        background: #071A38;
+        border-color: #071A38;
+    }
+
+        .error-actions .btn-primary:hover {
+            background: #0D2A57;
+            border-color: #0D2A57;
+        }
+
+    .error-actions .btn-outline-primary {
+        color: #071A38;
+        border-color: #071A38;
+    }
+
+        .error-actions .btn-outline-primary:hover {
+            background: #071A38;
+            border-color: #071A38;
+            color: #FFFFFF;
+        }
+
+/* ==========================================================
+   8. Support
+========================================================== */
+
+.error-support {
+    margin-bottom: 4rem;
+}
+
+.support-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: rgba(0, 163, 173, .10);
+    color: #00A3AD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.support-text {
+    margin: 0;
+    color: #667085;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.support-contact {
+    color: #071A38;
+    font-weight: 600;
+}
+
+    .support-contact:hover {
+        color: #00A3AD;
+        cursor: pointer;
+    }
+
+/* ==========================================================
+   9. Footer
+========================================================== */
+
+.error-footer {
+    margin-top: auto;
+    padding: 2rem 0;
+    background: #FFFFFF;
+    border-top: 1px solid #E4E7EC;
+    text-align: center;
+}
+
+    .error-footer p {
+        margin: 0;
+        color: #667085;
+        font-size: .95rem;
+        line-height: 1.8;
+    }
+
+        .error-footer p:first-child {
+            color: #071A38;
+            font-weight: 600;
+        }
+
+/* ==========================================================
+   10. Responsive
+========================================================== */
+
+@media (max-width: 991.98px) {
+
+    .error-header {
+        padding: 1rem;
+    }
+
+    .error-brand {
+        gap: .75rem;
+    }
+
+    .brand-text {
+        font-size: 1.15rem;
+    }
+
+    .error-user {
+        gap: .75rem;
+    }
+
+    .user-details {
+        display: none;
+    }
+
+    .error-main {
+        padding: 2.5rem 0;
+    }
+
+    .error-reference-card .card-body {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    .error-main {
+        padding: 2rem 0;
+    }
+
+    .error-illustration {
+        margin-bottom: 2rem;
+    }
+
+    .error-content {
+        margin-bottom: 2rem;
+    }
+
+    .error-reference-section {
+        margin-bottom: 2rem;
+    }
+
+    .error-actions {
+        margin-bottom: 2rem;
+    }
+
+    .error-support {
+        margin-bottom: 3rem;
+    }
+
+    .reference-icon,
+    .support-icon {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .reference-label,
+    .reference-code,
+    .reference-description {
+        text-align: center;
+    }
+}
+
+@media (max-width: 575.98px) {
+
+    .error-header {
+        padding: .75rem;
+    }
+
+    .brand-logo {
+        height: 40px;
+    }
+
+    .brand-divider {
+        display: none;
+    }
+
+    .brand-text {
+        font-size: 1rem;
+    }
+
+    .notification-button {
+        font-size: 1.15rem;
+    }
+
+    .user-avatar {
+        width: 44px;
+        height: 44px;
+    }
+
+    .error-title {
+        font-size: 2rem;
+    }
+
+    .error-message {
+        font-size: 1.05rem;
+    }
+
+    .error-description {
+        font-size: .95rem;
+    }
+
+    .reference-code {
+        font-size: 1rem;
+    }
+
+    .error-actions .btn {
+        min-height: 50px;
+    }
+
+    .support-text {
+        font-size: .95rem;
+    }
+
+    .error-footer {
+        padding: 1.5rem 1rem;
+    }
+}
